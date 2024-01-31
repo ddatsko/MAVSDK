@@ -186,6 +186,15 @@ CameraServer::Result CameraServerImpl::set_information(CameraServer::Information
     return CameraServer::Result::Success;
 }
 
+
+CameraServer::Result CameraServerImpl::set_additional_capabilities(uint32_t capabilities)
+{
+    // TODO: validate if the capabilities are in proper range 
+    _additional_capabilities = capabilities;
+    return CameraServer::Result::Success;
+}
+
+
 CameraServer::Result
 CameraServerImpl::set_video_streaming(CameraServer::VideoStreaming video_streaming)
 {
@@ -821,7 +830,7 @@ std::optional<mavlink_command_ack_t> CameraServerImpl::process_camera_informatio
     parse_version_string(_information.firmware_version, firmware_version);
 
     // capability flags are determined by subscriptions
-    uint32_t capability_flags{};
+    uint32_t capability_flags = _additional_capabilities;
 
     if (!_take_photo_callbacks.empty()) {
         capability_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_CAPTURE_IMAGE;

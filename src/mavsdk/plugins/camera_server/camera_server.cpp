@@ -36,6 +36,11 @@ CameraServer::Result CameraServer::set_video_streaming(VideoStreaming video_stre
     return _impl->set_video_streaming(video_streaming);
 }
 
+CameraServer::Result CameraServer::set_additional_capabilities(uint32_t capabilities) const
+{
+      return _impl->set_additional_capabilities(capabilities);
+}
+
 CameraServer::Result CameraServer::set_in_progress(bool in_progress) const
 {
     return _impl->set_in_progress(in_progress);
