@@ -640,6 +640,8 @@ public:
 
         rpc_obj->set_bottom_right_corner_y(track_rectangle.bottom_right_corner_y);
 
+        rpc_obj->set_timestamp(track_rectangle.timestamp);
+
         return rpc_obj;
     }
 
@@ -655,6 +657,8 @@ public:
         obj.bottom_right_corner_x = track_rectangle.bottom_right_corner_x();
 
         obj.bottom_right_corner_y = track_rectangle.bottom_right_corner_y();
+
+        obj.timestamp = track_rectangle.timestamp();
 
         return obj;
     }

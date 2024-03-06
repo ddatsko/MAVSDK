@@ -1047,6 +1047,7 @@ class TrackRectangle final :
     kTopLeftCornerYFieldNumber = 2,
     kBottomRightCornerXFieldNumber = 3,
     kBottomRightCornerYFieldNumber = 4,
+    kTimestampFieldNumber = 5,
   };
   // float top_left_corner_x = 1;
   void clear_top_left_corner_x() ;
@@ -1088,13 +1089,23 @@ class TrackRectangle final :
   void _internal_set_bottom_right_corner_y(float value);
 
   public:
+  // uint64 timestamp = 5;
+  void clear_timestamp() ;
+  ::uint64_t timestamp() const;
+  void set_timestamp(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(::uint64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.TrackRectangle)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 0,
+      3, 5, 0,
       0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
@@ -1115,6 +1126,7 @@ class TrackRectangle final :
     float top_left_corner_y_;
     float bottom_right_corner_x_;
     float bottom_right_corner_y_;
+    ::uint64_t timestamp_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -18451,6 +18463,29 @@ inline void TrackRectangle::_internal_set_bottom_right_corner_y(float value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.bottom_right_corner_y_ = value;
+}
+
+// uint64 timestamp = 5;
+inline void TrackRectangle::clear_timestamp() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.timestamp_ = ::uint64_t{0u};
+}
+inline ::uint64_t TrackRectangle::timestamp() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.TrackRectangle.timestamp)
+  return _internal_timestamp();
+}
+inline void TrackRectangle::set_timestamp(::uint64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.TrackRectangle.timestamp)
+}
+inline ::uint64_t TrackRectangle::_internal_timestamp() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.timestamp_;
+}
+inline void TrackRectangle::_internal_set_timestamp(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.timestamp_ = value;
 }
 
 #ifdef __GNUC__

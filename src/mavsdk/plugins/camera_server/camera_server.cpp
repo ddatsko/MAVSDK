@@ -564,7 +564,8 @@ bool operator==(const CameraServer::TrackRectangle& lhs, const CameraServer::Tra
            ((std::isnan(rhs.bottom_right_corner_x) && std::isnan(lhs.bottom_right_corner_x)) ||
             rhs.bottom_right_corner_x == lhs.bottom_right_corner_x) &&
            ((std::isnan(rhs.bottom_right_corner_y) && std::isnan(lhs.bottom_right_corner_y)) ||
-            rhs.bottom_right_corner_y == lhs.bottom_right_corner_y);
+            rhs.bottom_right_corner_y == lhs.bottom_right_corner_y) &&
+           (rhs.timestamp == lhs.timestamp);
 }
 
 std::ostream& operator<<(std::ostream& str, CameraServer::TrackRectangle const& track_rectangle)
@@ -575,6 +576,7 @@ std::ostream& operator<<(std::ostream& str, CameraServer::TrackRectangle const& 
     str << "    top_left_corner_y: " << track_rectangle.top_left_corner_y << '\n';
     str << "    bottom_right_corner_x: " << track_rectangle.bottom_right_corner_x << '\n';
     str << "    bottom_right_corner_y: " << track_rectangle.bottom_right_corner_y << '\n';
+    str << "    timestamp: " << track_rectangle.timestamp << '\n';
     str << '}';
     return str;
 }

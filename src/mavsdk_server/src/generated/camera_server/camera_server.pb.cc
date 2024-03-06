@@ -71,6 +71,7 @@ inline constexpr TrackRectangle::Impl_::Impl_(
         top_left_corner_y_{0},
         bottom_right_corner_x_{0},
         bottom_right_corner_y_{0},
+        timestamp_{::uint64_t{0u}},
         _cached_size_{0} {}
 
 template <typename>
@@ -2102,6 +2103,7 @@ const ::uint32_t TableStruct_camera_5fserver_2fcamera_5fserver_2eproto::offsets[
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::TrackRectangle, _impl_.top_left_corner_y_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::TrackRectangle, _impl_.bottom_right_corner_x_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::TrackRectangle, _impl_.bottom_right_corner_y_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::TrackRectangle, _impl_.timestamp_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -2444,129 +2446,129 @@ const char descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto[]
     "mera_server_result\030\001 \001(\0132,.mavsdk.rpc.ca"
     "mera_server.CameraServerResult\">\n\nTrackP"
     "oint\022\017\n\007point_x\030\001 \001(\002\022\017\n\007point_y\030\002 \001(\002\022\016"
-    "\n\006radius\030\003 \001(\002\"\204\001\n\016TrackRectangle\022\031\n\021top"
+    "\n\006radius\030\003 \001(\002\"\227\001\n\016TrackRectangle\022\031\n\021top"
     "_left_corner_x\030\001 \001(\002\022\031\n\021top_left_corner_"
     "y\030\002 \001(\002\022\035\n\025bottom_right_corner_x\030\003 \001(\002\022\035"
-    "\n\025bottom_right_corner_y\030\004 \001(\002*{\n\016CameraF"
-    "eedback\022\033\n\027CAMERA_FEEDBACK_UNKNOWN\020\000\022\026\n\022"
-    "CAMERA_FEEDBACK_OK\020\001\022\030\n\024CAMERA_FEEDBACK_"
-    "BUSY\020\002\022\032\n\026CAMERA_FEEDBACK_FAILED\020\003*8\n\004Mo"
-    "de\022\020\n\014MODE_UNKNOWN\020\000\022\016\n\nMODE_PHOTO\020\001\022\016\n\n"
-    "MODE_VIDEO\020\0022\230#\n\023CameraServerService\022y\n\016"
-    "SetInformation\022/.mavsdk.rpc.camera_serve"
-    "r.SetInformationRequest\0320.mavsdk.rpc.cam"
-    "era_server.SetInformationResponse\"\004\200\265\030\001\022"
-    "\202\001\n\021SetVideoStreaming\0222.mavsdk.rpc.camer"
-    "a_server.SetVideoStreamingRequest\0323.mavs"
-    "dk.rpc.camera_server.SetVideoStreamingRe"
-    "sponse\"\004\200\265\030\001\022v\n\rSetInProgress\022..mavsdk.r"
-    "pc.camera_server.SetInProgressRequest\032/."
-    "mavsdk.rpc.camera_server.SetInProgressRe"
-    "sponse\"\004\200\265\030\001\022~\n\022SubscribeTakePhoto\0223.mav"
-    "sdk.rpc.camera_server.SubscribeTakePhoto"
-    "Request\032+.mavsdk.rpc.camera_server.TakeP"
-    "hotoResponse\"\004\200\265\030\0000\001\022\177\n\020RespondTakePhoto"
-    "\0221.mavsdk.rpc.camera_server.RespondTakeP"
-    "hotoRequest\0322.mavsdk.rpc.camera_server.R"
-    "espondTakePhotoResponse\"\004\200\265\030\001\022\201\001\n\023Subscr"
-    "ibeStartVideo\0224.mavsdk.rpc.camera_server"
-    ".SubscribeStartVideoRequest\032,.mavsdk.rpc"
-    ".camera_server.StartVideoResponse\"\004\200\265\030\0000"
-    "\001\022\202\001\n\021RespondStartVideo\0222.mavsdk.rpc.cam"
-    "era_server.RespondStartVideoRequest\0323.ma"
-    "vsdk.rpc.camera_server.RespondStartVideo"
-    "Response\"\004\200\265\030\001\022~\n\022SubscribeStopVideo\0223.m"
-    "avsdk.rpc.camera_server.SubscribeStopVid"
-    "eoRequest\032+.mavsdk.rpc.camera_server.Sto"
-    "pVideoResponse\"\004\200\265\030\0000\001\022\177\n\020RespondStopVid"
-    "eo\0221.mavsdk.rpc.camera_server.RespondSto"
-    "pVideoRequest\0322.mavsdk.rpc.camera_server"
-    ".RespondStopVideoResponse\"\004\200\265\030\001\022\234\001\n\034Subs"
-    "cribeStartVideoStreaming\022=.mavsdk.rpc.ca"
-    "mera_server.SubscribeStartVideoStreaming"
-    "Request\0325.mavsdk.rpc.camera_server.Start"
-    "VideoStreamingResponse\"\004\200\265\030\0000\001\022\235\001\n\032Respo"
-    "ndStartVideoStreaming\022;.mavsdk.rpc.camer"
-    "a_server.RespondStartVideoStreamingReque"
-    "st\032<.mavsdk.rpc.camera_server.RespondSta"
-    "rtVideoStreamingResponse\"\004\200\265\030\001\022\231\001\n\033Subsc"
-    "ribeStopVideoStreaming\022<.mavsdk.rpc.came"
-    "ra_server.SubscribeStopVideoStreamingReq"
-    "uest\0324.mavsdk.rpc.camera_server.StopVide"
-    "oStreamingResponse\"\004\200\265\030\0000\001\022\232\001\n\031RespondSt"
-    "opVideoStreaming\022:.mavsdk.rpc.camera_ser"
-    "ver.RespondStopVideoStreamingRequest\032;.m"
-    "avsdk.rpc.camera_server.RespondStopVideo"
-    "StreamingResponse\"\004\200\265\030\001\022x\n\020SubscribeSetM"
-    "ode\0221.mavsdk.rpc.camera_server.Subscribe"
-    "SetModeRequest\032).mavsdk.rpc.camera_serve"
-    "r.SetModeResponse\"\004\200\265\030\0000\001\022y\n\016RespondSetM"
-    "ode\022/.mavsdk.rpc.camera_server.RespondSe"
-    "tModeRequest\0320.mavsdk.rpc.camera_server."
-    "RespondSetModeResponse\"\004\200\265\030\001\022\231\001\n\033Subscri"
-    "beStorageInformation\022<.mavsdk.rpc.camera"
-    "_server.SubscribeStorageInformationReque"
-    "st\0324.mavsdk.rpc.camera_server.StorageInf"
-    "ormationResponse\"\004\200\265\030\0000\001\022\232\001\n\031RespondStor"
-    "ageInformation\022:.mavsdk.rpc.camera_serve"
-    "r.RespondStorageInformationRequest\032;.mav"
-    "sdk.rpc.camera_server.RespondStorageInfo"
-    "rmationResponse\"\004\200\265\030\001\022\212\001\n\026SubscribeCaptu"
-    "reStatus\0227.mavsdk.rpc.camera_server.Subs"
-    "cribeCaptureStatusRequest\032/.mavsdk.rpc.c"
-    "amera_server.CaptureStatusResponse\"\004\200\265\030\000"
-    "0\001\022\213\001\n\024RespondCaptureStatus\0225.mavsdk.rpc"
-    ".camera_server.RespondCaptureStatusReque"
-    "st\0326.mavsdk.rpc.camera_server.RespondCap"
-    "tureStatusResponse\"\004\200\265\030\001\022\212\001\n\026SubscribeFo"
-    "rmatStorage\0227.mavsdk.rpc.camera_server.S"
-    "ubscribeFormatStorageRequest\032/.mavsdk.rp"
-    "c.camera_server.FormatStorageResponse\"\004\200"
-    "\265\030\0000\001\022\213\001\n\024RespondFormatStorage\0225.mavsdk."
-    "rpc.camera_server.RespondFormatStorageRe"
-    "quest\0326.mavsdk.rpc.camera_server.Respond"
-    "FormatStorageResponse\"\004\200\265\030\001\022\212\001\n\026Subscrib"
-    "eResetSettings\0227.mavsdk.rpc.camera_serve"
-    "r.SubscribeResetSettingsRequest\032/.mavsdk"
-    ".rpc.camera_server.ResetSettingsResponse"
-    "\"\004\200\265\030\0000\001\022\213\001\n\024RespondResetSettings\0225.mavs"
-    "dk.rpc.camera_server.RespondResetSetting"
-    "sRequest\0326.mavsdk.rpc.camera_server.Resp"
-    "ondResetSettingsResponse\"\004\200\265\030\001\022\235\001\n\032SetTr"
-    "ackingRectangleStatus\022;.mavsdk.rpc.camer"
-    "a_server.SetTrackingRectangleStatusReque"
-    "st\032<.mavsdk.rpc.camera_server.SetTrackin"
-    "gRectangleStatusResponse\"\004\200\265\030\001\022\213\001\n\024SetTr"
-    "ackingOffStatus\0225.mavsdk.rpc.camera_serv"
-    "er.SetTrackingOffStatusRequest\0326.mavsdk."
-    "rpc.camera_server.SetTrackingOffStatusRe"
-    "sponse\"\004\200\265\030\001\022\237\001\n\035SubscribeTrackingPointC"
-    "ommand\022>.mavsdk.rpc.camera_server.Subscr"
-    "ibeTrackingPointCommandRequest\0326.mavsdk."
-    "rpc.camera_server.TrackingPointCommandRe"
-    "sponse\"\004\200\265\030\0000\001\022\253\001\n!SubscribeTrackingRect"
-    "angleCommand\022B.mavsdk.rpc.camera_server."
-    "SubscribeTrackingRectangleCommandRequest"
-    "\032:.mavsdk.rpc.camera_server.TrackingRect"
-    "angleCommandResponse\"\004\200\265\030\0000\001\022\231\001\n\033Subscri"
-    "beTrackingOffCommand\022<.mavsdk.rpc.camera"
-    "_server.SubscribeTrackingOffCommandReque"
-    "st\0324.mavsdk.rpc.camera_server.TrackingOf"
-    "fCommandResponse\"\004\200\265\030\0000\001\022\240\001\n\033RespondTrac"
-    "kingPointCommand\022<.mavsdk.rpc.camera_ser"
-    "ver.RespondTrackingPointCommandRequest\032="
-    ".mavsdk.rpc.camera_server.RespondTrackin"
-    "gPointCommandResponse\"\004\200\265\030\001\022\254\001\n\037RespondT"
-    "rackingRectangleCommand\022@.mavsdk.rpc.cam"
-    "era_server.RespondTrackingRectangleComma"
-    "ndRequest\032A.mavsdk.rpc.camera_server.Res"
-    "pondTrackingRectangleCommandResponse\"\004\200\265"
-    "\030\001\022\232\001\n\031RespondTrackingOffCommand\022:.mavsd"
-    "k.rpc.camera_server.RespondTrackingOffCo"
-    "mmandRequest\032;.mavsdk.rpc.camera_server."
-    "RespondTrackingOffCommandResponse\"\004\200\265\030\001B"
-    ",\n\027io.mavsdk.camera_serverB\021CameraServer"
-    "Protob\006proto3"
+    "\n\025bottom_right_corner_y\030\004 \001(\002\022\021\n\ttimesta"
+    "mp\030\005 \001(\004*{\n\016CameraFeedback\022\033\n\027CAMERA_FEE"
+    "DBACK_UNKNOWN\020\000\022\026\n\022CAMERA_FEEDBACK_OK\020\001\022"
+    "\030\n\024CAMERA_FEEDBACK_BUSY\020\002\022\032\n\026CAMERA_FEED"
+    "BACK_FAILED\020\003*8\n\004Mode\022\020\n\014MODE_UNKNOWN\020\000\022"
+    "\016\n\nMODE_PHOTO\020\001\022\016\n\nMODE_VIDEO\020\0022\230#\n\023Came"
+    "raServerService\022y\n\016SetInformation\022/.mavs"
+    "dk.rpc.camera_server.SetInformationReque"
+    "st\0320.mavsdk.rpc.camera_server.SetInforma"
+    "tionResponse\"\004\200\265\030\001\022\202\001\n\021SetVideoStreaming"
+    "\0222.mavsdk.rpc.camera_server.SetVideoStre"
+    "amingRequest\0323.mavsdk.rpc.camera_server."
+    "SetVideoStreamingResponse\"\004\200\265\030\001\022v\n\rSetIn"
+    "Progress\022..mavsdk.rpc.camera_server.SetI"
+    "nProgressRequest\032/.mavsdk.rpc.camera_ser"
+    "ver.SetInProgressResponse\"\004\200\265\030\001\022~\n\022Subsc"
+    "ribeTakePhoto\0223.mavsdk.rpc.camera_server"
+    ".SubscribeTakePhotoRequest\032+.mavsdk.rpc."
+    "camera_server.TakePhotoResponse\"\004\200\265\030\0000\001\022"
+    "\177\n\020RespondTakePhoto\0221.mavsdk.rpc.camera_"
+    "server.RespondTakePhotoRequest\0322.mavsdk."
+    "rpc.camera_server.RespondTakePhotoRespon"
+    "se\"\004\200\265\030\001\022\201\001\n\023SubscribeStartVideo\0224.mavsd"
+    "k.rpc.camera_server.SubscribeStartVideoR"
+    "equest\032,.mavsdk.rpc.camera_server.StartV"
+    "ideoResponse\"\004\200\265\030\0000\001\022\202\001\n\021RespondStartVid"
+    "eo\0222.mavsdk.rpc.camera_server.RespondSta"
+    "rtVideoRequest\0323.mavsdk.rpc.camera_serve"
+    "r.RespondStartVideoResponse\"\004\200\265\030\001\022~\n\022Sub"
+    "scribeStopVideo\0223.mavsdk.rpc.camera_serv"
+    "er.SubscribeStopVideoRequest\032+.mavsdk.rp"
+    "c.camera_server.StopVideoResponse\"\004\200\265\030\0000"
+    "\001\022\177\n\020RespondStopVideo\0221.mavsdk.rpc.camer"
+    "a_server.RespondStopVideoRequest\0322.mavsd"
+    "k.rpc.camera_server.RespondStopVideoResp"
+    "onse\"\004\200\265\030\001\022\234\001\n\034SubscribeStartVideoStream"
+    "ing\022=.mavsdk.rpc.camera_server.Subscribe"
+    "StartVideoStreamingRequest\0325.mavsdk.rpc."
+    "camera_server.StartVideoStreamingRespons"
+    "e\"\004\200\265\030\0000\001\022\235\001\n\032RespondStartVideoStreaming"
+    "\022;.mavsdk.rpc.camera_server.RespondStart"
+    "VideoStreamingRequest\032<.mavsdk.rpc.camer"
+    "a_server.RespondStartVideoStreamingRespo"
+    "nse\"\004\200\265\030\001\022\231\001\n\033SubscribeStopVideoStreamin"
+    "g\022<.mavsdk.rpc.camera_server.SubscribeSt"
+    "opVideoStreamingRequest\0324.mavsdk.rpc.cam"
+    "era_server.StopVideoStreamingResponse\"\004\200"
+    "\265\030\0000\001\022\232\001\n\031RespondStopVideoStreaming\022:.ma"
+    "vsdk.rpc.camera_server.RespondStopVideoS"
+    "treamingRequest\032;.mavsdk.rpc.camera_serv"
+    "er.RespondStopVideoStreamingResponse\"\004\200\265"
+    "\030\001\022x\n\020SubscribeSetMode\0221.mavsdk.rpc.came"
+    "ra_server.SubscribeSetModeRequest\032).mavs"
+    "dk.rpc.camera_server.SetModeResponse\"\004\200\265"
+    "\030\0000\001\022y\n\016RespondSetMode\022/.mavsdk.rpc.came"
+    "ra_server.RespondSetModeRequest\0320.mavsdk"
+    ".rpc.camera_server.RespondSetModeRespons"
+    "e\"\004\200\265\030\001\022\231\001\n\033SubscribeStorageInformation\022"
+    "<.mavsdk.rpc.camera_server.SubscribeStor"
+    "ageInformationRequest\0324.mavsdk.rpc.camer"
+    "a_server.StorageInformationResponse\"\004\200\265\030"
+    "\0000\001\022\232\001\n\031RespondStorageInformation\022:.mavs"
+    "dk.rpc.camera_server.RespondStorageInfor"
+    "mationRequest\032;.mavsdk.rpc.camera_server"
+    ".RespondStorageInformationResponse\"\004\200\265\030\001"
+    "\022\212\001\n\026SubscribeCaptureStatus\0227.mavsdk.rpc"
+    ".camera_server.SubscribeCaptureStatusReq"
+    "uest\032/.mavsdk.rpc.camera_server.CaptureS"
+    "tatusResponse\"\004\200\265\030\0000\001\022\213\001\n\024RespondCapture"
+    "Status\0225.mavsdk.rpc.camera_server.Respon"
+    "dCaptureStatusRequest\0326.mavsdk.rpc.camer"
+    "a_server.RespondCaptureStatusResponse\"\004\200"
+    "\265\030\001\022\212\001\n\026SubscribeFormatStorage\0227.mavsdk."
+    "rpc.camera_server.SubscribeFormatStorage"
+    "Request\032/.mavsdk.rpc.camera_server.Forma"
+    "tStorageResponse\"\004\200\265\030\0000\001\022\213\001\n\024RespondForm"
+    "atStorage\0225.mavsdk.rpc.camera_server.Res"
+    "pondFormatStorageRequest\0326.mavsdk.rpc.ca"
+    "mera_server.RespondFormatStorageResponse"
+    "\"\004\200\265\030\001\022\212\001\n\026SubscribeResetSettings\0227.mavs"
+    "dk.rpc.camera_server.SubscribeResetSetti"
+    "ngsRequest\032/.mavsdk.rpc.camera_server.Re"
+    "setSettingsResponse\"\004\200\265\030\0000\001\022\213\001\n\024RespondR"
+    "esetSettings\0225.mavsdk.rpc.camera_server."
+    "RespondResetSettingsRequest\0326.mavsdk.rpc"
+    ".camera_server.RespondResetSettingsRespo"
+    "nse\"\004\200\265\030\001\022\235\001\n\032SetTrackingRectangleStatus"
+    "\022;.mavsdk.rpc.camera_server.SetTrackingR"
+    "ectangleStatusRequest\032<.mavsdk.rpc.camer"
+    "a_server.SetTrackingRectangleStatusRespo"
+    "nse\"\004\200\265\030\001\022\213\001\n\024SetTrackingOffStatus\0225.mav"
+    "sdk.rpc.camera_server.SetTrackingOffStat"
+    "usRequest\0326.mavsdk.rpc.camera_server.Set"
+    "TrackingOffStatusResponse\"\004\200\265\030\001\022\237\001\n\035Subs"
+    "cribeTrackingPointCommand\022>.mavsdk.rpc.c"
+    "amera_server.SubscribeTrackingPointComma"
+    "ndRequest\0326.mavsdk.rpc.camera_server.Tra"
+    "ckingPointCommandResponse\"\004\200\265\030\0000\001\022\253\001\n!Su"
+    "bscribeTrackingRectangleCommand\022B.mavsdk"
+    ".rpc.camera_server.SubscribeTrackingRect"
+    "angleCommandRequest\032:.mavsdk.rpc.camera_"
+    "server.TrackingRectangleCommandResponse\""
+    "\004\200\265\030\0000\001\022\231\001\n\033SubscribeTrackingOffCommand\022"
+    "<.mavsdk.rpc.camera_server.SubscribeTrac"
+    "kingOffCommandRequest\0324.mavsdk.rpc.camer"
+    "a_server.TrackingOffCommandResponse\"\004\200\265\030"
+    "\0000\001\022\240\001\n\033RespondTrackingPointCommand\022<.ma"
+    "vsdk.rpc.camera_server.RespondTrackingPo"
+    "intCommandRequest\032=.mavsdk.rpc.camera_se"
+    "rver.RespondTrackingPointCommandResponse"
+    "\"\004\200\265\030\001\022\254\001\n\037RespondTrackingRectangleComma"
+    "nd\022@.mavsdk.rpc.camera_server.RespondTra"
+    "ckingRectangleCommandRequest\032A.mavsdk.rp"
+    "c.camera_server.RespondTrackingRectangle"
+    "CommandResponse\"\004\200\265\030\001\022\232\001\n\031RespondTrackin"
+    "gOffCommand\022:.mavsdk.rpc.camera_server.R"
+    "espondTrackingOffCommandRequest\032;.mavsdk"
+    ".rpc.camera_server.RespondTrackingOffCom"
+    "mandResponse\"\004\200\265\030\001B,\n\027io.mavsdk.camera_s"
+    "erverB\021CameraServerProtob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_deps[1] =
     {
@@ -2576,7 +2578,7 @@ static ::absl::once_flag descriptor_table_camera_5fserver_2fcamera_5fserver_2epr
 const ::_pbi::DescriptorTable descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto = {
     false,
     false,
-    12293,
+    12312,
     descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto,
     "camera_server/camera_server.proto",
     &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
@@ -15304,9 +15306,9 @@ inline void TrackRectangle::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, top_left_corner_x_),
            0,
-           offsetof(Impl_, bottom_right_corner_y_) -
+           offsetof(Impl_, timestamp_) -
                offsetof(Impl_, top_left_corner_x_) +
-               sizeof(Impl_::bottom_right_corner_y_));
+               sizeof(Impl_::timestamp_));
 }
 TrackRectangle::~TrackRectangle() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.TrackRectangle)
@@ -15326,8 +15328,8 @@ PROTOBUF_NOINLINE void TrackRectangle::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.top_left_corner_x_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.bottom_right_corner_y_) -
-      reinterpret_cast<char*>(&_impl_.top_left_corner_x_)) + sizeof(_impl_.bottom_right_corner_y_));
+      reinterpret_cast<char*>(&_impl_.timestamp_) -
+      reinterpret_cast<char*>(&_impl_.top_left_corner_x_)) + sizeof(_impl_.timestamp_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -15339,23 +15341,21 @@ const char* TrackRectangle::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 0, 2> TrackRectangle::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 0, 2> TrackRectangle::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_TrackRectangle_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // float bottom_right_corner_y = 4;
-    {::_pbi::TcParser::FastF32S1,
-     {37, 63, 0, PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.bottom_right_corner_y_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // float top_left_corner_x = 1;
     {::_pbi::TcParser::FastF32S1,
      {13, 63, 0, PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.top_left_corner_x_)}},
@@ -15365,6 +15365,14 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> TrackRectangle::_table_ = {
     // float bottom_right_corner_x = 3;
     {::_pbi::TcParser::FastF32S1,
      {29, 63, 0, PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.bottom_right_corner_x_)}},
+    // float bottom_right_corner_y = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.bottom_right_corner_y_)}},
+    // uint64 timestamp = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(TrackRectangle, _impl_.timestamp_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.timestamp_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -15380,6 +15388,9 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> TrackRectangle::_table_ = {
     // float bottom_right_corner_y = 4;
     {PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.bottom_right_corner_y_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // uint64 timestamp = 5;
+    {PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.timestamp_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
   }},
   // no aux_entries
   {{
@@ -15441,6 +15452,13 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> TrackRectangle::_table_ = {
         4, this->_internal_bottom_right_corner_y(), target);
   }
 
+  // uint64 timestamp = 5;
+  if (this->_internal_timestamp() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        5, this->_internal_timestamp(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -15498,6 +15516,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> TrackRectangle::_table_ = {
     total_size += 5;
   }
 
+  // uint64 timestamp = 5;
+  if (this->_internal_timestamp() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_timestamp());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -15549,6 +15573,9 @@ void TrackRectangle::MergeImpl(::google::protobuf::Message& to_msg, const ::goog
   if (raw_bottom_right_corner_y != 0) {
     _this->_internal_set_bottom_right_corner_y(from._internal_bottom_right_corner_y());
   }
+  if (from._internal_timestamp() != 0) {
+    _this->_internal_set_timestamp(from._internal_timestamp());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -15570,8 +15597,8 @@ void TrackRectangle::InternalSwap(TrackRectangle* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.bottom_right_corner_y_)
-      + sizeof(TrackRectangle::_impl_.bottom_right_corner_y_)
+      PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.timestamp_)
+      + sizeof(TrackRectangle::_impl_.timestamp_)
       - PROTOBUF_FIELD_OFFSET(TrackRectangle, _impl_.top_left_corner_x_)>(
           reinterpret_cast<char*>(&_impl_.top_left_corner_x_),
           reinterpret_cast<char*>(&other->_impl_.top_left_corner_x_));
