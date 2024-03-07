@@ -868,16 +868,16 @@ class TrackingOffCommandResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDummyFieldNumber = 1,
+    kTimestampFieldNumber = 1,
   };
-  // int32 dummy = 1;
-  void clear_dummy() ;
-  ::int32_t dummy() const;
-  void set_dummy(::int32_t value);
+  // uint64 timestamp = 1;
+  void clear_timestamp() ;
+  ::uint64_t timestamp() const;
+  void set_timestamp(::uint64_t value);
 
   private:
-  ::int32_t _internal_dummy() const;
-  void _internal_set_dummy(::int32_t value);
+  ::uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(::uint64_t value);
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.TrackingOffCommandResponse)
@@ -903,7 +903,7 @@ class TrackingOffCommandResponse final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::int32_t dummy_;
+    ::uint64_t timestamp_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -17892,27 +17892,27 @@ inline void TrackingRectangleCommandResponse::set_allocated_track_rectangle(::ma
 
 // TrackingOffCommandResponse
 
-// int32 dummy = 1;
-inline void TrackingOffCommandResponse::clear_dummy() {
+// uint64 timestamp = 1;
+inline void TrackingOffCommandResponse::clear_timestamp() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.dummy_ = 0;
+  _impl_.timestamp_ = ::uint64_t{0u};
 }
-inline ::int32_t TrackingOffCommandResponse::dummy() const {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.TrackingOffCommandResponse.dummy)
-  return _internal_dummy();
+inline ::uint64_t TrackingOffCommandResponse::timestamp() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.TrackingOffCommandResponse.timestamp)
+  return _internal_timestamp();
 }
-inline void TrackingOffCommandResponse::set_dummy(::int32_t value) {
-  _internal_set_dummy(value);
-  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.TrackingOffCommandResponse.dummy)
+inline void TrackingOffCommandResponse::set_timestamp(::uint64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.TrackingOffCommandResponse.timestamp)
 }
-inline ::int32_t TrackingOffCommandResponse::_internal_dummy() const {
+inline ::uint64_t TrackingOffCommandResponse::_internal_timestamp() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.dummy_;
+  return _impl_.timestamp_;
 }
-inline void TrackingOffCommandResponse::_internal_set_dummy(::int32_t value) {
+inline void TrackingOffCommandResponse::_internal_set_timestamp(::uint64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.dummy_ = value;
+  _impl_.timestamp_ = value;
 }
 
 // -------------------------------------------------------------------

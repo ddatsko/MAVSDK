@@ -1635,14 +1635,18 @@ std::optional<mavlink_command_ack_t> CameraServerImpl::process_track_rectangle_c
             command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
     }
 
-    // FIXME: We are obtaining timestamp from the fifth and sixth command parameters. This should be replaced with a dialect message or so
-    const uint32_t timestamp_low = *reinterpret_cast<const uint32_t *>(&command.params.param5);
-    const uint32_t timestamp_high = *reinterpret_cast<const uint32_t *>(&command.params.param6);
+    // FIXME: We are obtaining timestamp from the fifth and sixth command parameters. This should be
+    // replaced with a dialect message or so
+    const uint32_t timestamp_low = *reinterpret_cast<const uint32_t*>(&command.params.param5);
+    const uint32_t timestamp_high = *reinterpret_cast<const uint32_t*>(&command.params.param6);
     uint64_t timestamp = timestamp_low + (static_cast<uint64_t>(timestamp_high) << 32);
 
-
     CameraServer::TrackRectangle track_rectangle{
-        command.params.param1, command.params.param2, command.params.param3, command.params.param4, timestamp};
+        command.params.param1,
+        command.params.param2,
+        command.params.param3,
+        command.params.param4,
+        timestamp};
 
     _last_track_rectangle_command = command;
     _tracking_rectangle_callbacks(track_rectangle);
@@ -1666,8 +1670,15 @@ CameraServerImpl::process_track_off_command(const MavlinkCommandReceiver::Comman
             command, MAV_RESULT::MAV_RESULT_UNSUPPORTED);
     }
 
+
+    // FIXME: We are obtaining timestamp from the fifth and sixth command parameters. This should be
+    // replaced with a dialect message or so
+    const uint32_t timestamp_low = *reinterpret_cast<const uint32_t*>(&command.params.param1);
+    const uint32_t timestamp_high = *reinterpret_cast<const uint32_t*>(&command.params.param2);
+    uint64_t timestamp = timestamp_low + (static_cast<uint64_t>(timestamp_high) << 32);
+
     _last_tracking_off_command = command;
-    _tracking_off_callbacks(0);
+    _tracking_off_callbacks(timestamp);
     // We don't send an ack but leave that to the user.
     return std::nullopt;
 }

@@ -156,7 +156,7 @@ private:
     CallbackList<int32_t> _reset_settings_callbacks{};
     CallbackList<CameraServer::TrackPoint> _tracking_point_callbacks{};
     CallbackList<CameraServer::TrackRectangle> _tracking_rectangle_callbacks{};
-    CallbackList<int32_t> _tracking_off_callbacks{};
+    CallbackList<uint64_t> _tracking_off_callbacks{};
 
     MavlinkCommandReceiver::CommandLong _last_take_photo_command;
     MavlinkCommandReceiver::CommandLong _last_start_video_command;
