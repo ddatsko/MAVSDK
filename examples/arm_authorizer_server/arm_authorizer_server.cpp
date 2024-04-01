@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     }
 
     // Create mavlink component with CompanionComputer id
-    mavsdk::Mavsdk mavsdk{mavsdk::Mavsdk::Configuration{mavsdk::Mavsdk::ComponentType::Camera}};
+    mavsdk::Mavsdk mavsdk{mavsdk::Mavsdk::Configuration{mavsdk::Mavsdk::ComponentType::GroundStation}};
 
     auto result = mavsdk.add_any_connection(argv[1]);
 
