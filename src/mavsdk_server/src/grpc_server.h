@@ -24,6 +24,11 @@
 #include "action_server/action_server_service_impl.h"
 #endif
 
+#ifdef ARM_AUTHORIZER_SERVER_ENABLED
+#include "plugins/arm_authorizer_server/arm_authorizer_server.h"
+#include "arm_authorizer_server/arm_authorizer_server_service_impl.h"
+#endif
+
 #ifdef CALIBRATION_ENABLED
 #include "plugins/calibration/calibration.h"
 #include "calibration/calibration_service_impl.h"
@@ -195,6 +200,11 @@ public:
 #ifdef ACTION_SERVER_ENABLED
         _action_server_lazy_plugin(mavsdk),
         _action_server_service(_action_server_lazy_plugin),
+#endif
+
+#ifdef ARM_AUTHORIZER_SERVER_ENABLED
+        _arm_authorizer_server_lazy_plugin(mavsdk),
+        _arm_authorizer_server_service(_arm_authorizer_server_lazy_plugin),
 #endif
 
 #ifdef CALIBRATION_ENABLED
@@ -376,6 +386,13 @@ private:
     LazyServerPlugin<ActionServer> _action_server_lazy_plugin;
 
     ActionServerServiceImpl<> _action_server_service;
+#endif
+
+#ifdef ARM_AUTHORIZER_SERVER_ENABLED
+
+    LazyServerPlugin<ArmAuthorizerServer> _arm_authorizer_server_lazy_plugin;
+
+    ArmAuthorizerServerServiceImpl<> _arm_authorizer_server_service;
 #endif
 
 #ifdef CALIBRATION_ENABLED
