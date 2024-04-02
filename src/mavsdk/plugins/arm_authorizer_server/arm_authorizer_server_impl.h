@@ -20,8 +20,8 @@ public:
 
     void unsubscribe_arm_authorization(ArmAuthorizerServer::ArmAuthorizationHandle handle);
 
-    ArmAuthorizerServer::CommandAnswer accept_arm_authorization(int32_t valid_time) const;
-    ArmAuthorizerServer::CommandAnswer reject_arm_authorization(
+    ArmAuthorizerServer::Result accept_arm_authorization(int32_t valid_time_s) const;
+    ArmAuthorizerServer::Result reject_arm_authorization(
         bool temporarily, ArmAuthorizerServer::RejectionReason reason, int32_t extra_info) const;
 
 private:

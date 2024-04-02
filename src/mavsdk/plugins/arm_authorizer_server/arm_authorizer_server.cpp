@@ -28,25 +28,24 @@ void ArmAuthorizerServer::unsubscribe_arm_authorization(ArmAuthorizationHandle h
     _impl->unsubscribe_arm_authorization(handle);
 }
 
-ArmAuthorizerServer::CommandAnswer
-ArmAuthorizerServer::accept_arm_authorization(int32_t valid_time) const
+ArmAuthorizerServer::Result
+ArmAuthorizerServer::accept_arm_authorization(int32_t valid_time_s) const
 {
-    return _impl->accept_arm_authorization(valid_time);
+    return _impl->accept_arm_authorization(valid_time_s);
 }
 
-ArmAuthorizerServer::CommandAnswer ArmAuthorizerServer::reject_arm_authorization(
+ArmAuthorizerServer::Result ArmAuthorizerServer::reject_arm_authorization(
     bool temporarily, RejectionReason reason, int32_t extra_info) const
 {
     return _impl->reject_arm_authorization(temporarily, reason, extra_info);
 }
 
-std::ostream&
-operator<<(std::ostream& str, ArmAuthorizerServer::CommandAnswer const& command_answer)
+std::ostream& operator<<(std::ostream& str, ArmAuthorizerServer::Result const& result)
 {
-    switch (command_answer) {
-        case ArmAuthorizerServer::CommandAnswer::Accepted:
-            return str << "Accepted";
-        case ArmAuthorizerServer::CommandAnswer::Failed:
+    switch (result) {
+        case ArmAuthorizerServer::Result::Success:
+            return str << "Success";
+        case ArmAuthorizerServer::Result::Failed:
             return str << "Failed";
         default:
             return str << "Unknown";

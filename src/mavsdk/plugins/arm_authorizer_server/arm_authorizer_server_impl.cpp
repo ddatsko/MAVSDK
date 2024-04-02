@@ -57,23 +57,23 @@ std::optional<mavlink_command_ack_t> ArmAuthorizerServerImpl::process_arm_author
     return std::nullopt;
 }
 
-ArmAuthorizerServer::CommandAnswer
-ArmAuthorizerServerImpl::accept_arm_authorization(int32_t valid_time) const
+ArmAuthorizerServer::Result
+ArmAuthorizerServerImpl::accept_arm_authorization(int32_t valid_time_s) const
 {
     auto command_ack = _server_component_impl->make_command_ack_message(
         _last_arm_authorization_request_command, MAV_RESULT_ACCEPTED);
 
     // If the arm is authorized, param2 is set to the time in seconds through which the
     // authorization is valid
-    command_ack.result_param2 = valid_time;
+    command_ack.result_param2 = valid_time_s;
 
     if (!_server_component_impl->send_command_ack(command_ack)) {
-        return ArmAuthorizerServer::CommandAnswer::Failed;
+        return ArmAuthorizerServer::Result::Failed;
     }
-    return ArmAuthorizerServer::CommandAnswer::Accepted;
+    return ArmAuthorizerServer::Result::Success;
 }
 
-ArmAuthorizerServer::CommandAnswer ArmAuthorizerServerImpl::reject_arm_authorization(
+ArmAuthorizerServer::Result ArmAuthorizerServerImpl::reject_arm_authorization(
     bool temporarily, ArmAuthorizerServer::RejectionReason reason, int32_t extra_info) const
 {
     MAV_RESULT result = temporarily ? MAV_RESULT_TEMPORARILY_REJECTED : MAV_RESULT_DENIED;
@@ -109,10 +109,10 @@ ArmAuthorizerServer::CommandAnswer ArmAuthorizerServerImpl::reject_arm_authoriza
     command_ack.result_param2 = extra_info;
 
     if (!_server_component_impl->send_command_ack(command_ack)) {
-        return ArmAuthorizerServer::CommandAnswer::Failed;
+        return ArmAuthorizerServer::Result::Failed;
     }
 
-    return ArmAuthorizerServer::CommandAnswer::Accepted;
+    return ArmAuthorizerServer::Result::Success;
 }
 
 } // namespace mavsdk

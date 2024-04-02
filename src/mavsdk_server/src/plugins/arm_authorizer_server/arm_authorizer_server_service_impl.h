@@ -31,34 +31,20 @@ class ArmAuthorizerServerServiceImpl final
 public:
     ArmAuthorizerServerServiceImpl(LazyServerPlugin& lazy_plugin) : _lazy_plugin(lazy_plugin) {}
 
-    static rpc::arm_authorizer_server::CommandAnswer
-    translateToRpcCommandAnswer(const mavsdk::ArmAuthorizerServer::CommandAnswer& command_answer)
+    template<typename ResponseType>
+    void fillResponseWithResult(
+        ResponseType* response, mavsdk::ArmAuthorizerServer::Result& result) const
     {
-        switch (command_answer) {
-            default:
-                LogErr() << "Unknown command_answer enum value: "
-                         << static_cast<int>(command_answer);
-            // FALLTHROUGH
-            case mavsdk::ArmAuthorizerServer::CommandAnswer::Accepted:
-                return rpc::arm_authorizer_server::COMMAND_ANSWER_ACCEPTED;
-            case mavsdk::ArmAuthorizerServer::CommandAnswer::Failed:
-                return rpc::arm_authorizer_server::COMMAND_ANSWER_FAILED;
-        }
-    }
+        auto rpc_result = translateToRpcResult(result);
 
-    static mavsdk::ArmAuthorizerServer::CommandAnswer
-    translateFromRpcCommandAnswer(const rpc::arm_authorizer_server::CommandAnswer command_answer)
-    {
-        switch (command_answer) {
-            default:
-                LogErr() << "Unknown command_answer enum value: "
-                         << static_cast<int>(command_answer);
-            // FALLTHROUGH
-            case rpc::arm_authorizer_server::COMMAND_ANSWER_ACCEPTED:
-                return mavsdk::ArmAuthorizerServer::CommandAnswer::Accepted;
-            case rpc::arm_authorizer_server::COMMAND_ANSWER_FAILED:
-                return mavsdk::ArmAuthorizerServer::CommandAnswer::Failed;
-        }
+        auto* rpc_arm_authorizer_server_result =
+            new rpc::arm_authorizer_server::ArmAuthorizerServerResult();
+        rpc_arm_authorizer_server_result->set_result(rpc_result);
+        std::stringstream ss;
+        ss << result;
+        rpc_arm_authorizer_server_result->set_result_str(ss.str());
+
+        response->set_allocated_arm_authorizer_server_result(rpc_arm_authorizer_server_result);
     }
 
     static rpc::arm_authorizer_server::RejectionReason translateToRpcRejectionReason(
@@ -104,6 +90,34 @@ public:
                 return mavsdk::ArmAuthorizerServer::RejectionReason::ReasonAirspaceInUse;
             case rpc::arm_authorizer_server::REJECTION_REASON_REASON_BAD_WEATHER:
                 return mavsdk::ArmAuthorizerServer::RejectionReason::ReasonBadWeather;
+        }
+    }
+
+    static rpc::arm_authorizer_server::ArmAutorizerServerResult::Result
+    translateToRpcResult(const mavsdk::ArmAuthorizerServer::Result& result)
+    {
+        switch (result) {
+            default:
+                LogErr() << "Unknown result enum value: " << static_cast<int>(result);
+            // FALLTHROUGH
+            case mavsdk::ArmAuthorizerServer::Result::Success:
+                return rpc::arm_authorizer_server::ArmAutorizerServerResult_Result_RESULT_SUCCESS;
+            case mavsdk::ArmAuthorizerServer::Result::Failed:
+                return rpc::arm_authorizer_server::ArmAutorizerServerResult_Result_RESULT_FAILED;
+        }
+    }
+
+    static mavsdk::ArmAuthorizerServer::Result translateFromRpcResult(
+        const rpc::arm_authorizer_server::ArmAutorizerServerResult::Result result)
+    {
+        switch (result) {
+            default:
+                LogErr() << "Unknown result enum value: " << static_cast<int>(result);
+            // FALLTHROUGH
+            case rpc::arm_authorizer_server::ArmAutorizerServerResult_Result_RESULT_SUCCESS:
+                return mavsdk::ArmAuthorizerServer::Result::Success;
+            case rpc::arm_authorizer_server::ArmAutorizerServerResult_Result_RESULT_FAILED:
+                return mavsdk::ArmAuthorizerServer::Result::Failed;
         }
     }
 
@@ -154,6 +168,13 @@ public:
         rpc::arm_authorizer_server::AcceptArmAuthorizationResponse* response) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                // For server plugins, this should never happen, they should always be
+                // constructible.
+                auto result = mavsdk::ArmAuthorizerServer::Result::Unknown;
+                fillResponseWithResult(response, result);
+            }
+
             return grpc::Status::OK;
         }
 
@@ -162,10 +183,11 @@ public:
             return grpc::Status::OK;
         }
 
-        auto result = _lazy_plugin.maybe_plugin()->accept_arm_authorization(request->valid_time());
+        auto result =
+            _lazy_plugin.maybe_plugin()->accept_arm_authorization(request->valid_time_s());
 
         if (response != nullptr) {
-            response->set_allocated_command_answer(translateToRpcCommandAnswer(result).release());
+            fillResponseWithResult(response, result);
         }
 
         return grpc::Status::OK;
@@ -177,6 +199,13 @@ public:
         rpc::arm_authorizer_server::RejectArmAuthorizationResponse* response) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                // For server plugins, this should never happen, they should always be
+                // constructible.
+                auto result = mavsdk::ArmAuthorizerServer::Result::Unknown;
+                fillResponseWithResult(response, result);
+            }
+
             return grpc::Status::OK;
         }
 
@@ -187,11 +216,11 @@ public:
 
         auto result = _lazy_plugin.maybe_plugin()->reject_arm_authorization(
             request->temporarily(),
-            translateFromRpcReason(request->reason()),
+            translateFromRpcRejectionReason(request->reason()),
             request->extra_info());
 
         if (response != nullptr) {
-            response->set_allocated_command_answer(translateToRpcCommandAnswer(result).release());
+            fillResponseWithResult(response, result);
         }
 
         return grpc::Status::OK;

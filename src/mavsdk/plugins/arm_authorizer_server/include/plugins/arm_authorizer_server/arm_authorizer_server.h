@@ -49,22 +49,6 @@ public:
     /**
      * @brief
      */
-    enum class CommandAnswer {
-        Accepted, /**< @brief Command accepted. */
-        Failed, /**< @brief Command failed. */
-    };
-
-    /**
-     * @brief Stream operator to print information about a `ArmAuthorizerServer::CommandAnswer`.
-     *
-     * @return A reference to the stream.
-     */
-    friend std::ostream&
-    operator<<(std::ostream& str, ArmAuthorizerServer::CommandAnswer const& command_answer);
-
-    /**
-     * @brief
-     */
     enum class RejectionReason {
         ReasonGeneric, /**< @brief Not a specific reason. */
         ReasonNone, /**< @brief Authorizer will send the error as string to GCS. */
@@ -84,6 +68,26 @@ public:
      */
     friend std::ostream&
     operator<<(std::ostream& str, ArmAuthorizerServer::RejectionReason const& rejection_reason);
+
+    /**
+     * @brief
+     */
+    enum class Result {
+        Success, /**< @brief Command accepted. */
+        Failed, /**< @brief Command failed. */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `ArmAuthorizerServer::Result`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, ArmAuthorizerServer::Result const& result);
+
+    /**
+     * @brief Callback type for asynchronous ArmAuthorizerServer calls.
+     */
+    using ResultCallback = std::function<void(Result)>;
 
     /**
      * @brief Callback type for subscribe_arm_authorization.
@@ -113,7 +117,7 @@ public:
      *
      * @return Result of request.
      */
-    ArmAuthorizerServer::CommandAnswer accept_arm_authorization(int32_t valid_time) const;
+    Result accept_arm_authorization(int32_t valid_time_s) const;
 
     /**
      * @brief Reject arm authorization request
@@ -122,7 +126,7 @@ public:
      *
      * @return Result of request.
      */
-    ArmAuthorizerServer::CommandAnswer
+    Result
     reject_arm_authorization(bool temporarily, RejectionReason reason, int32_t extra_info) const;
 
     /**
