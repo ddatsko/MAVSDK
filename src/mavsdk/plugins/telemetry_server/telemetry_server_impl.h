@@ -3,6 +3,7 @@
 #include "plugins/telemetry_server/telemetry_server.h"
 #include "server_plugin_impl_base.h"
 
+#include <algorithm>
 #include <unordered_map>
 #include <chrono>
 
