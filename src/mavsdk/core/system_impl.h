@@ -373,7 +373,7 @@ private:
     std::thread* _system_thread{nullptr};
     std::atomic<bool> _should_exit{false};
 
-    static constexpr double HEARTBEAT_TIMEOUT_S = 3.0;
+    static constexpr double HEARTBEAT_TIMEOUT_S = 20.0;
 
     std::mutex _connection_mutex{};
     std::atomic<bool> _connected{false};
