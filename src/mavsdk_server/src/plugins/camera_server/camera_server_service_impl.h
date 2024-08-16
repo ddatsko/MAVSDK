@@ -641,6 +641,8 @@ public:
 
         rpc_obj->set_bottom_right_corner_y(track_rectangle.bottom_right_corner_y);
 
+        rpc_obj->set_timestamp(track_rectangle.timestamp);
+
         return rpc_obj;
     }
 
@@ -656,6 +658,8 @@ public:
         obj.bottom_right_corner_x = track_rectangle.bottom_right_corner_x();
 
         obj.bottom_right_corner_y = track_rectangle.bottom_right_corner_y();
+
+        obj.timestamp = track_rectangle.timestamp();
 
         return obj;
     }
@@ -1900,10 +1904,10 @@ public:
         const mavsdk::CameraServer::TrackingOffCommandHandle handle =
             _lazy_plugin.maybe_plugin()->subscribe_tracking_off_command(
                 [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
-                    const int32_t tracking_off_command) {
+                    const uint64_t tracking_off_command) {
                     rpc::camera_server::TrackingOffCommandResponse rpc_response;
 
-                    rpc_response.set_dummy(tracking_off_command);
+                    rpc_response.set_timestamp(tracking_off_command);
 
                     std::unique_lock<std::mutex> lock(*subscribe_mutex);
                     if (!*is_finished && !writer->Write(rpc_response)) {
