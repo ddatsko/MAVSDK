@@ -1616,16 +1616,16 @@ class TrackingOffCommandResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDummyFieldNumber = 1,
+    kTimestampFieldNumber = 1,
   };
-  // int32 dummy = 1;
-  void clear_dummy() ;
-  ::int32_t dummy() const;
-  void set_dummy(::int32_t value);
+  // uint64 timestamp = 1;
+  void clear_timestamp() ;
+  ::uint64_t timestamp() const;
+  void set_timestamp(::uint64_t value);
 
   private:
-  ::int32_t _internal_dummy() const;
-  void _internal_set_dummy(::int32_t value);
+  ::uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(::uint64_t value);
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.TrackingOffCommandResponse)
@@ -1651,7 +1651,7 @@ class TrackingOffCommandResponse final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::int32_t dummy_;
+    ::uint64_t timestamp_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1795,6 +1795,7 @@ class TrackRectangle final :
     kTopLeftCornerYFieldNumber = 2,
     kBottomRightCornerXFieldNumber = 3,
     kBottomRightCornerYFieldNumber = 4,
+    kTimestampFieldNumber = 5,
   };
   // float top_left_corner_x = 1;
   void clear_top_left_corner_x() ;
@@ -1836,13 +1837,23 @@ class TrackRectangle final :
   void _internal_set_bottom_right_corner_y(float value);
 
   public:
+  // uint64 timestamp = 5;
+  void clear_timestamp() ;
+  ::uint64_t timestamp() const;
+  void set_timestamp(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(::uint64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.TrackRectangle)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 0,
+      3, 5, 0,
       0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
@@ -1863,6 +1874,7 @@ class TrackRectangle final :
     float top_left_corner_y_;
     float bottom_right_corner_x_;
     float bottom_right_corner_y_;
+    ::uint64_t timestamp_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -9820,6 +9832,8 @@ class Information final :
     kVerticalResolutionPxFieldNumber = 8,
     kLensIdFieldNumber = 9,
     kDefinitionFileVersionFieldNumber = 10,
+    kImageInVideoModeSupportedFieldNumber = 12,
+    kVideoInImageModeSupportedFieldNumber = 13,
   };
   // string vendor_name = 1;
   void clear_vendor_name() ;
@@ -9955,13 +9969,33 @@ class Information final :
   void _internal_set_definition_file_version(::uint32_t value);
 
   public:
+  // bool image_in_video_mode_supported = 12;
+  void clear_image_in_video_mode_supported() ;
+  bool image_in_video_mode_supported() const;
+  void set_image_in_video_mode_supported(bool value);
+
+  private:
+  bool _internal_image_in_video_mode_supported() const;
+  void _internal_set_image_in_video_mode_supported(bool value);
+
+  public:
+  // bool video_in_image_mode_supported = 13;
+  void clear_video_in_image_mode_supported() ;
+  bool video_in_image_mode_supported() const;
+  void set_video_in_image_mode_supported(bool value);
+
+  private:
+  bool _internal_video_in_image_mode_supported() const;
+  void _internal_set_video_in_image_mode_supported(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.Information)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 11, 0,
+      4, 13, 0,
       109, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
@@ -9989,6 +10023,8 @@ class Information final :
     ::uint32_t vertical_resolution_px_;
     ::uint32_t lens_id_;
     ::uint32_t definition_file_version_;
+    bool image_in_video_mode_supported_;
+    bool video_in_image_mode_supported_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -19796,6 +19832,52 @@ inline void Information::set_allocated_definition_file_uri(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.camera_server.Information.definition_file_uri)
 }
 
+// bool image_in_video_mode_supported = 12;
+inline void Information::clear_image_in_video_mode_supported() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.image_in_video_mode_supported_ = false;
+}
+inline bool Information::image_in_video_mode_supported() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.Information.image_in_video_mode_supported)
+  return _internal_image_in_video_mode_supported();
+}
+inline void Information::set_image_in_video_mode_supported(bool value) {
+  _internal_set_image_in_video_mode_supported(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.Information.image_in_video_mode_supported)
+}
+inline bool Information::_internal_image_in_video_mode_supported() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.image_in_video_mode_supported_;
+}
+inline void Information::_internal_set_image_in_video_mode_supported(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.image_in_video_mode_supported_ = value;
+}
+
+// bool video_in_image_mode_supported = 13;
+inline void Information::clear_video_in_image_mode_supported() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.video_in_image_mode_supported_ = false;
+}
+inline bool Information::video_in_image_mode_supported() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.Information.video_in_image_mode_supported)
+  return _internal_video_in_image_mode_supported();
+}
+inline void Information::set_video_in_image_mode_supported(bool value) {
+  _internal_set_video_in_image_mode_supported(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.Information.video_in_image_mode_supported)
+}
+inline bool Information::_internal_video_in_image_mode_supported() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.video_in_image_mode_supported_;
+}
+inline void Information::_internal_set_video_in_image_mode_supported(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.video_in_image_mode_supported_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // VideoStreaming
@@ -21228,27 +21310,27 @@ inline void TrackingRectangleCommandResponse::set_allocated_track_rectangle(::ma
 
 // TrackingOffCommandResponse
 
-// int32 dummy = 1;
-inline void TrackingOffCommandResponse::clear_dummy() {
+// uint64 timestamp = 1;
+inline void TrackingOffCommandResponse::clear_timestamp() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.dummy_ = 0;
+  _impl_.timestamp_ = ::uint64_t{0u};
 }
-inline ::int32_t TrackingOffCommandResponse::dummy() const {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.TrackingOffCommandResponse.dummy)
-  return _internal_dummy();
+inline ::uint64_t TrackingOffCommandResponse::timestamp() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.TrackingOffCommandResponse.timestamp)
+  return _internal_timestamp();
 }
-inline void TrackingOffCommandResponse::set_dummy(::int32_t value) {
-  _internal_set_dummy(value);
-  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.TrackingOffCommandResponse.dummy)
+inline void TrackingOffCommandResponse::set_timestamp(::uint64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.TrackingOffCommandResponse.timestamp)
 }
-inline ::int32_t TrackingOffCommandResponse::_internal_dummy() const {
+inline ::uint64_t TrackingOffCommandResponse::_internal_timestamp() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.dummy_;
+  return _impl_.timestamp_;
 }
-inline void TrackingOffCommandResponse::_internal_set_dummy(::int32_t value) {
+inline void TrackingOffCommandResponse::_internal_set_timestamp(::uint64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.dummy_ = value;
+  _impl_.timestamp_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -21799,6 +21881,29 @@ inline void TrackRectangle::_internal_set_bottom_right_corner_y(float value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.bottom_right_corner_y_ = value;
+}
+
+// uint64 timestamp = 5;
+inline void TrackRectangle::clear_timestamp() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.timestamp_ = ::uint64_t{0u};
+}
+inline ::uint64_t TrackRectangle::timestamp() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.TrackRectangle.timestamp)
+  return _internal_timestamp();
+}
+inline void TrackRectangle::set_timestamp(::uint64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.TrackRectangle.timestamp)
+}
+inline ::uint64_t TrackRectangle::_internal_timestamp() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.timestamp_;
+}
+inline void TrackRectangle::_internal_set_timestamp(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.timestamp_ = value;
 }
 
 #ifdef __GNUC__
