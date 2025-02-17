@@ -422,6 +422,8 @@ public:
                                           (normalized 0..1, 0 is left, 1 is right). */
         float bottom_right_corner_y{}; /**< @brief Bottom right corner of rectangle y value
                                           (normalized 0..1, 0 is top, 1 is bottom). */
+        uint64_t timestamp{}; /**< @brief Timestamp of the frame on which the tracking rectagle was
+                                 selected */
     };
 
     /**
@@ -959,12 +961,12 @@ public:
     /**
      * @brief Callback type for subscribe_tracking_off_command.
      */
-    using TrackingOffCommandCallback = std::function<void(int32_t)>;
+    using TrackingOffCommandCallback = std::function<void(uint64_t)>;
 
     /**
      * @brief Handle type for subscribe_tracking_off_command.
      */
-    using TrackingOffCommandHandle = Handle<int32_t>;
+    using TrackingOffCommandHandle = Handle<uint64_t>;
 
     /**
      * @brief Subscribe to incoming tracking off command.
