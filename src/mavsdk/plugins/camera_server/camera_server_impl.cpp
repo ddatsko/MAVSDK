@@ -1019,7 +1019,7 @@ std::optional<mavlink_command_ack_t> CameraServerImpl::process_camera_informatio
     if (!_tracking_rectangle_callbacks.empty()) {
         capability_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE;
     }
-    
+
     if (!_zoom_range_callbacks.empty()) {
         capability_flags |= CAMERA_CAP_FLAGS::CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM;
     }
@@ -1825,9 +1825,12 @@ std::optional<mavlink_command_ack_t> CameraServerImpl::process_track_rectangle_c
     const uint32_t timestamp_high = *reinterpret_cast<const uint32_t*>(&command.params.param6);
     uint64_t timestamp = timestamp_low + (static_cast<uint64_t>(timestamp_high) << 32);
 
-
     CameraServer::TrackRectangle track_rectangle{
-        command.params.param1, command.params.param2, command.params.param3, command.params.param4, timestamp};
+        command.params.param1,
+        command.params.param2,
+        command.params.param3,
+        command.params.param4,
+        timestamp};
 
     _last_track_rectangle_command = command;
     _tracking_rectangle_callbacks(track_rectangle);
