@@ -81,6 +81,9 @@ extern GetAllowableFlightModesResponseDefaultTypeInternal _GetAllowableFlightMod
 class LandResponse;
 struct LandResponseDefaultTypeInternal;
 extern LandResponseDefaultTypeInternal _LandResponse_default_instance_;
+class Reboot;
+struct RebootDefaultTypeInternal;
+extern RebootDefaultTypeInternal _Reboot_default_instance_;
 class RebootResponse;
 struct RebootResponseDefaultTypeInternal;
 extern RebootResponseDefaultTypeInternal _RebootResponse_default_instance_;
@@ -1863,6 +1866,233 @@ class SetAllowTakeoffRequest final
 };
 // -------------------------------------------------------------------
 
+class Reboot final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.action_server.Reboot) */ {
+ public:
+  inline Reboot() : Reboot(nullptr) {}
+  ~Reboot() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Reboot* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Reboot));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Reboot(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Reboot(const Reboot& from) : Reboot(nullptr, from) {}
+  inline Reboot(Reboot&& from) noexcept
+      : Reboot(nullptr, std::move(from)) {}
+  inline Reboot& operator=(const Reboot& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Reboot& operator=(Reboot&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Reboot& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Reboot* internal_default_instance() {
+    return reinterpret_cast<const Reboot*>(
+        &_Reboot_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 26;
+  friend void swap(Reboot& a, Reboot& b) { a.Swap(&b); }
+  inline void Swap(Reboot* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Reboot* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Reboot* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Reboot>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Reboot& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Reboot& from) { Reboot::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Reboot* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.action_server.Reboot"; }
+
+ protected:
+  explicit Reboot(::google::protobuf::Arena* arena);
+  Reboot(::google::protobuf::Arena* arena, const Reboot& from);
+  Reboot(::google::protobuf::Arena* arena, Reboot&& from) noexcept
+      : Reboot(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAutopilotFieldNumber = 1,
+    kCompanionFieldNumber = 2,
+    kComponentActionFieldNumber = 3,
+    kComponentIdFieldNumber = 4,
+  };
+  // uint32 autopilot = 1;
+  void clear_autopilot() ;
+  ::uint32_t autopilot() const;
+  void set_autopilot(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_autopilot() const;
+  void _internal_set_autopilot(::uint32_t value);
+
+  public:
+  // uint32 companion = 2;
+  void clear_companion() ;
+  ::uint32_t companion() const;
+  void set_companion(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_companion() const;
+  void _internal_set_companion(::uint32_t value);
+
+  public:
+  // uint32 component_action = 3;
+  void clear_component_action() ;
+  ::uint32_t component_action() const;
+  void set_component_action(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_component_action() const;
+  void _internal_set_component_action(::uint32_t value);
+
+  public:
+  // uint32 component_id = 4;
+  void clear_component_id() ;
+  ::uint32_t component_id() const;
+  void set_component_id(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_component_id() const;
+  void _internal_set_component_id(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.action_server.Reboot)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Reboot& from_msg);
+    ::uint32_t autopilot_;
+    ::uint32_t companion_;
+    ::uint32_t component_action_;
+    ::uint32_t component_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_action_5fserver_2faction_5fserver_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GetAllowableFlightModesRequest final
     : public ::google::protobuf::internal::ZeroFieldsBase
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.action_server.GetAllowableFlightModesRequest) */ {
@@ -2487,7 +2717,7 @@ class ActionServerResult final
     return reinterpret_cast<const ActionServerResult*>(
         &_ActionServerResult_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 26;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(ActionServerResult& a, ActionServerResult& b) { a.Swap(&b); }
   inline void Swap(ActionServerResult* other) {
     if (other == this) return;
@@ -4443,14 +4673,19 @@ class RebootResponse final
   ::mavsdk::rpc::action_server::ActionServerResult* _internal_mutable_action_server_result();
 
   public:
-  // bool reboot = 2;
+  // .mavsdk.rpc.action_server.Reboot reboot = 2;
+  bool has_reboot() const;
   void clear_reboot() ;
-  bool reboot() const;
-  void set_reboot(bool value);
+  const ::mavsdk::rpc::action_server::Reboot& reboot() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::action_server::Reboot* release_reboot();
+  ::mavsdk::rpc::action_server::Reboot* mutable_reboot();
+  void set_allocated_reboot(::mavsdk::rpc::action_server::Reboot* value);
+  void unsafe_arena_set_allocated_reboot(::mavsdk::rpc::action_server::Reboot* value);
+  ::mavsdk::rpc::action_server::Reboot* unsafe_arena_release_reboot();
 
   private:
-  bool _internal_reboot() const;
-  void _internal_set_reboot(bool value);
+  const ::mavsdk::rpc::action_server::Reboot& _internal_reboot() const;
+  ::mavsdk::rpc::action_server::Reboot* _internal_mutable_reboot();
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.action_server.RebootResponse)
@@ -4458,7 +4693,7 @@ class RebootResponse final
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 1,
+      1, 2, 2,
       0, 2>
       _table_;
 
@@ -4479,7 +4714,7 @@ class RebootResponse final
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::mavsdk::rpc::action_server::ActionServerResult* action_server_result_;
-    bool reboot_;
+    ::mavsdk::rpc::action_server::Reboot* reboot_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -6243,26 +6478,100 @@ inline void RebootResponse::set_allocated_action_server_result(::mavsdk::rpc::ac
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.action_server.RebootResponse.action_server_result)
 }
 
-// bool reboot = 2;
+// .mavsdk.rpc.action_server.Reboot reboot = 2;
+inline bool RebootResponse::has_reboot() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.reboot_ != nullptr);
+  return value;
+}
 inline void RebootResponse::clear_reboot() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.reboot_ = false;
+  if (_impl_.reboot_ != nullptr) _impl_.reboot_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
-inline bool RebootResponse::reboot() const {
+inline const ::mavsdk::rpc::action_server::Reboot& RebootResponse::_internal_reboot() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::action_server::Reboot* p = _impl_.reboot_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::action_server::Reboot&>(::mavsdk::rpc::action_server::_Reboot_default_instance_);
+}
+inline const ::mavsdk::rpc::action_server::Reboot& RebootResponse::reboot() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_get:mavsdk.rpc.action_server.RebootResponse.reboot)
   return _internal_reboot();
 }
-inline void RebootResponse::set_reboot(bool value) {
-  _internal_set_reboot(value);
-  // @@protoc_insertion_point(field_set:mavsdk.rpc.action_server.RebootResponse.reboot)
+inline void RebootResponse::unsafe_arena_set_allocated_reboot(::mavsdk::rpc::action_server::Reboot* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.reboot_);
+  }
+  _impl_.reboot_ = reinterpret_cast<::mavsdk::rpc::action_server::Reboot*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.action_server.RebootResponse.reboot)
 }
-inline bool RebootResponse::_internal_reboot() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
+inline ::mavsdk::rpc::action_server::Reboot* RebootResponse::release_reboot() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::mavsdk::rpc::action_server::Reboot* released = _impl_.reboot_;
+  _impl_.reboot_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::action_server::Reboot* RebootResponse::unsafe_arena_release_reboot() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.action_server.RebootResponse.reboot)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::mavsdk::rpc::action_server::Reboot* temp = _impl_.reboot_;
+  _impl_.reboot_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::action_server::Reboot* RebootResponse::_internal_mutable_reboot() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.reboot_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::action_server::Reboot>(GetArena());
+    _impl_.reboot_ = reinterpret_cast<::mavsdk::rpc::action_server::Reboot*>(p);
+  }
   return _impl_.reboot_;
 }
-inline void RebootResponse::_internal_set_reboot(bool value) {
+inline ::mavsdk::rpc::action_server::Reboot* RebootResponse::mutable_reboot() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::mavsdk::rpc::action_server::Reboot* _msg = _internal_mutable_reboot();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.action_server.RebootResponse.reboot)
+  return _msg;
+}
+inline void RebootResponse::set_allocated_reboot(::mavsdk::rpc::action_server::Reboot* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.reboot_ = value;
+  if (message_arena == nullptr) {
+    delete (_impl_.reboot_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.reboot_ = reinterpret_cast<::mavsdk::rpc::action_server::Reboot*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.action_server.RebootResponse.reboot)
 }
 
 // -------------------------------------------------------------------
@@ -7125,6 +7434,98 @@ inline bool ArmDisarm::_internal_force() const {
 inline void ArmDisarm::_internal_set_force(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.force_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Reboot
+
+// uint32 autopilot = 1;
+inline void Reboot::clear_autopilot() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.autopilot_ = 0u;
+}
+inline ::uint32_t Reboot::autopilot() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.action_server.Reboot.autopilot)
+  return _internal_autopilot();
+}
+inline void Reboot::set_autopilot(::uint32_t value) {
+  _internal_set_autopilot(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.action_server.Reboot.autopilot)
+}
+inline ::uint32_t Reboot::_internal_autopilot() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.autopilot_;
+}
+inline void Reboot::_internal_set_autopilot(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.autopilot_ = value;
+}
+
+// uint32 companion = 2;
+inline void Reboot::clear_companion() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.companion_ = 0u;
+}
+inline ::uint32_t Reboot::companion() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.action_server.Reboot.companion)
+  return _internal_companion();
+}
+inline void Reboot::set_companion(::uint32_t value) {
+  _internal_set_companion(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.action_server.Reboot.companion)
+}
+inline ::uint32_t Reboot::_internal_companion() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.companion_;
+}
+inline void Reboot::_internal_set_companion(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.companion_ = value;
+}
+
+// uint32 component_action = 3;
+inline void Reboot::clear_component_action() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.component_action_ = 0u;
+}
+inline ::uint32_t Reboot::component_action() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.action_server.Reboot.component_action)
+  return _internal_component_action();
+}
+inline void Reboot::set_component_action(::uint32_t value) {
+  _internal_set_component_action(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.action_server.Reboot.component_action)
+}
+inline ::uint32_t Reboot::_internal_component_action() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.component_action_;
+}
+inline void Reboot::_internal_set_component_action(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.component_action_ = value;
+}
+
+// uint32 component_id = 4;
+inline void Reboot::clear_component_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.component_id_ = 0u;
+}
+inline ::uint32_t Reboot::component_id() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.action_server.Reboot.component_id)
+  return _internal_component_id();
+}
+inline void Reboot::set_component_id(::uint32_t value) {
+  _internal_set_component_id(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.action_server.Reboot.component_id)
+}
+inline ::uint32_t Reboot::_internal_component_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.component_id_;
+}
+inline void Reboot::_internal_set_component_id(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.component_id_ = value;
 }
 
 // -------------------------------------------------------------------

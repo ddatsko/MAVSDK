@@ -174,6 +174,38 @@ public:
         return obj;
     }
 
+    static std::unique_ptr<rpc::action_server::Reboot>
+    translateToRpcReboot(const mavsdk::ActionServer::Reboot& reboot)
+    {
+        auto rpc_obj = std::make_unique<rpc::action_server::Reboot>();
+
+        rpc_obj->set_autopilot(reboot.autopilot);
+
+        rpc_obj->set_companion(reboot.companion);
+
+        rpc_obj->set_component_action(reboot.component_action);
+
+        rpc_obj->set_component_id(reboot.component_id);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::ActionServer::Reboot
+    translateFromRpcReboot(const rpc::action_server::Reboot& reboot)
+    {
+        mavsdk::ActionServer::Reboot obj;
+
+        obj.autopilot = reboot.autopilot();
+
+        obj.companion = reboot.companion();
+
+        obj.component_action = reboot.component_action();
+
+        obj.component_id = reboot.component_id();
+
+        return obj;
+    }
+
     static rpc::action_server::ActionServerResult::Result
     translateToRpcResult(const mavsdk::ActionServer::Result& result)
     {
@@ -503,10 +535,11 @@ public:
         const mavsdk::ActionServer::RebootHandle handle =
             _lazy_plugin.maybe_plugin()->subscribe_reboot(
                 [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
-                    mavsdk::ActionServer::Result result, const bool reboot) {
+                    mavsdk::ActionServer::Result result,
+                    const mavsdk::ActionServer::Reboot reboot) {
                     rpc::action_server::RebootResponse rpc_response;
 
-                    rpc_response.set_reboot(reboot);
+                    rpc_response.set_allocated_reboot(translateToRpcReboot(reboot).release());
 
                     auto rpc_result = translateToRpcResult(result);
                     auto* rpc_action_server_result = new rpc::action_server::ActionServerResult();

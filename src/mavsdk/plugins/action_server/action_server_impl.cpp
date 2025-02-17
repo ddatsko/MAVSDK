@@ -97,6 +97,30 @@ void ActionServerImpl::init()
         },
         this);
 
+    // Reboot
+    _server_component_impl->register_mavlink_command_handler(
+        MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN,
+        [this](const MavlinkCommandReceiver::CommandLong& command) {
+            // Maps message values to Reboot message one to one
+            ActionServer::Reboot reboot{
+                static_cast<uint32_t>(std::lround(command.params.param1)),
+                static_cast<uint32_t>(std::lround(command.params.param2)),
+                static_cast<uint32_t>(std::lround(command.params.param3)),
+                static_cast<uint32_t>(std::lround(command.params.param4))};
+
+            std::lock_guard<std::mutex> lock(_callback_mutex);
+
+            auto request_ack = MAV_RESULT_UNSUPPORTED;
+            auto result = ActionServer::Result::Success;
+
+            _reboot_callbacks.queue(result, reboot, [this](const auto& func) {
+                _server_component_impl->call_user_callback(func);
+            });
+
+            return _server_component_impl->make_command_ack_message(command, request_ack);
+        },
+        this);
+
     _server_component_impl->register_mavlink_command_handler(
         MAV_CMD_NAV_TAKEOFF,
         [this](const MavlinkCommandReceiver::CommandLong& command) {

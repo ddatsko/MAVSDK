@@ -125,6 +125,30 @@ public:
     friend std::ostream& operator<<(std::ostream& str, ActionServer::ArmDisarm const& arm_disarm);
 
     /**
+     * @brief Arming message type
+     */
+    struct Reboot {
+        uint32_t autopilot{}; /**< @brief Autopilot action */
+        uint32_t companion{}; /**< @brief Companion computer action */
+        uint32_t component_action{}; /**< @brief Additional component action */
+        uint32_t component_id{}; /**< @brief Additional component ID */
+    };
+
+    /**
+     * @brief Equal operator to compare two `ActionServer::Reboot` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const ActionServer::Reboot& lhs, const ActionServer::Reboot& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `ActionServer::Reboot`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, ActionServer::Reboot const& reboot);
+
+    /**
      * @brief Possible results returned for action requests.
      */
     enum class Result {
@@ -240,12 +264,12 @@ public:
     /**
      * @brief Callback type for subscribe_reboot.
      */
-    using RebootCallback = std::function<void(Result, bool)>;
+    using RebootCallback = std::function<void(Result, Reboot)>;
 
     /**
      * @brief Handle type for subscribe_reboot.
      */
-    using RebootHandle = Handle<Result, bool>;
+    using RebootHandle = Handle<Result, Reboot>;
 
     /**
      * @brief Subscribe to reboot command

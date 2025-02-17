@@ -65,7 +65,7 @@ private:
     CallbackList<ActionServer::Result, ActionServer::FlightMode> _flight_mode_change_callbacks{};
     CallbackList<ActionServer::Result, bool> _takeoff_callbacks{};
     CallbackList<ActionServer::Result, bool> _land_callbacks{};
-    CallbackList<ActionServer::Result, bool> _reboot_callbacks{};
+    CallbackList<ActionServer::Result, ActionServer::Reboot> _reboot_callbacks{};
     CallbackList<ActionServer::Result, bool> _shutdown_callbacks{};
     CallbackList<ActionServer::Result, bool> _terminate_callbacks{};
 

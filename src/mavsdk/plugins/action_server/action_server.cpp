@@ -12,6 +12,7 @@ namespace mavsdk {
 
 using AllowableFlightModes = ActionServer::AllowableFlightModes;
 using ArmDisarm = ActionServer::ArmDisarm;
+using Reboot = ActionServer::Reboot;
 
 ActionServer::ActionServer(std::shared_ptr<ServerComponent> server_component) :
     ServerPluginBase(),
@@ -148,6 +149,24 @@ std::ostream& operator<<(std::ostream& str, ActionServer::ArmDisarm const& arm_d
     str << "arm_disarm:" << '\n' << "{\n";
     str << "    arm: " << arm_disarm.arm << '\n';
     str << "    force: " << arm_disarm.force << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const ActionServer::Reboot& lhs, const ActionServer::Reboot& rhs)
+{
+    return (rhs.autopilot == lhs.autopilot) && (rhs.companion == lhs.companion) &&
+           (rhs.component_action == lhs.component_action) && (rhs.component_id == lhs.component_id);
+}
+
+std::ostream& operator<<(std::ostream& str, ActionServer::Reboot const& reboot)
+{
+    str << std::setprecision(15);
+    str << "reboot:" << '\n' << "{\n";
+    str << "    autopilot: " << reboot.autopilot << '\n';
+    str << "    companion: " << reboot.companion << '\n';
+    str << "    component_action: " << reboot.component_action << '\n';
+    str << "    component_id: " << reboot.component_id << '\n';
     str << '}';
     return str;
 }
