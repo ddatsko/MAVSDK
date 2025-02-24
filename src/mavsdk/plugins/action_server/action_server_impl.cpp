@@ -99,31 +99,10 @@ void ActionServerImpl::init()
     _server_component_impl->register_mavlink_command_handler(
         MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN,
         [this](const MavlinkCommandReceiver::CommandLong& command) {
-            ActionServer::ArmDisarm armDisarm{
-                command.params.param1 == 1, command.params.param2 == 21196};
+            auto request_ack = MAV_RESULT_ACCEPTED;
+            auto result = ActionServer::Result::Success;
 
-            // Check arm states - Ugly.
-            auto request_ack = MAV_RESULT_UNSUPPORTED;
-            bool force = armDisarm.force;
-            if (armDisarm.arm) {
-                request_ack = (_armable || (force && _force_armable)) ?
-                                  MAV_RESULT::MAV_RESULT_ACCEPTED :
-                                  MAV_RESULT_TEMPORARILY_REJECTED;
-            } else {
-                request_ack = (_disarmable || (force && _force_disarmable)) ?
-                                  MAV_RESULT::MAV_RESULT_ACCEPTED :
-                                  MAV_RESULT_TEMPORARILY_REJECTED;
-            }
-
-            if (request_ack == MAV_RESULT::MAV_RESULT_ACCEPTED) {
-                set_server_armed(armDisarm.arm);
-            }
-
-            auto result = (request_ack == MAV_RESULT::MAV_RESULT_ACCEPTED) ?
-                              ActionServer::Result::Success :
-                              ActionServer::Result::CommandDenied;
-
-            _arm_disarm_callbacks.queue(result, armDisarm, [this](const auto& func) {
+            _reboot_callbacks.queue(result, true, [this](const auto& func) {
                 _server_component_impl->call_user_callback(func);
             });
 
