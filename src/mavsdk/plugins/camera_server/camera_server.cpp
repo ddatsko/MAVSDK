@@ -10,6 +10,7 @@
 
 namespace mavsdk {
 
+using ZoomRangeFeedback = CameraServer::ZoomRangeFeedback;
 using Information = CameraServer::Information;
 using VideoStreaming = CameraServer::VideoStreaming;
 using Position = CameraServer::Position;
@@ -330,6 +331,32 @@ CameraServer::Result
 CameraServer::respond_tracking_off_command(CameraFeedback stop_video_feedback) const
 {
     return _impl->respond_tracking_off_command(stop_video_feedback);
+}
+
+bool operator==(
+    const CameraServer::ZoomRangeFeedback& lhs, const CameraServer::ZoomRangeFeedback& rhs)
+{
+    return ((std::isnan(rhs.factor) && std::isnan(lhs.factor)) || rhs.factor == lhs.factor) &&
+           ((std::isnan(rhs.center_x) && std::isnan(lhs.center_x)) ||
+            rhs.center_x == lhs.center_x) &&
+           ((std::isnan(rhs.center_y) && std::isnan(lhs.center_y)) ||
+            rhs.center_y == lhs.center_y) &&
+           ((std::isnan(rhs.ts_pt1) && std::isnan(lhs.ts_pt1)) || rhs.ts_pt1 == lhs.ts_pt1) &&
+           ((std::isnan(rhs.ts_pt2) && std::isnan(lhs.ts_pt2)) || rhs.ts_pt2 == lhs.ts_pt2);
+}
+
+std::ostream&
+operator<<(std::ostream& str, CameraServer::ZoomRangeFeedback const& zoom_range_feedback)
+{
+    str << std::setprecision(15);
+    str << "zoom_range_feedback:" << '\n' << "{\n";
+    str << "    factor: " << zoom_range_feedback.factor << '\n';
+    str << "    center_x: " << zoom_range_feedback.center_x << '\n';
+    str << "    center_y: " << zoom_range_feedback.center_y << '\n';
+    str << "    ts_pt1: " << zoom_range_feedback.ts_pt1 << '\n';
+    str << "    ts_pt2: " << zoom_range_feedback.ts_pt2 << '\n';
+    str << '}';
+    return str;
 }
 
 bool operator==(const CameraServer::Information& lhs, const CameraServer::Information& rhs)

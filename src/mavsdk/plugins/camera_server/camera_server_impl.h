@@ -252,7 +252,7 @@ private:
     CallbackList<int32_t> _zoom_in_start_callbacks{};
     CallbackList<int32_t> _zoom_out_start_callbacks{};
     CallbackList<int32_t> _zoom_stop_callbacks{};
-    CallbackList<float> _zoom_range_callbacks{};
+    CallbackList<CameraServer::ZoomRangeFeedback> _zoom_range_callbacks{};
 
     MavlinkCommandReceiver::CommandLong _last_zoom_in_start_command;
     MavlinkCommandReceiver::CommandLong _last_zoom_out_start_command;

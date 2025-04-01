@@ -1290,6 +1290,12 @@ CameraServerImpl::process_set_camera_zoom(const MavlinkCommandReceiver::CommandL
 {
     auto zoom_type = static_cast<CAMERA_ZOOM_TYPE>(command.params.param1);
     auto zoom_value = command.params.param2;
+    auto zoom_center_x = command.params.param4;
+    auto zoom_center_y = command.params.param5;
+    auto zoom_ts_pt1 = command.params.param6;
+    auto zoom_ts_pt2 = command.params.param7;
+    CameraServer::ZoomRangeFeedback zoom_message{
+        zoom_value, zoom_center_x, zoom_center_y, zoom_ts_pt1, zoom_ts_pt2};
 
     if (_zoom_in_start_callbacks.empty() && _zoom_out_start_callbacks.empty() &&
         _zoom_stop_callbacks.empty() && _zoom_range_callbacks.empty()) {
@@ -1348,7 +1354,7 @@ CameraServerImpl::process_set_camera_zoom(const MavlinkCommandReceiver::CommandL
 
             } else {
                 _last_zoom_range_command = command;
-                _zoom_range_callbacks(zoom_value);
+                _zoom_range_callbacks(zoom_message);
             }
             break;
         case ZOOM_TYPE_STEP:

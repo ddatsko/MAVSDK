@@ -325,6 +325,9 @@ extern ZoomInStartResponseDefaultTypeInternal _ZoomInStartResponse_default_insta
 class ZoomOutStartResponse;
 struct ZoomOutStartResponseDefaultTypeInternal;
 extern ZoomOutStartResponseDefaultTypeInternal _ZoomOutStartResponse_default_instance_;
+class ZoomRangeFeedback;
+struct ZoomRangeFeedbackDefaultTypeInternal;
+extern ZoomRangeFeedbackDefaultTypeInternal _ZoomRangeFeedback_default_instance_;
 class ZoomRangeResponse;
 struct ZoomRangeResponseDefaultTypeInternal;
 extern ZoomRangeResponseDefaultTypeInternal _ZoomRangeResponse_default_instance_;
@@ -766,26 +769,26 @@ class ZoomStopResponse final :
   friend struct ::TableStruct_camera_5fserver_2fcamera_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
-class ZoomRangeResponse final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.camera_server.ZoomRangeResponse) */ {
+class ZoomRangeFeedback final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.camera_server.ZoomRangeFeedback) */ {
  public:
-  inline ZoomRangeResponse() : ZoomRangeResponse(nullptr) {}
-  ~ZoomRangeResponse() override;
+  inline ZoomRangeFeedback() : ZoomRangeFeedback(nullptr) {}
+  ~ZoomRangeFeedback() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR ZoomRangeResponse(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR ZoomRangeFeedback(::google::protobuf::internal::ConstantInitialized);
 
-  inline ZoomRangeResponse(const ZoomRangeResponse& from)
-      : ZoomRangeResponse(nullptr, from) {}
-  ZoomRangeResponse(ZoomRangeResponse&& from) noexcept
-    : ZoomRangeResponse() {
+  inline ZoomRangeFeedback(const ZoomRangeFeedback& from)
+      : ZoomRangeFeedback(nullptr, from) {}
+  ZoomRangeFeedback(ZoomRangeFeedback&& from) noexcept
+    : ZoomRangeFeedback() {
     *this = ::std::move(from);
   }
 
-  inline ZoomRangeResponse& operator=(const ZoomRangeResponse& from) {
+  inline ZoomRangeFeedback& operator=(const ZoomRangeFeedback& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ZoomRangeResponse& operator=(ZoomRangeResponse&& from) noexcept {
+  inline ZoomRangeFeedback& operator=(ZoomRangeFeedback&& from) noexcept {
     if (this == &from) return *this;
     if (GetArena() == from.GetArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -817,20 +820,20 @@ class ZoomRangeResponse final :
   static const ::google::protobuf::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ZoomRangeResponse& default_instance() {
+  static const ZoomRangeFeedback& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ZoomRangeResponse* internal_default_instance() {
-    return reinterpret_cast<const ZoomRangeResponse*>(
-               &_ZoomRangeResponse_default_instance_);
+  static inline const ZoomRangeFeedback* internal_default_instance() {
+    return reinterpret_cast<const ZoomRangeFeedback*>(
+               &_ZoomRangeFeedback_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     59;
 
-  friend void swap(ZoomRangeResponse& a, ZoomRangeResponse& b) {
+  friend void swap(ZoomRangeFeedback& a, ZoomRangeFeedback& b) {
     a.Swap(&b);
   }
-  inline void Swap(ZoomRangeResponse* other) {
+  inline void Swap(ZoomRangeFeedback* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetArena() != nullptr &&
@@ -843,7 +846,7 @@ class ZoomRangeResponse final :
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ZoomRangeResponse* other) {
+  void UnsafeArenaSwap(ZoomRangeFeedback* other) {
     if (other == this) return;
     ABSL_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -851,14 +854,14 @@ class ZoomRangeResponse final :
 
   // implements Message ----------------------------------------------
 
-  ZoomRangeResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ZoomRangeResponse>(arena);
+  ZoomRangeFeedback* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ZoomRangeFeedback>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const ZoomRangeResponse& from);
+  void CopyFrom(const ZoomRangeFeedback& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const ZoomRangeResponse& from) {
-    ZoomRangeResponse::MergeImpl(*this, from);
+  void MergeFrom( const ZoomRangeFeedback& from) {
+    ZoomRangeFeedback::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
@@ -876,16 +879,16 @@ class ZoomRangeResponse final :
   ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
   void SharedCtor(::google::protobuf::Arena* arena);
   void SharedDtor();
-  void InternalSwap(ZoomRangeResponse* other);
+  void InternalSwap(ZoomRangeFeedback* other);
 
   private:
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "mavsdk.rpc.camera_server.ZoomRangeResponse";
+    return "mavsdk.rpc.camera_server.ZoomRangeFeedback";
   }
   protected:
-  explicit ZoomRangeResponse(::google::protobuf::Arena* arena);
-  ZoomRangeResponse(::google::protobuf::Arena* arena, const ZoomRangeResponse& from);
+  explicit ZoomRangeFeedback(::google::protobuf::Arena* arena);
+  ZoomRangeFeedback(::google::protobuf::Arena* arena, const ZoomRangeFeedback& from);
   public:
 
   static const ClassData _class_data_;
@@ -899,6 +902,10 @@ class ZoomRangeResponse final :
 
   enum : int {
     kFactorFieldNumber = 1,
+    kCenterXFieldNumber = 2,
+    kCenterYFieldNumber = 3,
+    kTsPt1FieldNumber = 4,
+    kTsPt2FieldNumber = 5,
   };
   // float factor = 1;
   void clear_factor() ;
@@ -910,13 +917,53 @@ class ZoomRangeResponse final :
   void _internal_set_factor(float value);
 
   public:
-  // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.ZoomRangeResponse)
+  // float center_x = 2;
+  void clear_center_x() ;
+  float center_x() const;
+  void set_center_x(float value);
+
+  private:
+  float _internal_center_x() const;
+  void _internal_set_center_x(float value);
+
+  public:
+  // float center_y = 3;
+  void clear_center_y() ;
+  float center_y() const;
+  void set_center_y(float value);
+
+  private:
+  float _internal_center_y() const;
+  void _internal_set_center_y(float value);
+
+  public:
+  // float ts_pt1 = 4;
+  void clear_ts_pt1() ;
+  float ts_pt1() const;
+  void set_ts_pt1(float value);
+
+  private:
+  float _internal_ts_pt1() const;
+  void _internal_set_ts_pt1(float value);
+
+  public:
+  // float ts_pt2 = 5;
+  void clear_ts_pt2() ;
+  float ts_pt2() const;
+  void set_ts_pt2(float value);
+
+  private:
+  float _internal_ts_pt2() const;
+  void _internal_set_ts_pt2(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.ZoomRangeFeedback)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
+      3, 5, 0,
       0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
@@ -934,6 +981,10 @@ class ZoomRangeResponse final :
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
     float factor_;
+    float center_x_;
+    float center_y_;
+    float ts_pt1_;
+    float ts_pt2_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1350,7 +1401,7 @@ class VideoStreaming final :
                &_VideoStreaming_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    64;
 
   friend void swap(VideoStreaming& a, VideoStreaming& b) {
     a.Swap(&b);
@@ -1543,7 +1594,7 @@ class TrackingOffCommandResponse final :
                &_TrackingOffCommandResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    81;
+    82;
 
   friend void swap(TrackingOffCommandResponse& a, TrackingOffCommandResponse& b) {
     a.Swap(&b);
@@ -1718,7 +1769,7 @@ class TrackRectangle final :
                &_TrackRectangle_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    89;
+    90;
 
   friend void swap(TrackRectangle& a, TrackRectangle& b) {
     a.Swap(&b);
@@ -1941,7 +1992,7 @@ class TrackPoint final :
                &_TrackPoint_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    88;
+    89;
 
   friend void swap(TrackPoint& a, TrackPoint& b) {
     a.Swap(&b);
@@ -2858,7 +2909,7 @@ class SubscribeTrackingRectangleCommandRequest final :
                &_SubscribeTrackingRectangleCommandRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    78;
+    79;
 
   friend void swap(SubscribeTrackingRectangleCommandRequest& a, SubscribeTrackingRectangleCommandRequest& b) {
     a.Swap(&b);
@@ -2994,7 +3045,7 @@ class SubscribeTrackingPointCommandRequest final :
                &_SubscribeTrackingPointCommandRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    76;
+    77;
 
   friend void swap(SubscribeTrackingPointCommandRequest& a, SubscribeTrackingPointCommandRequest& b) {
     a.Swap(&b);
@@ -3130,7 +3181,7 @@ class SubscribeTrackingOffCommandRequest final :
                &_SubscribeTrackingOffCommandRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    80;
+    81;
 
   friend void swap(SubscribeTrackingOffCommandRequest& a, SubscribeTrackingOffCommandRequest& b) {
     a.Swap(&b);
@@ -4802,7 +4853,7 @@ class StorageInformation final :
                &_StorageInformation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    69;
 
   friend void swap(StorageInformation& a, StorageInformation& b) {
     a.Swap(&b);
@@ -5806,7 +5857,7 @@ class SetTrackingRectangleStatusResponse final :
                &_SetTrackingRectangleStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    73;
+    74;
 
   friend void swap(SetTrackingRectangleStatusResponse& a, SetTrackingRectangleStatusResponse& b) {
     a.Swap(&b);
@@ -5942,7 +5993,7 @@ class SetTrackingPointStatusResponse final :
                &_SetTrackingPointStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    72;
 
   friend void swap(SetTrackingPointStatusResponse& a, SetTrackingPointStatusResponse& b) {
     a.Swap(&b);
@@ -6078,7 +6129,7 @@ class SetTrackingOffStatusResponse final :
                &_SetTrackingOffStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    75;
+    76;
 
   friend void swap(SetTrackingOffStatusResponse& a, SetTrackingOffStatusResponse& b) {
     a.Swap(&b);
@@ -6214,7 +6265,7 @@ class SetTrackingOffStatusRequest final :
                &_SetTrackingOffStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    74;
+    75;
 
   friend void swap(SetTrackingOffStatusRequest& a, SetTrackingOffStatusRequest& b) {
     a.Swap(&b);
@@ -6876,7 +6927,7 @@ class RespondZoomRangeRequest final :
                &_RespondZoomRangeRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    61;
 
   friend void swap(RespondZoomRangeRequest& a, RespondZoomRangeRequest& b) {
     a.Swap(&b);
@@ -7401,7 +7452,7 @@ class RespondTrackingRectangleCommandRequest final :
                &_RespondTrackingRectangleCommandRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    84;
+    85;
 
   friend void swap(RespondTrackingRectangleCommandRequest& a, RespondTrackingRectangleCommandRequest& b) {
     a.Swap(&b);
@@ -7576,7 +7627,7 @@ class RespondTrackingPointCommandRequest final :
                &_RespondTrackingPointCommandRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    82;
+    83;
 
   friend void swap(RespondTrackingPointCommandRequest& a, RespondTrackingPointCommandRequest& b) {
     a.Swap(&b);
@@ -7751,7 +7802,7 @@ class RespondTrackingOffCommandRequest final :
                &_RespondTrackingOffCommandRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    86;
+    87;
 
   friend void swap(RespondTrackingOffCommandRequest& a, RespondTrackingOffCommandRequest& b) {
     a.Swap(&b);
@@ -9326,7 +9377,7 @@ class Quaternion final :
                &_Quaternion_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    66;
 
   friend void swap(Quaternion& a, Quaternion& b) {
     a.Swap(&b);
@@ -9537,7 +9588,7 @@ class Position final :
                &_Position_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    65;
 
   friend void swap(Position& a, Position& b) {
     a.Swap(&b);
@@ -9748,7 +9799,7 @@ class Information final :
                &_Information_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    63;
 
   friend void swap(Information& a, Information& b) {
     a.Swap(&b);
@@ -10441,7 +10492,7 @@ class CaptureStatus final :
                &_CaptureStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    70;
 
   friend void swap(CaptureStatus& a, CaptureStatus& b) {
     a.Swap(&b);
@@ -10718,7 +10769,7 @@ class CameraServerResult final :
                &_CameraServerResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    68;
 
   friend void swap(CameraServerResult& a, CameraServerResult& b) {
     a.Swap(&b);
@@ -10879,6 +10930,187 @@ class CameraServerResult final :
   friend struct ::TableStruct_camera_5fserver_2fcamera_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
+class ZoomRangeResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.camera_server.ZoomRangeResponse) */ {
+ public:
+  inline ZoomRangeResponse() : ZoomRangeResponse(nullptr) {}
+  ~ZoomRangeResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ZoomRangeResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline ZoomRangeResponse(const ZoomRangeResponse& from)
+      : ZoomRangeResponse(nullptr, from) {}
+  ZoomRangeResponse(ZoomRangeResponse&& from) noexcept
+    : ZoomRangeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ZoomRangeResponse& operator=(const ZoomRangeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ZoomRangeResponse& operator=(ZoomRangeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ZoomRangeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ZoomRangeResponse* internal_default_instance() {
+    return reinterpret_cast<const ZoomRangeResponse*>(
+               &_ZoomRangeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    60;
+
+  friend void swap(ZoomRangeResponse& a, ZoomRangeResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ZoomRangeResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ZoomRangeResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ZoomRangeResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ZoomRangeResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ZoomRangeResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ZoomRangeResponse& from) {
+    ZoomRangeResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(ZoomRangeResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.camera_server.ZoomRangeResponse";
+  }
+  protected:
+  explicit ZoomRangeResponse(::google::protobuf::Arena* arena);
+  ZoomRangeResponse(::google::protobuf::Arena* arena, const ZoomRangeResponse& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kZoomRangeResultFieldNumber = 1,
+  };
+  // .mavsdk.rpc.camera_server.ZoomRangeFeedback zoom_range_result = 1;
+  bool has_zoom_range_result() const;
+  void clear_zoom_range_result() ;
+  const ::mavsdk::rpc::camera_server::ZoomRangeFeedback& zoom_range_result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::camera_server::ZoomRangeFeedback* release_zoom_range_result();
+  ::mavsdk::rpc::camera_server::ZoomRangeFeedback* mutable_zoom_range_result();
+  void set_allocated_zoom_range_result(::mavsdk::rpc::camera_server::ZoomRangeFeedback* value);
+  void unsafe_arena_set_allocated_zoom_range_result(::mavsdk::rpc::camera_server::ZoomRangeFeedback* value);
+  ::mavsdk::rpc::camera_server::ZoomRangeFeedback* unsafe_arena_release_zoom_range_result();
+
+  private:
+  const ::mavsdk::rpc::camera_server::ZoomRangeFeedback& _internal_zoom_range_result() const;
+  ::mavsdk::rpc::camera_server::ZoomRangeFeedback* _internal_mutable_zoom_range_result();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.camera_server.ZoomRangeResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::camera_server::ZoomRangeFeedback* zoom_range_result_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_camera_5fserver_2fcamera_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
 class TrackingRectangleCommandResponse final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.camera_server.TrackingRectangleCommandResponse) */ {
  public:
@@ -10938,7 +11170,7 @@ class TrackingRectangleCommandResponse final :
                &_TrackingRectangleCommandResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    79;
+    80;
 
   friend void swap(TrackingRectangleCommandResponse& a, TrackingRectangleCommandResponse& b) {
     a.Swap(&b);
@@ -11119,7 +11351,7 @@ class TrackingPointCommandResponse final :
                &_TrackingPointCommandResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    77;
+    78;
 
   friend void swap(TrackingPointCommandResponse& a, TrackingPointCommandResponse& b) {
     a.Swap(&b);
@@ -11662,7 +11894,7 @@ class SetTrackingRectangleStatusRequest final :
                &_SetTrackingRectangleStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    73;
 
   friend void swap(SetTrackingRectangleStatusRequest& a, SetTrackingRectangleStatusRequest& b) {
     a.Swap(&b);
@@ -11843,7 +12075,7 @@ class SetTrackingPointStatusRequest final :
                &_SetTrackingPointStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    71;
 
   friend void swap(SetTrackingPointStatusRequest& a, SetTrackingPointStatusRequest& b) {
     a.Swap(&b);
@@ -12748,7 +12980,7 @@ class RespondZoomRangeResponse final :
                &_RespondZoomRangeResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    62;
 
   friend void swap(RespondZoomRangeResponse& a, RespondZoomRangeResponse& b) {
     a.Swap(&b);
@@ -13291,7 +13523,7 @@ class RespondTrackingRectangleCommandResponse final :
                &_RespondTrackingRectangleCommandResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    85;
+    86;
 
   friend void swap(RespondTrackingRectangleCommandResponse& a, RespondTrackingRectangleCommandResponse& b) {
     a.Swap(&b);
@@ -13472,7 +13704,7 @@ class RespondTrackingPointCommandResponse final :
                &_RespondTrackingPointCommandResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    83;
+    84;
 
   friend void swap(RespondTrackingPointCommandResponse& a, RespondTrackingPointCommandResponse& b) {
     a.Swap(&b);
@@ -13653,7 +13885,7 @@ class RespondTrackingOffCommandResponse final :
                &_RespondTrackingOffCommandResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    87;
+    88;
 
   friend void swap(RespondTrackingOffCommandResponse& a, RespondTrackingOffCommandResponse& b) {
     a.Swap(&b);
@@ -16030,7 +16262,7 @@ class CaptureInfo final :
                &_CaptureInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    67;
 
   friend void swap(CaptureInfo& a, CaptureInfo& b) {
     a.Swap(&b);
@@ -19303,29 +19535,221 @@ inline void RespondZoomStopResponse::set_allocated_camera_server_result(::mavsdk
 
 // -------------------------------------------------------------------
 
-// ZoomRangeResponse
+// ZoomRangeFeedback
 
 // float factor = 1;
-inline void ZoomRangeResponse::clear_factor() {
+inline void ZoomRangeFeedback::clear_factor() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.factor_ = 0;
 }
-inline float ZoomRangeResponse::factor() const {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeResponse.factor)
+inline float ZoomRangeFeedback::factor() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeFeedback.factor)
   return _internal_factor();
 }
-inline void ZoomRangeResponse::set_factor(float value) {
+inline void ZoomRangeFeedback::set_factor(float value) {
   _internal_set_factor(value);
-  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.ZoomRangeResponse.factor)
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.ZoomRangeFeedback.factor)
 }
-inline float ZoomRangeResponse::_internal_factor() const {
+inline float ZoomRangeFeedback::_internal_factor() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.factor_;
 }
-inline void ZoomRangeResponse::_internal_set_factor(float value) {
+inline void ZoomRangeFeedback::_internal_set_factor(float value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.factor_ = value;
+}
+
+// float center_x = 2;
+inline void ZoomRangeFeedback::clear_center_x() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.center_x_ = 0;
+}
+inline float ZoomRangeFeedback::center_x() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeFeedback.center_x)
+  return _internal_center_x();
+}
+inline void ZoomRangeFeedback::set_center_x(float value) {
+  _internal_set_center_x(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.ZoomRangeFeedback.center_x)
+}
+inline float ZoomRangeFeedback::_internal_center_x() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.center_x_;
+}
+inline void ZoomRangeFeedback::_internal_set_center_x(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.center_x_ = value;
+}
+
+// float center_y = 3;
+inline void ZoomRangeFeedback::clear_center_y() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.center_y_ = 0;
+}
+inline float ZoomRangeFeedback::center_y() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeFeedback.center_y)
+  return _internal_center_y();
+}
+inline void ZoomRangeFeedback::set_center_y(float value) {
+  _internal_set_center_y(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.ZoomRangeFeedback.center_y)
+}
+inline float ZoomRangeFeedback::_internal_center_y() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.center_y_;
+}
+inline void ZoomRangeFeedback::_internal_set_center_y(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.center_y_ = value;
+}
+
+// float ts_pt1 = 4;
+inline void ZoomRangeFeedback::clear_ts_pt1() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.ts_pt1_ = 0;
+}
+inline float ZoomRangeFeedback::ts_pt1() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeFeedback.ts_pt1)
+  return _internal_ts_pt1();
+}
+inline void ZoomRangeFeedback::set_ts_pt1(float value) {
+  _internal_set_ts_pt1(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.ZoomRangeFeedback.ts_pt1)
+}
+inline float ZoomRangeFeedback::_internal_ts_pt1() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.ts_pt1_;
+}
+inline void ZoomRangeFeedback::_internal_set_ts_pt1(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ts_pt1_ = value;
+}
+
+// float ts_pt2 = 5;
+inline void ZoomRangeFeedback::clear_ts_pt2() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.ts_pt2_ = 0;
+}
+inline float ZoomRangeFeedback::ts_pt2() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeFeedback.ts_pt2)
+  return _internal_ts_pt2();
+}
+inline void ZoomRangeFeedback::set_ts_pt2(float value) {
+  _internal_set_ts_pt2(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.camera_server.ZoomRangeFeedback.ts_pt2)
+}
+inline float ZoomRangeFeedback::_internal_ts_pt2() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.ts_pt2_;
+}
+inline void ZoomRangeFeedback::_internal_set_ts_pt2(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ts_pt2_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ZoomRangeResponse
+
+// .mavsdk.rpc.camera_server.ZoomRangeFeedback zoom_range_result = 1;
+inline bool ZoomRangeResponse::has_zoom_range_result() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.zoom_range_result_ != nullptr);
+  return value;
+}
+inline void ZoomRangeResponse::clear_zoom_range_result() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.zoom_range_result_ != nullptr) _impl_.zoom_range_result_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::camera_server::ZoomRangeFeedback& ZoomRangeResponse::_internal_zoom_range_result() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::mavsdk::rpc::camera_server::ZoomRangeFeedback* p = _impl_.zoom_range_result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::camera_server::ZoomRangeFeedback&>(::mavsdk::rpc::camera_server::_ZoomRangeFeedback_default_instance_);
+}
+inline const ::mavsdk::rpc::camera_server::ZoomRangeFeedback& ZoomRangeResponse::zoom_range_result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.camera_server.ZoomRangeResponse.zoom_range_result)
+  return _internal_zoom_range_result();
+}
+inline void ZoomRangeResponse::unsafe_arena_set_allocated_zoom_range_result(::mavsdk::rpc::camera_server::ZoomRangeFeedback* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.zoom_range_result_);
+  }
+  _impl_.zoom_range_result_ = reinterpret_cast<::mavsdk::rpc::camera_server::ZoomRangeFeedback*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.camera_server.ZoomRangeResponse.zoom_range_result)
+}
+inline ::mavsdk::rpc::camera_server::ZoomRangeFeedback* ZoomRangeResponse::release_zoom_range_result() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::camera_server::ZoomRangeFeedback* released = _impl_.zoom_range_result_;
+  _impl_.zoom_range_result_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::mavsdk::rpc::camera_server::ZoomRangeFeedback* ZoomRangeResponse::unsafe_arena_release_zoom_range_result() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.camera_server.ZoomRangeResponse.zoom_range_result)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::camera_server::ZoomRangeFeedback* temp = _impl_.zoom_range_result_;
+  _impl_.zoom_range_result_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::camera_server::ZoomRangeFeedback* ZoomRangeResponse::_internal_mutable_zoom_range_result() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.zoom_range_result_ == nullptr) {
+    auto* p = CreateMaybeMessage<::mavsdk::rpc::camera_server::ZoomRangeFeedback>(GetArena());
+    _impl_.zoom_range_result_ = reinterpret_cast<::mavsdk::rpc::camera_server::ZoomRangeFeedback*>(p);
+  }
+  return _impl_.zoom_range_result_;
+}
+inline ::mavsdk::rpc::camera_server::ZoomRangeFeedback* ZoomRangeResponse::mutable_zoom_range_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::mavsdk::rpc::camera_server::ZoomRangeFeedback* _msg = _internal_mutable_zoom_range_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.camera_server.ZoomRangeResponse.zoom_range_result)
+  return _msg;
+}
+inline void ZoomRangeResponse::set_allocated_zoom_range_result(::mavsdk::rpc::camera_server::ZoomRangeFeedback* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::mavsdk::rpc::camera_server::ZoomRangeFeedback*>(_impl_.zoom_range_result_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::mavsdk::rpc::camera_server::ZoomRangeFeedback*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.zoom_range_result_ = reinterpret_cast<::mavsdk::rpc::camera_server::ZoomRangeFeedback*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.camera_server.ZoomRangeResponse.zoom_range_result)
 }
 
 // -------------------------------------------------------------------
