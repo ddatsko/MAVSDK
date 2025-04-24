@@ -1354,7 +1354,32 @@ CameraServerImpl::process_set_camera_zoom(const MavlinkCommandReceiver::CommandL
 
             } else {
                 _last_zoom_range_command = command;
-                _zoom_range_callbacks(zoom_message);
+                float current_zoom = _zoom_range_callbacks(zoom_message);
+
+                // Send command acknowledgment
+                auto command_ack = _server_component_impl->make_command_ack_message(
+                    command, MAV_RESULT::MAV_RESULT_ACCEPTED);
+                _server_component_impl->send_command_ack(command_ack);
+                LogDebug() << "sent zoom range ack";
+
+                // Send camera settings message with current zoom level
+                const auto mode_id = CAMERA_MODE::CAMERA_MODE_IMAGE;
+                const float focus_level = 0;
+
+                _server_component_impl->queue_message([&](MavlinkAddress mavlink_address, uint8_t channel) {
+                    mavlink_message_t message{};
+                    mavlink_msg_camera_settings_pack_chan(
+                        mavlink_address.system_id,
+                        mavlink_address.component_id,
+                        channel,
+                        &message,
+                        static_cast<uint32_t>(_server_component_impl->get_time().elapsed_s() * 1e3),
+                        mode_id,
+                        current_zoom,
+                        focus_level);
+                    return message;
+                });
+                LogDebug() << "sent camera settings msg with zoom level: " << current_zoom;
             }
             break;
         case ZOOM_TYPE_STEP:
