@@ -120,11 +120,58 @@ public:
     operator<<(std::ostream& str, CameraServer::Information const& information);
 
     /**
+     * @brief Video stream types
+     */
+    enum class VideoStreamType {
+        Rtsp = 0, /**< @brief Stream is RTSP */
+        RtpUdp = 1, /**< @brief Stream is RTP UDP (URI gives the port number) */
+        TcpMpeg = 2, /**< @brief Stream is MPEG on TCP */
+        MpegTs = 3, /**< @brief Stream is MPEG TS (URI gives the port number) */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::VideoStreamType`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::VideoStreamType const& video_stream_type);
+
+    /**
+     * @brief Stream status flags (Bitmap)
+     */
+    enum class VideoStreamStatusFlags {
+        None = 0, /**< @brief No flags set */
+        Running = 1, /**< @brief Stream is active (running) */
+        Thermal = 2, /**< @brief Stream is thermal imaging */
+        ThermalRangeEnabled = 4, /**< @brief Stream can report absolute thermal range */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::VideoStreamStatusFlags`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::VideoStreamStatusFlags const& video_stream_status_flags);
+
+    /**
      * @brief Type to represent video streaming settings
      */
     struct VideoStreaming {
         bool has_rtsp_server{}; /**< @brief True if the capture was successful */
         std::string rtsp_uri{}; /**< @brief RTSP URI (e.g. rtsp://192.168.1.42:8554/live) */
+        float framerate_hz{}; /**< @brief Frame rate in Hz */
+        uint16_t resolution_h{}; /**< @brief Horizontal resolution in pixels */
+        uint16_t resolution_v{}; /**< @brief Vertical resolution in pixels */
+        uint32_t bitrate_b_s{}; /**< @brief Bit rate in bits per second */
+        uint16_t rotation_deg{}; /**< @brief Video image rotation clockwise in degrees */
+        uint16_t hfov_deg{}; /**< @brief Horizontal field of view in degrees */
+        std::string name{}; /**< @brief Stream name */
+        uint8_t stream_id{}; /**< @brief Stream ID (1 for first, 2 for second, etc.) */
+        uint8_t count{}; /**< @brief Number of streams available */
+        VideoStreamType type{}; /**< @brief Type of stream */
+        VideoStreamStatusFlags flags{}; /**< @brief Bitmap of stream status flags */
     };
 
     /**

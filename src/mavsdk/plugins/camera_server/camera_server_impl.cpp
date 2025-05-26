@@ -1549,6 +1549,7 @@ std::optional<mavlink_command_ack_t> CameraServerImpl::process_video_stream_info
         LogDebug() << "sent video streaming ack";
 
         const char name[32] = "";
+        strncpy(const_cast<char*>(name), _video_streaming.name.c_str(), sizeof(name) - 1);
 
         _video_streaming.rtsp_uri.resize(sizeof(mavlink_video_stream_information_t::uri));
 
@@ -1557,16 +1558,16 @@ std::optional<mavlink_command_ack_t> CameraServerImpl::process_video_stream_info
             _server_component_impl->get_own_system_id(),
             _server_component_impl->get_own_component_id(),
             &msg,
-            0, // Stream id
-            0, // Count
-            VIDEO_STREAM_TYPE_RTSP,
-            VIDEO_STREAM_STATUS_FLAGS_RUNNING,
-            0, // famerate
-            0, // resolution horizontal
-            0, // resolution vertical
-            0, // bitrate
-            0, // rotation
-            0, // horizontal field of view
+            _video_streaming.stream_id, // Stream id
+            _video_streaming.count, // Count
+            static_cast<uint8_t>(_video_streaming.type), // Type
+            static_cast<uint16_t>(_video_streaming.flags), // Flags
+            _video_streaming.framerate_hz, // Framerate
+            _video_streaming.resolution_h, // Resolution horizontal
+            _video_streaming.resolution_v, // Resolution vertical
+            _video_streaming.bitrate_b_s, // Bitrate
+            _video_streaming.rotation_deg, // Rotation
+            _video_streaming.hfov_deg, // Horizontal field of view
             name,
             _video_streaming.rtsp_uri.c_str());
 
