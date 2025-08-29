@@ -83,6 +83,82 @@ public:
         }
     }
 
+    static rpc::camera_server::VideoStreamType
+    translateToRpcVideoStreamType(const mavsdk::CameraServer::VideoStreamType& video_stream_type)
+    {
+        switch (video_stream_type) {
+            default:
+                LogErr() << "Unknown video_stream_type enum value: "
+                         << static_cast<int>(video_stream_type);
+            // FALLTHROUGH
+            case mavsdk::CameraServer::VideoStreamType::Rtsp:
+                return rpc::camera_server::VIDEO_STREAM_TYPE_RTSP;
+            case mavsdk::CameraServer::VideoStreamType::RtpUdp:
+                return rpc::camera_server::VIDEO_STREAM_TYPE_RTP_UDP;
+            case mavsdk::CameraServer::VideoStreamType::TcpMpeg:
+                return rpc::camera_server::VIDEO_STREAM_TYPE_TCP_MPEG;
+            case mavsdk::CameraServer::VideoStreamType::MpegTs:
+                return rpc::camera_server::VIDEO_STREAM_TYPE_MPEG_TS;
+        }
+    }
+
+    static mavsdk::CameraServer::VideoStreamType
+    translateFromRpcVideoStreamType(const rpc::camera_server::VideoStreamType video_stream_type)
+    {
+        switch (video_stream_type) {
+            default:
+                LogErr() << "Unknown video_stream_type enum value: "
+                         << static_cast<int>(video_stream_type);
+            // FALLTHROUGH
+            case rpc::camera_server::VIDEO_STREAM_TYPE_RTSP:
+                return mavsdk::CameraServer::VideoStreamType::Rtsp;
+            case rpc::camera_server::VIDEO_STREAM_TYPE_RTP_UDP:
+                return mavsdk::CameraServer::VideoStreamType::RtpUdp;
+            case rpc::camera_server::VIDEO_STREAM_TYPE_TCP_MPEG:
+                return mavsdk::CameraServer::VideoStreamType::TcpMpeg;
+            case rpc::camera_server::VIDEO_STREAM_TYPE_MPEG_TS:
+                return mavsdk::CameraServer::VideoStreamType::MpegTs;
+        }
+    }
+
+    static rpc::camera_server::VideoStreamStatusFlags translateToRpcVideoStreamStatusFlags(
+        const mavsdk::CameraServer::VideoStreamStatusFlags& video_stream_status_flags)
+    {
+        switch (video_stream_status_flags) {
+            default:
+                LogErr() << "Unknown video_stream_status_flags enum value: "
+                         << static_cast<int>(video_stream_status_flags);
+            // FALLTHROUGH
+            case mavsdk::CameraServer::VideoStreamStatusFlags::None:
+                return rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_NONE;
+            case mavsdk::CameraServer::VideoStreamStatusFlags::Running:
+                return rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_RUNNING;
+            case mavsdk::CameraServer::VideoStreamStatusFlags::Thermal:
+                return rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_THERMAL;
+            case mavsdk::CameraServer::VideoStreamStatusFlags::ThermalRangeEnabled:
+                return rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED;
+        }
+    }
+
+    static mavsdk::CameraServer::VideoStreamStatusFlags translateFromRpcVideoStreamStatusFlags(
+        const rpc::camera_server::VideoStreamStatusFlags video_stream_status_flags)
+    {
+        switch (video_stream_status_flags) {
+            default:
+                LogErr() << "Unknown video_stream_status_flags enum value: "
+                         << static_cast<int>(video_stream_status_flags);
+            // FALLTHROUGH
+            case rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_NONE:
+                return mavsdk::CameraServer::VideoStreamStatusFlags::None;
+            case rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_RUNNING:
+                return mavsdk::CameraServer::VideoStreamStatusFlags::Running;
+            case rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_THERMAL:
+                return mavsdk::CameraServer::VideoStreamStatusFlags::Thermal;
+            case rpc::camera_server::VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED:
+                return mavsdk::CameraServer::VideoStreamStatusFlags::ThermalRangeEnabled;
+        }
+    }
+
     static rpc::camera_server::Mode translateToRpcMode(const mavsdk::CameraServer::Mode& mode)
     {
         switch (mode) {
@@ -190,6 +266,28 @@ public:
 
         rpc_obj->set_rtsp_uri(video_streaming.rtsp_uri);
 
+        rpc_obj->set_framerate_hz(video_streaming.framerate_hz);
+
+        rpc_obj->set_resolution_h(video_streaming.resolution_h);
+
+        rpc_obj->set_resolution_v(video_streaming.resolution_v);
+
+        rpc_obj->set_bitrate_b_s(video_streaming.bitrate_b_s);
+
+        rpc_obj->set_rotation_deg(video_streaming.rotation_deg);
+
+        rpc_obj->set_hfov_deg(video_streaming.hfov_deg);
+
+        rpc_obj->set_name(video_streaming.name);
+
+        rpc_obj->set_stream_id(video_streaming.stream_id);
+
+        rpc_obj->set_count(video_streaming.count);
+
+        rpc_obj->set_type(translateToRpcVideoStreamType(video_streaming.type));
+
+        rpc_obj->set_flags(translateToRpcVideoStreamStatusFlags(video_streaming.flags));
+
         return rpc_obj;
     }
 
@@ -201,6 +299,28 @@ public:
         obj.has_rtsp_server = video_streaming.has_rtsp_server();
 
         obj.rtsp_uri = video_streaming.rtsp_uri();
+
+        obj.framerate_hz = video_streaming.framerate_hz();
+
+        obj.resolution_h = video_streaming.resolution_h();
+
+        obj.resolution_v = video_streaming.resolution_v();
+
+        obj.bitrate_b_s = video_streaming.bitrate_b_s();
+
+        obj.rotation_deg = video_streaming.rotation_deg();
+
+        obj.hfov_deg = video_streaming.hfov_deg();
+
+        obj.name = video_streaming.name();
+
+        obj.stream_id = video_streaming.stream_id();
+
+        obj.count = video_streaming.count();
+
+        obj.type = translateFromRpcVideoStreamType(video_streaming.type());
+
+        obj.flags = translateFromRpcVideoStreamStatusFlags(video_streaming.flags());
 
         return obj;
     }
