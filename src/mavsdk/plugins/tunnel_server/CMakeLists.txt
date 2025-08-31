@@ -1,7 +1,7 @@
 target_sources(mavsdk
     PRIVATE
-    tunnel.cpp
-    tunnel_impl.cpp
+    tunnel_server.cpp
+    tunnel_server_impl.cpp
 )
 
 target_include_directories(mavsdk PUBLIC
@@ -10,6 +10,6 @@ target_include_directories(mavsdk PUBLIC
     )
 
 install(FILES
-    include/plugins/tunnel/tunnel.h
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/mavsdk/plugins/tunnel
+    include/plugins/tunnel_server/tunnel_server.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/mavsdk/plugins/tunnel_server
 )

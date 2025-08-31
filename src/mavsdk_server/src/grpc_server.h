@@ -179,9 +179,9 @@
 #include "tune/tune_service_impl.h"
 #endif
 
-#ifdef TUNNEL_ENABLED
-#include "plugins/tunnel/tunnel.h"
-#include "tunnel/tunnel_service_impl.h"
+#ifdef TUNNEL_SERVER_ENABLED
+#include "plugins/tunnel_server/tunnel_server.h"
+#include "tunnel_server/tunnel_server_service_impl.h"
 #endif
 
 #ifdef WINCH_ENABLED
@@ -362,9 +362,9 @@ public:
         _tune_service(_tune_lazy_plugin),
 #endif
 
-#ifdef TUNNEL_ENABLED
-        _tunnel_lazy_plugin(mavsdk),
-        _tunnel_service(_tunnel_lazy_plugin),
+#ifdef TUNNEL_SERVER_ENABLED
+        _tunnel_server_lazy_plugin(mavsdk),
+        _tunnel_server_service(_tunnel_server_lazy_plugin),
 #endif
 
 #ifdef WINCH_ENABLED
@@ -615,11 +615,11 @@ private:
     TuneServiceImpl<> _tune_service;
 #endif
 
-#ifdef TUNNEL_ENABLED
+#ifdef TUNNEL_SERVER_ENABLED
 
-    LazyPlugin<Tunnel> _tunnel_lazy_plugin;
+    LazyServerPlugin<TunnelServer> _tunnel_server_lazy_plugin;
 
-    TunnelServiceImpl<> _tunnel_service;
+    TunnelServerServiceImpl<> _tunnel_server_service;
 #endif
 
 #ifdef WINCH_ENABLED

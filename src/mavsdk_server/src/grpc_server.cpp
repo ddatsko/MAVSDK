@@ -154,8 +154,8 @@ int GrpcServer::run()
     builder.RegisterService(&_tune_service);
 #endif
 
-#ifdef TUNNEL_ENABLED
-    builder.RegisterService(&_tunnel_service);
+#ifdef TUNNEL_SERVER_ENABLED
+    builder.RegisterService(&_tunnel_server_service);
 #endif
 
 #ifdef WINCH_ENABLED
@@ -325,8 +325,8 @@ void GrpcServer::stop()
         _tune_service.stop();
 #endif
 
-#ifdef TUNNEL_ENABLED
-        _tunnel_service.stop();
+#ifdef TUNNEL_SERVER_ENABLED
+        _tunnel_server_service.stop();
 #endif
 
 #ifdef WINCH_ENABLED
