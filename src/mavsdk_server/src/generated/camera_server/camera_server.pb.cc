@@ -43,24 +43,28 @@ struct ZoomStopResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ZoomStopResponseDefaultTypeInternal _ZoomStopResponse_default_instance_;
 
-inline constexpr ZoomRangeResponse::Impl_::Impl_(
+inline constexpr ZoomRangeFeedback::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : factor_{0},
+        center_x_{0},
+        center_y_{0},
+        ts_pt1_{0},
+        ts_pt2_{0},
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR ZoomRangeResponse::ZoomRangeResponse(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR ZoomRangeFeedback::ZoomRangeFeedback(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct ZoomRangeResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ZoomRangeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ZoomRangeResponseDefaultTypeInternal() {}
+struct ZoomRangeFeedbackDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ZoomRangeFeedbackDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ZoomRangeFeedbackDefaultTypeInternal() {}
   union {
-    ZoomRangeResponse _instance;
+    ZoomRangeFeedback _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ZoomRangeResponseDefaultTypeInternal _ZoomRangeResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ZoomRangeFeedbackDefaultTypeInternal _ZoomRangeFeedback_default_instance_;
 
 inline constexpr ZoomOutStartResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1067,6 +1071,25 @@ struct CameraServerResultDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CameraServerResultDefaultTypeInternal _CameraServerResult_default_instance_;
 
+inline constexpr ZoomRangeResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        zoom_range_result_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ZoomRangeResponse::ZoomRangeResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ZoomRangeResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ZoomRangeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ZoomRangeResponseDefaultTypeInternal() {}
+  union {
+    ZoomRangeResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ZoomRangeResponseDefaultTypeInternal _ZoomRangeResponse_default_instance_;
+
 inline constexpr TrackingRectangleCommandResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1649,7 +1672,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace camera_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[90];
+static ::_pb::Metadata file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[91];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_camera_5fserver_2fcamera_5fserver_2eproto[7];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_camera_5fserver_2fcamera_5fserver_2eproto = nullptr;
@@ -2200,6 +2223,19 @@ const ::uint32_t TableStruct_camera_5fserver_2fcamera_5fserver_2eproto::offsets[
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeFeedback, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeFeedback, _impl_.factor_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeFeedback, _impl_.center_x_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeFeedback, _impl_.center_y_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeFeedback, _impl_.ts_pt1_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeFeedback, _impl_.ts_pt2_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeResponse, _impl_._has_bits_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeResponse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
@@ -2207,7 +2243,8 @@ const ::uint32_t TableStruct_camera_5fserver_2fcamera_5fserver_2eproto::offsets[
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeResponse, _impl_.factor_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::ZoomRangeResponse, _impl_.zoom_range_result_),
+    0,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::camera_server::RespondZoomRangeRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -2591,37 +2628,38 @@ static const ::_pbi::MigrationSchema
         {517, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondZoomStopRequest)},
         {526, 535, -1, sizeof(::mavsdk::rpc::camera_server::RespondZoomStopResponse)},
         {536, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeZoomRangeRequest)},
-        {544, -1, -1, sizeof(::mavsdk::rpc::camera_server::ZoomRangeResponse)},
-        {553, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondZoomRangeRequest)},
-        {562, 571, -1, sizeof(::mavsdk::rpc::camera_server::RespondZoomRangeResponse)},
-        {572, -1, -1, sizeof(::mavsdk::rpc::camera_server::Information)},
-        {593, -1, -1, sizeof(::mavsdk::rpc::camera_server::VideoStreaming)},
-        {603, -1, -1, sizeof(::mavsdk::rpc::camera_server::Position)},
-        {615, -1, -1, sizeof(::mavsdk::rpc::camera_server::Quaternion)},
-        {627, 641, -1, sizeof(::mavsdk::rpc::camera_server::CaptureInfo)},
-        {647, -1, -1, sizeof(::mavsdk::rpc::camera_server::CameraServerResult)},
-        {657, -1, -1, sizeof(::mavsdk::rpc::camera_server::StorageInformation)},
-        {673, -1, -1, sizeof(::mavsdk::rpc::camera_server::CaptureStatus)},
-        {687, 696, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingPointStatusRequest)},
-        {697, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingPointStatusResponse)},
-        {705, 714, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingRectangleStatusRequest)},
-        {715, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingRectangleStatusResponse)},
-        {723, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingOffStatusRequest)},
-        {731, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingOffStatusResponse)},
-        {739, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeTrackingPointCommandRequest)},
-        {747, 756, -1, sizeof(::mavsdk::rpc::camera_server::TrackingPointCommandResponse)},
-        {757, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeTrackingRectangleCommandRequest)},
-        {765, 774, -1, sizeof(::mavsdk::rpc::camera_server::TrackingRectangleCommandResponse)},
-        {775, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeTrackingOffCommandRequest)},
-        {783, -1, -1, sizeof(::mavsdk::rpc::camera_server::TrackingOffCommandResponse)},
-        {792, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingPointCommandRequest)},
-        {801, 810, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingPointCommandResponse)},
-        {811, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingRectangleCommandRequest)},
-        {820, 829, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingRectangleCommandResponse)},
-        {830, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingOffCommandRequest)},
-        {839, 848, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingOffCommandResponse)},
-        {849, -1, -1, sizeof(::mavsdk::rpc::camera_server::TrackPoint)},
-        {860, -1, -1, sizeof(::mavsdk::rpc::camera_server::TrackRectangle)},
+        {544, -1, -1, sizeof(::mavsdk::rpc::camera_server::ZoomRangeFeedback)},
+        {557, 566, -1, sizeof(::mavsdk::rpc::camera_server::ZoomRangeResponse)},
+        {567, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondZoomRangeRequest)},
+        {576, 585, -1, sizeof(::mavsdk::rpc::camera_server::RespondZoomRangeResponse)},
+        {586, -1, -1, sizeof(::mavsdk::rpc::camera_server::Information)},
+        {607, -1, -1, sizeof(::mavsdk::rpc::camera_server::VideoStreaming)},
+        {617, -1, -1, sizeof(::mavsdk::rpc::camera_server::Position)},
+        {629, -1, -1, sizeof(::mavsdk::rpc::camera_server::Quaternion)},
+        {641, 655, -1, sizeof(::mavsdk::rpc::camera_server::CaptureInfo)},
+        {661, -1, -1, sizeof(::mavsdk::rpc::camera_server::CameraServerResult)},
+        {671, -1, -1, sizeof(::mavsdk::rpc::camera_server::StorageInformation)},
+        {687, -1, -1, sizeof(::mavsdk::rpc::camera_server::CaptureStatus)},
+        {701, 710, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingPointStatusRequest)},
+        {711, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingPointStatusResponse)},
+        {719, 728, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingRectangleStatusRequest)},
+        {729, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingRectangleStatusResponse)},
+        {737, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingOffStatusRequest)},
+        {745, -1, -1, sizeof(::mavsdk::rpc::camera_server::SetTrackingOffStatusResponse)},
+        {753, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeTrackingPointCommandRequest)},
+        {761, 770, -1, sizeof(::mavsdk::rpc::camera_server::TrackingPointCommandResponse)},
+        {771, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeTrackingRectangleCommandRequest)},
+        {779, 788, -1, sizeof(::mavsdk::rpc::camera_server::TrackingRectangleCommandResponse)},
+        {789, -1, -1, sizeof(::mavsdk::rpc::camera_server::SubscribeTrackingOffCommandRequest)},
+        {797, -1, -1, sizeof(::mavsdk::rpc::camera_server::TrackingOffCommandResponse)},
+        {806, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingPointCommandRequest)},
+        {815, 824, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingPointCommandResponse)},
+        {825, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingRectangleCommandRequest)},
+        {834, 843, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingRectangleCommandResponse)},
+        {844, -1, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingOffCommandRequest)},
+        {853, 862, -1, sizeof(::mavsdk::rpc::camera_server::RespondTrackingOffCommandResponse)},
+        {863, -1, -1, sizeof(::mavsdk::rpc::camera_server::TrackPoint)},
+        {874, -1, -1, sizeof(::mavsdk::rpc::camera_server::TrackRectangle)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -2684,6 +2722,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::camera_server::_RespondZoomStopRequest_default_instance_._instance,
     &::mavsdk::rpc::camera_server::_RespondZoomStopResponse_default_instance_._instance,
     &::mavsdk::rpc::camera_server::_SubscribeZoomRangeRequest_default_instance_._instance,
+    &::mavsdk::rpc::camera_server::_ZoomRangeFeedback_default_instance_._instance,
     &::mavsdk::rpc::camera_server::_ZoomRangeResponse_default_instance_._instance,
     &::mavsdk::rpc::camera_server::_RespondZoomRangeRequest_default_instance_._instance,
     &::mavsdk::rpc::camera_server::_RespondZoomRangeResponse_default_instance_._instance,
@@ -2832,255 +2871,259 @@ const char descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto[]
     "e\n\027RespondZoomStopResponse\022J\n\024camera_ser"
     "ver_result\030\001 \001(\0132,.mavsdk.rpc.camera_ser"
     "ver.CameraServerResult\"\033\n\031SubscribeZoomR"
-    "angeRequest\"#\n\021ZoomRangeResponse\022\016\n\006fact"
-    "or\030\001 \001(\002\"`\n\027RespondZoomRangeRequest\022E\n\023z"
-    "oom_range_feedback\030\001 \001(\0162(.mavsdk.rpc.ca"
-    "mera_server.CameraFeedback\"f\n\030RespondZoo"
-    "mRangeResponse\022J\n\024camera_server_result\030\001"
-    " \001(\0132,.mavsdk.rpc.camera_server.CameraSe"
-    "rverResult\"\214\003\n\013Information\022\023\n\013vendor_nam"
-    "e\030\001 \001(\t\022\022\n\nmodel_name\030\002 \001(\t\022\030\n\020firmware_"
-    "version\030\003 \001(\t\022\027\n\017focal_length_mm\030\004 \001(\002\022!"
-    "\n\031horizontal_sensor_size_mm\030\005 \001(\002\022\037\n\027ver"
-    "tical_sensor_size_mm\030\006 \001(\002\022 \n\030horizontal"
-    "_resolution_px\030\007 \001(\r\022\036\n\026vertical_resolut"
-    "ion_px\030\010 \001(\r\022\017\n\007lens_id\030\t \001(\r\022\037\n\027definit"
-    "ion_file_version\030\n \001(\r\022\033\n\023definition_fil"
-    "e_uri\030\013 \001(\t\022%\n\035image_in_video_mode_suppo"
-    "rted\030\014 \001(\010\022%\n\035video_in_image_mode_suppor"
-    "ted\030\r \001(\010\";\n\016VideoStreaming\022\027\n\017has_rtsp_"
-    "server\030\001 \001(\010\022\020\n\010rtsp_uri\030\002 \001(\t\"q\n\010Positi"
-    "on\022\024\n\014latitude_deg\030\001 \001(\001\022\025\n\rlongitude_de"
-    "g\030\002 \001(\001\022\033\n\023absolute_altitude_m\030\003 \001(\002\022\033\n\023"
-    "relative_altitude_m\030\004 \001(\002\"8\n\nQuaternion\022"
-    "\t\n\001w\030\001 \001(\002\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 "
-    "\001(\002\"\320\001\n\013CaptureInfo\0224\n\010position\030\001 \001(\0132\"."
-    "mavsdk.rpc.camera_server.Position\022A\n\023att"
-    "itude_quaternion\030\002 \001(\0132$.mavsdk.rpc.came"
-    "ra_server.Quaternion\022\023\n\013time_utc_us\030\003 \001("
-    "\004\022\022\n\nis_success\030\004 \001(\010\022\r\n\005index\030\005 \001(\005\022\020\n\010"
-    "file_url\030\006 \001(\t\"\263\002\n\022CameraServerResult\022C\n"
-    "\006result\030\001 \001(\01623.mavsdk.rpc.camera_server"
-    ".CameraServerResult.Result\022\022\n\nresult_str"
-    "\030\002 \001(\t\"\303\001\n\006Result\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n"
-    "\016RESULT_SUCCESS\020\001\022\026\n\022RESULT_IN_PROGRESS\020"
-    "\002\022\017\n\013RESULT_BUSY\020\003\022\021\n\rRESULT_DENIED\020\004\022\020\n"
-    "\014RESULT_ERROR\020\005\022\022\n\016RESULT_TIMEOUT\020\006\022\031\n\025R"
-    "ESULT_WRONG_ARGUMENT\020\007\022\024\n\020RESULT_NO_SYST"
-    "EM\020\010\"\214\005\n\022StorageInformation\022\030\n\020used_stor"
-    "age_mib\030\001 \001(\002\022\035\n\025available_storage_mib\030\002"
-    " \001(\002\022\031\n\021total_storage_mib\030\003 \001(\002\022R\n\016stora"
-    "ge_status\030\004 \001(\0162:.mavsdk.rpc.camera_serv"
-    "er.StorageInformation.StorageStatus\022\022\n\ns"
-    "torage_id\030\005 \001(\r\022N\n\014storage_type\030\006 \001(\01628."
-    "mavsdk.rpc.camera_server.StorageInformat"
-    "ion.StorageType\022\030\n\020read_speed_mib_s\030\007 \001("
-    "\002\022\031\n\021write_speed_mib_s\030\010 \001(\002\"\221\001\n\rStorage"
-    "Status\022 \n\034STORAGE_STATUS_NOT_AVAILABLE\020\000"
-    "\022\036\n\032STORAGE_STATUS_UNFORMATTED\020\001\022\034\n\030STOR"
-    "AGE_STATUS_FORMATTED\020\002\022 \n\034STORAGE_STATUS"
-    "_NOT_SUPPORTED\020\003\"\240\001\n\013StorageType\022\030\n\024STOR"
-    "AGE_TYPE_UNKNOWN\020\000\022\032\n\026STORAGE_TYPE_USB_S"
-    "TICK\020\001\022\023\n\017STORAGE_TYPE_SD\020\002\022\030\n\024STORAGE_T"
-    "YPE_MICROSD\020\003\022\023\n\017STORAGE_TYPE_HD\020\007\022\027\n\022ST"
-    "ORAGE_TYPE_OTHER\020\376\001\"\356\003\n\rCaptureStatus\022\030\n"
-    "\020image_interval_s\030\001 \001(\002\022\030\n\020recording_tim"
-    "e_s\030\002 \001(\002\022\036\n\026available_capacity_mib\030\003 \001("
-    "\002\022I\n\014image_status\030\004 \001(\01623.mavsdk.rpc.cam"
-    "era_server.CaptureStatus.ImageStatus\022I\n\014"
-    "video_status\030\005 \001(\01623.mavsdk.rpc.camera_s"
-    "erver.CaptureStatus.VideoStatus\022\023\n\013image"
-    "_count\030\006 \001(\005\"\221\001\n\013ImageStatus\022\025\n\021IMAGE_ST"
-    "ATUS_IDLE\020\000\022$\n IMAGE_STATUS_CAPTURE_IN_P"
-    "ROGRESS\020\001\022\036\n\032IMAGE_STATUS_INTERVAL_IDLE\020"
-    "\002\022%\n!IMAGE_STATUS_INTERVAL_IN_PROGRESS\020\003"
-    "\"J\n\013VideoStatus\022\025\n\021VIDEO_STATUS_IDLE\020\000\022$"
-    "\n VIDEO_STATUS_CAPTURE_IN_PROGRESS\020\001\"\\\n\035"
-    "SetTrackingPointStatusRequest\022;\n\rtracked"
-    "_point\030\001 \001(\0132$.mavsdk.rpc.camera_server."
-    "TrackPoint\" \n\036SetTrackingPointStatusResp"
-    "onse\"h\n!SetTrackingRectangleStatusReques"
-    "t\022C\n\021tracked_rectangle\030\001 \001(\0132(.mavsdk.rp"
-    "c.camera_server.TrackRectangle\"$\n\"SetTra"
-    "ckingRectangleStatusResponse\"\035\n\033SetTrack"
-    "ingOffStatusRequest\"\036\n\034SetTrackingOffSta"
-    "tusResponse\"&\n$SubscribeTrackingPointCom"
-    "mandRequest\"Y\n\034TrackingPointCommandRespo"
-    "nse\0229\n\013track_point\030\001 \001(\0132$.mavsdk.rpc.ca"
-    "mera_server.TrackPoint\"*\n(SubscribeTrack"
-    "ingRectangleCommandRequest\"e\n TrackingRe"
-    "ctangleCommandResponse\022A\n\017track_rectangl"
-    "e\030\001 \001(\0132(.mavsdk.rpc.camera_server.Track"
-    "Rectangle\"$\n\"SubscribeTrackingOffCommand"
-    "Request\"/\n\032TrackingOffCommandResponse\022\021\n"
-    "\ttimestamp\030\001 \001(\004\"k\n\"RespondTrackingPoint"
-    "CommandRequest\022E\n\023stop_video_feedback\030\001 "
-    "\001(\0162(.mavsdk.rpc.camera_server.CameraFee"
-    "dback\"q\n#RespondTrackingPointCommandResp"
-    "onse\022J\n\024camera_server_result\030\001 \001(\0132,.mav"
-    "sdk.rpc.camera_server.CameraServerResult"
-    "\"o\n&RespondTrackingRectangleCommandReque"
-    "st\022E\n\023stop_video_feedback\030\001 \001(\0162(.mavsdk"
-    ".rpc.camera_server.CameraFeedback\"u\n\'Res"
-    "pondTrackingRectangleCommandResponse\022J\n\024"
-    "camera_server_result\030\001 \001(\0132,.mavsdk.rpc."
-    "camera_server.CameraServerResult\"i\n Resp"
-    "ondTrackingOffCommandRequest\022E\n\023stop_vid"
-    "eo_feedback\030\001 \001(\0162(.mavsdk.rpc.camera_se"
-    "rver.CameraFeedback\"o\n!RespondTrackingOf"
-    "fCommandResponse\022J\n\024camera_server_result"
-    "\030\001 \001(\0132,.mavsdk.rpc.camera_server.Camera"
-    "ServerResult\">\n\nTrackPoint\022\017\n\007point_x\030\001 "
-    "\001(\002\022\017\n\007point_y\030\002 \001(\002\022\016\n\006radius\030\003 \001(\002\"\227\001\n"
-    "\016TrackRectangle\022\031\n\021top_left_corner_x\030\001 \001"
-    "(\002\022\031\n\021top_left_corner_y\030\002 \001(\002\022\035\n\025bottom_"
-    "right_corner_x\030\003 \001(\002\022\035\n\025bottom_right_cor"
-    "ner_y\030\004 \001(\002\022\021\n\ttimestamp\030\005 \001(\004*{\n\016Camera"
-    "Feedback\022\033\n\027CAMERA_FEEDBACK_UNKNOWN\020\000\022\026\n"
-    "\022CAMERA_FEEDBACK_OK\020\001\022\030\n\024CAMERA_FEEDBACK"
-    "_BUSY\020\002\022\032\n\026CAMERA_FEEDBACK_FAILED\020\003*8\n\004M"
-    "ode\022\020\n\014MODE_UNKNOWN\020\000\022\016\n\nMODE_PHOTO\020\001\022\016\n"
-    "\nMODE_VIDEO\020\0022\270+\n\023CameraServerService\022y\n"
-    "\016SetInformation\022/.mavsdk.rpc.camera_serv"
-    "er.SetInformationRequest\0320.mavsdk.rpc.ca"
-    "mera_server.SetInformationResponse\"\004\200\265\030\001"
-    "\022\202\001\n\021SetVideoStreaming\0222.mavsdk.rpc.came"
-    "ra_server.SetVideoStreamingRequest\0323.mav"
-    "sdk.rpc.camera_server.SetVideoStreamingR"
-    "esponse\"\004\200\265\030\001\022v\n\rSetInProgress\022..mavsdk."
-    "rpc.camera_server.SetInProgressRequest\032/"
-    ".mavsdk.rpc.camera_server.SetInProgressR"
-    "esponse\"\004\200\265\030\001\022~\n\022SubscribeTakePhoto\0223.ma"
-    "vsdk.rpc.camera_server.SubscribeTakePhot"
-    "oRequest\032+.mavsdk.rpc.camera_server.Take"
-    "PhotoResponse\"\004\200\265\030\0000\001\022\177\n\020RespondTakePhot"
-    "o\0221.mavsdk.rpc.camera_server.RespondTake"
-    "PhotoRequest\0322.mavsdk.rpc.camera_server."
-    "RespondTakePhotoResponse\"\004\200\265\030\001\022\201\001\n\023Subsc"
-    "ribeStartVideo\0224.mavsdk.rpc.camera_serve"
-    "r.SubscribeStartVideoRequest\032,.mavsdk.rp"
-    "c.camera_server.StartVideoResponse\"\004\200\265\030\000"
-    "0\001\022\202\001\n\021RespondStartVideo\0222.mavsdk.rpc.ca"
-    "mera_server.RespondStartVideoRequest\0323.m"
-    "avsdk.rpc.camera_server.RespondStartVide"
-    "oResponse\"\004\200\265\030\001\022~\n\022SubscribeStopVideo\0223."
-    "mavsdk.rpc.camera_server.SubscribeStopVi"
-    "deoRequest\032+.mavsdk.rpc.camera_server.St"
-    "opVideoResponse\"\004\200\265\030\0000\001\022\177\n\020RespondStopVi"
-    "deo\0221.mavsdk.rpc.camera_server.RespondSt"
-    "opVideoRequest\0322.mavsdk.rpc.camera_serve"
-    "r.RespondStopVideoResponse\"\004\200\265\030\001\022\234\001\n\034Sub"
-    "scribeStartVideoStreaming\022=.mavsdk.rpc.c"
-    "amera_server.SubscribeStartVideoStreamin"
-    "gRequest\0325.mavsdk.rpc.camera_server.Star"
-    "tVideoStreamingResponse\"\004\200\265\030\0000\001\022\235\001\n\032Resp"
-    "ondStartVideoStreaming\022;.mavsdk.rpc.came"
-    "ra_server.RespondStartVideoStreamingRequ"
-    "est\032<.mavsdk.rpc.camera_server.RespondSt"
-    "artVideoStreamingResponse\"\004\200\265\030\001\022\231\001\n\033Subs"
-    "cribeStopVideoStreaming\022<.mavsdk.rpc.cam"
-    "era_server.SubscribeStopVideoStreamingRe"
-    "quest\0324.mavsdk.rpc.camera_server.StopVid"
-    "eoStreamingResponse\"\004\200\265\030\0000\001\022\232\001\n\031RespondS"
-    "topVideoStreaming\022:.mavsdk.rpc.camera_se"
-    "rver.RespondStopVideoStreamingRequest\032;."
-    "mavsdk.rpc.camera_server.RespondStopVide"
-    "oStreamingResponse\"\004\200\265\030\001\022x\n\020SubscribeSet"
-    "Mode\0221.mavsdk.rpc.camera_server.Subscrib"
-    "eSetModeRequest\032).mavsdk.rpc.camera_serv"
-    "er.SetModeResponse\"\004\200\265\030\0000\001\022y\n\016RespondSet"
-    "Mode\022/.mavsdk.rpc.camera_server.RespondS"
-    "etModeRequest\0320.mavsdk.rpc.camera_server"
-    ".RespondSetModeResponse\"\004\200\265\030\001\022\231\001\n\033Subscr"
-    "ibeStorageInformation\022<.mavsdk.rpc.camer"
-    "a_server.SubscribeStorageInformationRequ"
-    "est\0324.mavsdk.rpc.camera_server.StorageIn"
-    "formationResponse\"\004\200\265\030\0000\001\022\232\001\n\031RespondSto"
-    "rageInformation\022:.mavsdk.rpc.camera_serv"
-    "er.RespondStorageInformationRequest\032;.ma"
-    "vsdk.rpc.camera_server.RespondStorageInf"
-    "ormationResponse\"\004\200\265\030\001\022\212\001\n\026SubscribeCapt"
-    "ureStatus\0227.mavsdk.rpc.camera_server.Sub"
-    "scribeCaptureStatusRequest\032/.mavsdk.rpc."
-    "camera_server.CaptureStatusResponse\"\004\200\265\030"
-    "\0000\001\022\213\001\n\024RespondCaptureStatus\0225.mavsdk.rp"
-    "c.camera_server.RespondCaptureStatusRequ"
-    "est\0326.mavsdk.rpc.camera_server.RespondCa"
-    "ptureStatusResponse\"\004\200\265\030\001\022\212\001\n\026SubscribeF"
-    "ormatStorage\0227.mavsdk.rpc.camera_server."
-    "SubscribeFormatStorageRequest\032/.mavsdk.r"
-    "pc.camera_server.FormatStorageResponse\"\004"
-    "\200\265\030\0000\001\022\213\001\n\024RespondFormatStorage\0225.mavsdk"
-    ".rpc.camera_server.RespondFormatStorageR"
-    "equest\0326.mavsdk.rpc.camera_server.Respon"
-    "dFormatStorageResponse\"\004\200\265\030\001\022\212\001\n\026Subscri"
-    "beResetSettings\0227.mavsdk.rpc.camera_serv"
-    "er.SubscribeResetSettingsRequest\032/.mavsd"
-    "k.rpc.camera_server.ResetSettingsRespons"
-    "e\"\004\200\265\030\0000\001\022\213\001\n\024RespondResetSettings\0225.mav"
-    "sdk.rpc.camera_server.RespondResetSettin"
-    "gsRequest\0326.mavsdk.rpc.camera_server.Res"
-    "pondResetSettingsResponse\"\004\200\265\030\001\022\204\001\n\024Subs"
-    "cribeZoomInStart\0225.mavsdk.rpc.camera_ser"
-    "ver.SubscribeZoomInStartRequest\032-.mavsdk"
-    ".rpc.camera_server.ZoomInStartResponse\"\004"
-    "\200\265\030\0000\001\022\205\001\n\022RespondZoomInStart\0223.mavsdk.r"
-    "pc.camera_server.RespondZoomInStartReque"
-    "st\0324.mavsdk.rpc.camera_server.RespondZoo"
-    "mInStartResponse\"\004\200\265\030\001\022\207\001\n\025SubscribeZoom"
-    "OutStart\0226.mavsdk.rpc.camera_server.Subs"
-    "cribeZoomOutStartRequest\032..mavsdk.rpc.ca"
-    "mera_server.ZoomOutStartResponse\"\004\200\265\030\0000\001"
-    "\022\210\001\n\023RespondZoomOutStart\0224.mavsdk.rpc.ca"
-    "mera_server.RespondZoomOutStartRequest\0325"
-    ".mavsdk.rpc.camera_server.RespondZoomOut"
-    "StartResponse\"\004\200\265\030\001\022{\n\021SubscribeZoomStop"
-    "\0222.mavsdk.rpc.camera_server.SubscribeZoo"
-    "mStopRequest\032*.mavsdk.rpc.camera_server."
-    "ZoomStopResponse\"\004\200\265\030\0000\001\022|\n\017RespondZoomS"
-    "top\0220.mavsdk.rpc.camera_server.RespondZo"
-    "omStopRequest\0321.mavsdk.rpc.camera_server"
-    ".RespondZoomStopResponse\"\004\200\265\030\001\022~\n\022Subscr"
-    "ibeZoomRange\0223.mavsdk.rpc.camera_server."
-    "SubscribeZoomRangeRequest\032+.mavsdk.rpc.c"
-    "amera_server.ZoomRangeResponse\"\004\200\265\030\0000\001\022\177"
-    "\n\020RespondZoomRange\0221.mavsdk.rpc.camera_s"
-    "erver.RespondZoomRangeRequest\0322.mavsdk.r"
-    "pc.camera_server.RespondZoomRangeRespons"
-    "e\"\004\200\265\030\001\022\235\001\n\032SetTrackingRectangleStatus\022;"
-    ".mavsdk.rpc.camera_server.SetTrackingRec"
-    "tangleStatusRequest\032<.mavsdk.rpc.camera_"
-    "server.SetTrackingRectangleStatusRespons"
-    "e\"\004\200\265\030\001\022\213\001\n\024SetTrackingOffStatus\0225.mavsd"
-    "k.rpc.camera_server.SetTrackingOffStatus"
-    "Request\0326.mavsdk.rpc.camera_server.SetTr"
-    "ackingOffStatusResponse\"\004\200\265\030\001\022\237\001\n\035Subscr"
-    "ibeTrackingPointCommand\022>.mavsdk.rpc.cam"
-    "era_server.SubscribeTrackingPointCommand"
-    "Request\0326.mavsdk.rpc.camera_server.Track"
-    "ingPointCommandResponse\"\004\200\265\030\0000\001\022\253\001\n!Subs"
-    "cribeTrackingRectangleCommand\022B.mavsdk.r"
-    "pc.camera_server.SubscribeTrackingRectan"
-    "gleCommandRequest\032:.mavsdk.rpc.camera_se"
-    "rver.TrackingRectangleCommandResponse\"\004\200"
-    "\265\030\0000\001\022\231\001\n\033SubscribeTrackingOffCommand\022<."
-    "mavsdk.rpc.camera_server.SubscribeTracki"
-    "ngOffCommandRequest\0324.mavsdk.rpc.camera_"
-    "server.TrackingOffCommandResponse\"\004\200\265\030\0000"
-    "\001\022\240\001\n\033RespondTrackingPointCommand\022<.mavs"
-    "dk.rpc.camera_server.RespondTrackingPoin"
-    "tCommandRequest\032=.mavsdk.rpc.camera_serv"
-    "er.RespondTrackingPointCommandResponse\"\004"
-    "\200\265\030\001\022\254\001\n\037RespondTrackingRectangleCommand"
-    "\022@.mavsdk.rpc.camera_server.RespondTrack"
-    "ingRectangleCommandRequest\032A.mavsdk.rpc."
-    "camera_server.RespondTrackingRectangleCo"
-    "mmandResponse\"\004\200\265\030\001\022\232\001\n\031RespondTrackingO"
-    "ffCommand\022:.mavsdk.rpc.camera_server.Res"
-    "pondTrackingOffCommandRequest\032;.mavsdk.r"
-    "pc.camera_server.RespondTrackingOffComma"
-    "ndResponse\"\004\200\265\030\001B,\n\027io.mavsdk.camera_ser"
-    "verB\021CameraServerProtob\006proto3"
+    "angeRequest\"g\n\021ZoomRangeFeedback\022\016\n\006fact"
+    "or\030\001 \001(\002\022\020\n\010center_x\030\002 \001(\002\022\020\n\010center_y\030\003"
+    " \001(\002\022\016\n\006ts_pt1\030\004 \001(\002\022\016\n\006ts_pt2\030\005 \001(\002\"[\n\021"
+    "ZoomRangeResponse\022F\n\021zoom_range_result\030\001"
+    " \001(\0132+.mavsdk.rpc.camera_server.ZoomRang"
+    "eFeedback\"`\n\027RespondZoomRangeRequest\022E\n\023"
+    "zoom_range_feedback\030\001 \001(\0162(.mavsdk.rpc.c"
+    "amera_server.CameraFeedback\"f\n\030RespondZo"
+    "omRangeResponse\022J\n\024camera_server_result\030"
+    "\001 \001(\0132,.mavsdk.rpc.camera_server.CameraS"
+    "erverResult\"\214\003\n\013Information\022\023\n\013vendor_na"
+    "me\030\001 \001(\t\022\022\n\nmodel_name\030\002 \001(\t\022\030\n\020firmware"
+    "_version\030\003 \001(\t\022\027\n\017focal_length_mm\030\004 \001(\002\022"
+    "!\n\031horizontal_sensor_size_mm\030\005 \001(\002\022\037\n\027ve"
+    "rtical_sensor_size_mm\030\006 \001(\002\022 \n\030horizonta"
+    "l_resolution_px\030\007 \001(\r\022\036\n\026vertical_resolu"
+    "tion_px\030\010 \001(\r\022\017\n\007lens_id\030\t \001(\r\022\037\n\027defini"
+    "tion_file_version\030\n \001(\r\022\033\n\023definition_fi"
+    "le_uri\030\013 \001(\t\022%\n\035image_in_video_mode_supp"
+    "orted\030\014 \001(\010\022%\n\035video_in_image_mode_suppo"
+    "rted\030\r \001(\010\";\n\016VideoStreaming\022\027\n\017has_rtsp"
+    "_server\030\001 \001(\010\022\020\n\010rtsp_uri\030\002 \001(\t\"q\n\010Posit"
+    "ion\022\024\n\014latitude_deg\030\001 \001(\001\022\025\n\rlongitude_d"
+    "eg\030\002 \001(\001\022\033\n\023absolute_altitude_m\030\003 \001(\002\022\033\n"
+    "\023relative_altitude_m\030\004 \001(\002\"8\n\nQuaternion"
+    "\022\t\n\001w\030\001 \001(\002\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004"
+    " \001(\002\"\320\001\n\013CaptureInfo\0224\n\010position\030\001 \001(\0132\""
+    ".mavsdk.rpc.camera_server.Position\022A\n\023at"
+    "titude_quaternion\030\002 \001(\0132$.mavsdk.rpc.cam"
+    "era_server.Quaternion\022\023\n\013time_utc_us\030\003 \001"
+    "(\004\022\022\n\nis_success\030\004 \001(\010\022\r\n\005index\030\005 \001(\005\022\020\n"
+    "\010file_url\030\006 \001(\t\"\263\002\n\022CameraServerResult\022C"
+    "\n\006result\030\001 \001(\01623.mavsdk.rpc.camera_serve"
+    "r.CameraServerResult.Result\022\022\n\nresult_st"
+    "r\030\002 \001(\t\"\303\001\n\006Result\022\022\n\016RESULT_UNKNOWN\020\000\022\022"
+    "\n\016RESULT_SUCCESS\020\001\022\026\n\022RESULT_IN_PROGRESS"
+    "\020\002\022\017\n\013RESULT_BUSY\020\003\022\021\n\rRESULT_DENIED\020\004\022\020"
+    "\n\014RESULT_ERROR\020\005\022\022\n\016RESULT_TIMEOUT\020\006\022\031\n\025"
+    "RESULT_WRONG_ARGUMENT\020\007\022\024\n\020RESULT_NO_SYS"
+    "TEM\020\010\"\214\005\n\022StorageInformation\022\030\n\020used_sto"
+    "rage_mib\030\001 \001(\002\022\035\n\025available_storage_mib\030"
+    "\002 \001(\002\022\031\n\021total_storage_mib\030\003 \001(\002\022R\n\016stor"
+    "age_status\030\004 \001(\0162:.mavsdk.rpc.camera_ser"
+    "ver.StorageInformation.StorageStatus\022\022\n\n"
+    "storage_id\030\005 \001(\r\022N\n\014storage_type\030\006 \001(\01628"
+    ".mavsdk.rpc.camera_server.StorageInforma"
+    "tion.StorageType\022\030\n\020read_speed_mib_s\030\007 \001"
+    "(\002\022\031\n\021write_speed_mib_s\030\010 \001(\002\"\221\001\n\rStorag"
+    "eStatus\022 \n\034STORAGE_STATUS_NOT_AVAILABLE\020"
+    "\000\022\036\n\032STORAGE_STATUS_UNFORMATTED\020\001\022\034\n\030STO"
+    "RAGE_STATUS_FORMATTED\020\002\022 \n\034STORAGE_STATU"
+    "S_NOT_SUPPORTED\020\003\"\240\001\n\013StorageType\022\030\n\024STO"
+    "RAGE_TYPE_UNKNOWN\020\000\022\032\n\026STORAGE_TYPE_USB_"
+    "STICK\020\001\022\023\n\017STORAGE_TYPE_SD\020\002\022\030\n\024STORAGE_"
+    "TYPE_MICROSD\020\003\022\023\n\017STORAGE_TYPE_HD\020\007\022\027\n\022S"
+    "TORAGE_TYPE_OTHER\020\376\001\"\356\003\n\rCaptureStatus\022\030"
+    "\n\020image_interval_s\030\001 \001(\002\022\030\n\020recording_ti"
+    "me_s\030\002 \001(\002\022\036\n\026available_capacity_mib\030\003 \001"
+    "(\002\022I\n\014image_status\030\004 \001(\01623.mavsdk.rpc.ca"
+    "mera_server.CaptureStatus.ImageStatus\022I\n"
+    "\014video_status\030\005 \001(\01623.mavsdk.rpc.camera_"
+    "server.CaptureStatus.VideoStatus\022\023\n\013imag"
+    "e_count\030\006 \001(\005\"\221\001\n\013ImageStatus\022\025\n\021IMAGE_S"
+    "TATUS_IDLE\020\000\022$\n IMAGE_STATUS_CAPTURE_IN_"
+    "PROGRESS\020\001\022\036\n\032IMAGE_STATUS_INTERVAL_IDLE"
+    "\020\002\022%\n!IMAGE_STATUS_INTERVAL_IN_PROGRESS\020"
+    "\003\"J\n\013VideoStatus\022\025\n\021VIDEO_STATUS_IDLE\020\000\022"
+    "$\n VIDEO_STATUS_CAPTURE_IN_PROGRESS\020\001\"\\\n"
+    "\035SetTrackingPointStatusRequest\022;\n\rtracke"
+    "d_point\030\001 \001(\0132$.mavsdk.rpc.camera_server"
+    ".TrackPoint\" \n\036SetTrackingPointStatusRes"
+    "ponse\"h\n!SetTrackingRectangleStatusReque"
+    "st\022C\n\021tracked_rectangle\030\001 \001(\0132(.mavsdk.r"
+    "pc.camera_server.TrackRectangle\"$\n\"SetTr"
+    "ackingRectangleStatusResponse\"\035\n\033SetTrac"
+    "kingOffStatusRequest\"\036\n\034SetTrackingOffSt"
+    "atusResponse\"&\n$SubscribeTrackingPointCo"
+    "mmandRequest\"Y\n\034TrackingPointCommandResp"
+    "onse\0229\n\013track_point\030\001 \001(\0132$.mavsdk.rpc.c"
+    "amera_server.TrackPoint\"*\n(SubscribeTrac"
+    "kingRectangleCommandRequest\"e\n TrackingR"
+    "ectangleCommandResponse\022A\n\017track_rectang"
+    "le\030\001 \001(\0132(.mavsdk.rpc.camera_server.Trac"
+    "kRectangle\"$\n\"SubscribeTrackingOffComman"
+    "dRequest\"/\n\032TrackingOffCommandResponse\022\021"
+    "\n\ttimestamp\030\001 \001(\004\"k\n\"RespondTrackingPoin"
+    "tCommandRequest\022E\n\023stop_video_feedback\030\001"
+    " \001(\0162(.mavsdk.rpc.camera_server.CameraFe"
+    "edback\"q\n#RespondTrackingPointCommandRes"
+    "ponse\022J\n\024camera_server_result\030\001 \001(\0132,.ma"
+    "vsdk.rpc.camera_server.CameraServerResul"
+    "t\"o\n&RespondTrackingRectangleCommandRequ"
+    "est\022E\n\023stop_video_feedback\030\001 \001(\0162(.mavsd"
+    "k.rpc.camera_server.CameraFeedback\"u\n\'Re"
+    "spondTrackingRectangleCommandResponse\022J\n"
+    "\024camera_server_result\030\001 \001(\0132,.mavsdk.rpc"
+    ".camera_server.CameraServerResult\"i\n Res"
+    "pondTrackingOffCommandRequest\022E\n\023stop_vi"
+    "deo_feedback\030\001 \001(\0162(.mavsdk.rpc.camera_s"
+    "erver.CameraFeedback\"o\n!RespondTrackingO"
+    "ffCommandResponse\022J\n\024camera_server_resul"
+    "t\030\001 \001(\0132,.mavsdk.rpc.camera_server.Camer"
+    "aServerResult\">\n\nTrackPoint\022\017\n\007point_x\030\001"
+    " \001(\002\022\017\n\007point_y\030\002 \001(\002\022\016\n\006radius\030\003 \001(\002\"\227\001"
+    "\n\016TrackRectangle\022\031\n\021top_left_corner_x\030\001 "
+    "\001(\002\022\031\n\021top_left_corner_y\030\002 \001(\002\022\035\n\025bottom"
+    "_right_corner_x\030\003 \001(\002\022\035\n\025bottom_right_co"
+    "rner_y\030\004 \001(\002\022\021\n\ttimestamp\030\005 \001(\004*{\n\016Camer"
+    "aFeedback\022\033\n\027CAMERA_FEEDBACK_UNKNOWN\020\000\022\026"
+    "\n\022CAMERA_FEEDBACK_OK\020\001\022\030\n\024CAMERA_FEEDBAC"
+    "K_BUSY\020\002\022\032\n\026CAMERA_FEEDBACK_FAILED\020\003*8\n\004"
+    "Mode\022\020\n\014MODE_UNKNOWN\020\000\022\016\n\nMODE_PHOTO\020\001\022\016"
+    "\n\nMODE_VIDEO\020\0022\270+\n\023CameraServerService\022y"
+    "\n\016SetInformation\022/.mavsdk.rpc.camera_ser"
+    "ver.SetInformationRequest\0320.mavsdk.rpc.c"
+    "amera_server.SetInformationResponse\"\004\200\265\030"
+    "\001\022\202\001\n\021SetVideoStreaming\0222.mavsdk.rpc.cam"
+    "era_server.SetVideoStreamingRequest\0323.ma"
+    "vsdk.rpc.camera_server.SetVideoStreaming"
+    "Response\"\004\200\265\030\001\022v\n\rSetInProgress\022..mavsdk"
+    ".rpc.camera_server.SetInProgressRequest\032"
+    "/.mavsdk.rpc.camera_server.SetInProgress"
+    "Response\"\004\200\265\030\001\022~\n\022SubscribeTakePhoto\0223.m"
+    "avsdk.rpc.camera_server.SubscribeTakePho"
+    "toRequest\032+.mavsdk.rpc.camera_server.Tak"
+    "ePhotoResponse\"\004\200\265\030\0000\001\022\177\n\020RespondTakePho"
+    "to\0221.mavsdk.rpc.camera_server.RespondTak"
+    "ePhotoRequest\0322.mavsdk.rpc.camera_server"
+    ".RespondTakePhotoResponse\"\004\200\265\030\001\022\201\001\n\023Subs"
+    "cribeStartVideo\0224.mavsdk.rpc.camera_serv"
+    "er.SubscribeStartVideoRequest\032,.mavsdk.r"
+    "pc.camera_server.StartVideoResponse\"\004\200\265\030"
+    "\0000\001\022\202\001\n\021RespondStartVideo\0222.mavsdk.rpc.c"
+    "amera_server.RespondStartVideoRequest\0323."
+    "mavsdk.rpc.camera_server.RespondStartVid"
+    "eoResponse\"\004\200\265\030\001\022~\n\022SubscribeStopVideo\0223"
+    ".mavsdk.rpc.camera_server.SubscribeStopV"
+    "ideoRequest\032+.mavsdk.rpc.camera_server.S"
+    "topVideoResponse\"\004\200\265\030\0000\001\022\177\n\020RespondStopV"
+    "ideo\0221.mavsdk.rpc.camera_server.RespondS"
+    "topVideoRequest\0322.mavsdk.rpc.camera_serv"
+    "er.RespondStopVideoResponse\"\004\200\265\030\001\022\234\001\n\034Su"
+    "bscribeStartVideoStreaming\022=.mavsdk.rpc."
+    "camera_server.SubscribeStartVideoStreami"
+    "ngRequest\0325.mavsdk.rpc.camera_server.Sta"
+    "rtVideoStreamingResponse\"\004\200\265\030\0000\001\022\235\001\n\032Res"
+    "pondStartVideoStreaming\022;.mavsdk.rpc.cam"
+    "era_server.RespondStartVideoStreamingReq"
+    "uest\032<.mavsdk.rpc.camera_server.RespondS"
+    "tartVideoStreamingResponse\"\004\200\265\030\001\022\231\001\n\033Sub"
+    "scribeStopVideoStreaming\022<.mavsdk.rpc.ca"
+    "mera_server.SubscribeStopVideoStreamingR"
+    "equest\0324.mavsdk.rpc.camera_server.StopVi"
+    "deoStreamingResponse\"\004\200\265\030\0000\001\022\232\001\n\031Respond"
+    "StopVideoStreaming\022:.mavsdk.rpc.camera_s"
+    "erver.RespondStopVideoStreamingRequest\032;"
+    ".mavsdk.rpc.camera_server.RespondStopVid"
+    "eoStreamingResponse\"\004\200\265\030\001\022x\n\020SubscribeSe"
+    "tMode\0221.mavsdk.rpc.camera_server.Subscri"
+    "beSetModeRequest\032).mavsdk.rpc.camera_ser"
+    "ver.SetModeResponse\"\004\200\265\030\0000\001\022y\n\016RespondSe"
+    "tMode\022/.mavsdk.rpc.camera_server.Respond"
+    "SetModeRequest\0320.mavsdk.rpc.camera_serve"
+    "r.RespondSetModeResponse\"\004\200\265\030\001\022\231\001\n\033Subsc"
+    "ribeStorageInformation\022<.mavsdk.rpc.came"
+    "ra_server.SubscribeStorageInformationReq"
+    "uest\0324.mavsdk.rpc.camera_server.StorageI"
+    "nformationResponse\"\004\200\265\030\0000\001\022\232\001\n\031RespondSt"
+    "orageInformation\022:.mavsdk.rpc.camera_ser"
+    "ver.RespondStorageInformationRequest\032;.m"
+    "avsdk.rpc.camera_server.RespondStorageIn"
+    "formationResponse\"\004\200\265\030\001\022\212\001\n\026SubscribeCap"
+    "tureStatus\0227.mavsdk.rpc.camera_server.Su"
+    "bscribeCaptureStatusRequest\032/.mavsdk.rpc"
+    ".camera_server.CaptureStatusResponse\"\004\200\265"
+    "\030\0000\001\022\213\001\n\024RespondCaptureStatus\0225.mavsdk.r"
+    "pc.camera_server.RespondCaptureStatusReq"
+    "uest\0326.mavsdk.rpc.camera_server.RespondC"
+    "aptureStatusResponse\"\004\200\265\030\001\022\212\001\n\026Subscribe"
+    "FormatStorage\0227.mavsdk.rpc.camera_server"
+    ".SubscribeFormatStorageRequest\032/.mavsdk."
+    "rpc.camera_server.FormatStorageResponse\""
+    "\004\200\265\030\0000\001\022\213\001\n\024RespondFormatStorage\0225.mavsd"
+    "k.rpc.camera_server.RespondFormatStorage"
+    "Request\0326.mavsdk.rpc.camera_server.Respo"
+    "ndFormatStorageResponse\"\004\200\265\030\001\022\212\001\n\026Subscr"
+    "ibeResetSettings\0227.mavsdk.rpc.camera_ser"
+    "ver.SubscribeResetSettingsRequest\032/.mavs"
+    "dk.rpc.camera_server.ResetSettingsRespon"
+    "se\"\004\200\265\030\0000\001\022\213\001\n\024RespondResetSettings\0225.ma"
+    "vsdk.rpc.camera_server.RespondResetSetti"
+    "ngsRequest\0326.mavsdk.rpc.camera_server.Re"
+    "spondResetSettingsResponse\"\004\200\265\030\001\022\204\001\n\024Sub"
+    "scribeZoomInStart\0225.mavsdk.rpc.camera_se"
+    "rver.SubscribeZoomInStartRequest\032-.mavsd"
+    "k.rpc.camera_server.ZoomInStartResponse\""
+    "\004\200\265\030\0000\001\022\205\001\n\022RespondZoomInStart\0223.mavsdk."
+    "rpc.camera_server.RespondZoomInStartRequ"
+    "est\0324.mavsdk.rpc.camera_server.RespondZo"
+    "omInStartResponse\"\004\200\265\030\001\022\207\001\n\025SubscribeZoo"
+    "mOutStart\0226.mavsdk.rpc.camera_server.Sub"
+    "scribeZoomOutStartRequest\032..mavsdk.rpc.c"
+    "amera_server.ZoomOutStartResponse\"\004\200\265\030\0000"
+    "\001\022\210\001\n\023RespondZoomOutStart\0224.mavsdk.rpc.c"
+    "amera_server.RespondZoomOutStartRequest\032"
+    "5.mavsdk.rpc.camera_server.RespondZoomOu"
+    "tStartResponse\"\004\200\265\030\001\022{\n\021SubscribeZoomSto"
+    "p\0222.mavsdk.rpc.camera_server.SubscribeZo"
+    "omStopRequest\032*.mavsdk.rpc.camera_server"
+    ".ZoomStopResponse\"\004\200\265\030\0000\001\022|\n\017RespondZoom"
+    "Stop\0220.mavsdk.rpc.camera_server.RespondZ"
+    "oomStopRequest\0321.mavsdk.rpc.camera_serve"
+    "r.RespondZoomStopResponse\"\004\200\265\030\001\022~\n\022Subsc"
+    "ribeZoomRange\0223.mavsdk.rpc.camera_server"
+    ".SubscribeZoomRangeRequest\032+.mavsdk.rpc."
+    "camera_server.ZoomRangeResponse\"\004\200\265\030\0000\001\022"
+    "\177\n\020RespondZoomRange\0221.mavsdk.rpc.camera_"
+    "server.RespondZoomRangeRequest\0322.mavsdk."
+    "rpc.camera_server.RespondZoomRangeRespon"
+    "se\"\004\200\265\030\001\022\235\001\n\032SetTrackingRectangleStatus\022"
+    ";.mavsdk.rpc.camera_server.SetTrackingRe"
+    "ctangleStatusRequest\032<.mavsdk.rpc.camera"
+    "_server.SetTrackingRectangleStatusRespon"
+    "se\"\004\200\265\030\001\022\213\001\n\024SetTrackingOffStatus\0225.mavs"
+    "dk.rpc.camera_server.SetTrackingOffStatu"
+    "sRequest\0326.mavsdk.rpc.camera_server.SetT"
+    "rackingOffStatusResponse\"\004\200\265\030\001\022\237\001\n\035Subsc"
+    "ribeTrackingPointCommand\022>.mavsdk.rpc.ca"
+    "mera_server.SubscribeTrackingPointComman"
+    "dRequest\0326.mavsdk.rpc.camera_server.Trac"
+    "kingPointCommandResponse\"\004\200\265\030\0000\001\022\253\001\n!Sub"
+    "scribeTrackingRectangleCommand\022B.mavsdk."
+    "rpc.camera_server.SubscribeTrackingRecta"
+    "ngleCommandRequest\032:.mavsdk.rpc.camera_s"
+    "erver.TrackingRectangleCommandResponse\"\004"
+    "\200\265\030\0000\001\022\231\001\n\033SubscribeTrackingOffCommand\022<"
+    ".mavsdk.rpc.camera_server.SubscribeTrack"
+    "ingOffCommandRequest\0324.mavsdk.rpc.camera"
+    "_server.TrackingOffCommandResponse\"\004\200\265\030\000"
+    "0\001\022\240\001\n\033RespondTrackingPointCommand\022<.mav"
+    "sdk.rpc.camera_server.RespondTrackingPoi"
+    "ntCommandRequest\032=.mavsdk.rpc.camera_ser"
+    "ver.RespondTrackingPointCommandResponse\""
+    "\004\200\265\030\001\022\254\001\n\037RespondTrackingRectangleComman"
+    "d\022@.mavsdk.rpc.camera_server.RespondTrac"
+    "kingRectangleCommandRequest\032A.mavsdk.rpc"
+    ".camera_server.RespondTrackingRectangleC"
+    "ommandResponse\"\004\200\265\030\001\022\232\001\n\031RespondTracking"
+    "OffCommand\022:.mavsdk.rpc.camera_server.Re"
+    "spondTrackingOffCommandRequest\032;.mavsdk."
+    "rpc.camera_server.RespondTrackingOffComm"
+    "andResponse\"\004\200\265\030\001B,\n\027io.mavsdk.camera_se"
+    "rverB\021CameraServerProtob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_deps[1] =
     {
@@ -3090,13 +3133,13 @@ static ::absl::once_flag descriptor_table_camera_5fserver_2fcamera_5fserver_2epr
 const ::_pbi::DescriptorTable descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto = {
     false,
     false,
-    14550,
+    14711,
     descriptor_table_protodef_camera_5fserver_2fcamera_5fserver_2eproto,
     "camera_server/camera_server.proto",
     &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
     descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_deps,
     1,
-    90,
+    91,
     schemas,
     file_default_instances,
     TableStruct_camera_5fserver_2fcamera_5fserver_2eproto::offsets,
@@ -12278,51 +12321,58 @@ SubscribeZoomRangeRequest::SubscribeZoomRangeRequest(
 }
 // ===================================================================
 
-class ZoomRangeResponse::_Internal {
+class ZoomRangeFeedback::_Internal {
  public:
 };
 
-ZoomRangeResponse::ZoomRangeResponse(::google::protobuf::Arena* arena)
+ZoomRangeFeedback::ZoomRangeFeedback(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.ZoomRangeResponse)
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.ZoomRangeFeedback)
 }
-ZoomRangeResponse::ZoomRangeResponse(
-    ::google::protobuf::Arena* arena, const ZoomRangeResponse& from)
-    : ZoomRangeResponse(arena) {
+ZoomRangeFeedback::ZoomRangeFeedback(
+    ::google::protobuf::Arena* arena, const ZoomRangeFeedback& from)
+    : ZoomRangeFeedback(arena) {
   MergeFrom(from);
 }
-inline PROTOBUF_NDEBUG_INLINE ZoomRangeResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE ZoomRangeFeedback::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0} {}
 
-inline void ZoomRangeResponse::SharedCtor(::_pb::Arena* arena) {
+inline void ZoomRangeFeedback::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.factor_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, factor_),
+           0,
+           offsetof(Impl_, ts_pt2_) -
+               offsetof(Impl_, factor_) +
+               sizeof(Impl_::ts_pt2_));
 }
-ZoomRangeResponse::~ZoomRangeResponse() {
-  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.ZoomRangeResponse)
+ZoomRangeFeedback::~ZoomRangeFeedback() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.ZoomRangeFeedback)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void ZoomRangeResponse::SharedDtor() {
+inline void ZoomRangeFeedback::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void ZoomRangeResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.ZoomRangeResponse)
+PROTOBUF_NOINLINE void ZoomRangeFeedback::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.ZoomRangeFeedback)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.factor_ = 0;
+  ::memset(&_impl_.factor_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.ts_pt2_) -
+      reinterpret_cast<char*>(&_impl_.factor_)) + sizeof(_impl_.ts_pt2_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ZoomRangeResponse::_InternalParse(
+const char* ZoomRangeFeedback::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -12330,28 +12380,55 @@ const char* ZoomRangeResponse::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ZoomRangeResponse::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 0, 2> ZoomRangeFeedback::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_ZoomRangeResponse_default_instance_._instance,
+    &_ZoomRangeFeedback_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
+    {::_pbi::TcParser::MiniParse, {}},
     // float factor = 1;
     {::_pbi::TcParser::FastF32S1,
-     {13, 63, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeResponse, _impl_.factor_)}},
+     {13, 63, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.factor_)}},
+    // float center_x = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.center_x_)}},
+    // float center_y = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.center_y_)}},
+    // float ts_pt1 = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.ts_pt1_)}},
+    // float ts_pt2 = 5;
+    {::_pbi::TcParser::FastF32S1,
+     {45, 63, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.ts_pt2_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // float factor = 1;
-    {PROTOBUF_FIELD_OFFSET(ZoomRangeResponse, _impl_.factor_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.factor_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float center_x = 2;
+    {PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.center_x_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float center_y = 3;
+    {PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.center_y_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float ts_pt1 = 4;
+    {PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.ts_pt1_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float ts_pt2 = 5;
+    {PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.ts_pt2_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
   }},
   // no aux_entries
@@ -12359,10 +12436,10 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ZoomRangeResponse::_table_ = {
   }},
 };
 
-::uint8_t* ZoomRangeResponse::_InternalSerialize(
+::uint8_t* ZoomRangeFeedback::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.ZoomRangeResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.ZoomRangeFeedback)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -12376,6 +12453,344 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ZoomRangeResponse::_table_ = {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteFloatToArray(
         1, this->_internal_factor(), target);
+  }
+
+  // float center_x = 2;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_center_x = this->_internal_center_x();
+  ::uint32_t raw_center_x;
+  memcpy(&raw_center_x, &tmp_center_x, sizeof(tmp_center_x));
+  if (raw_center_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_center_x(), target);
+  }
+
+  // float center_y = 3;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_center_y = this->_internal_center_y();
+  ::uint32_t raw_center_y;
+  memcpy(&raw_center_y, &tmp_center_y, sizeof(tmp_center_y));
+  if (raw_center_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_center_y(), target);
+  }
+
+  // float ts_pt1 = 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ts_pt1 = this->_internal_ts_pt1();
+  ::uint32_t raw_ts_pt1;
+  memcpy(&raw_ts_pt1, &tmp_ts_pt1, sizeof(tmp_ts_pt1));
+  if (raw_ts_pt1 != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        4, this->_internal_ts_pt1(), target);
+  }
+
+  // float ts_pt2 = 5;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ts_pt2 = this->_internal_ts_pt2();
+  ::uint32_t raw_ts_pt2;
+  memcpy(&raw_ts_pt2, &tmp_ts_pt2, sizeof(tmp_ts_pt2));
+  if (raw_ts_pt2 != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        5, this->_internal_ts_pt2(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.camera_server.ZoomRangeFeedback)
+  return target;
+}
+
+::size_t ZoomRangeFeedback::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.camera_server.ZoomRangeFeedback)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float factor = 1;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_factor = this->_internal_factor();
+  ::uint32_t raw_factor;
+  memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
+  if (raw_factor != 0) {
+    total_size += 5;
+  }
+
+  // float center_x = 2;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_center_x = this->_internal_center_x();
+  ::uint32_t raw_center_x;
+  memcpy(&raw_center_x, &tmp_center_x, sizeof(tmp_center_x));
+  if (raw_center_x != 0) {
+    total_size += 5;
+  }
+
+  // float center_y = 3;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_center_y = this->_internal_center_y();
+  ::uint32_t raw_center_y;
+  memcpy(&raw_center_y, &tmp_center_y, sizeof(tmp_center_y));
+  if (raw_center_y != 0) {
+    total_size += 5;
+  }
+
+  // float ts_pt1 = 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ts_pt1 = this->_internal_ts_pt1();
+  ::uint32_t raw_ts_pt1;
+  memcpy(&raw_ts_pt1, &tmp_ts_pt1, sizeof(tmp_ts_pt1));
+  if (raw_ts_pt1 != 0) {
+    total_size += 5;
+  }
+
+  // float ts_pt2 = 5;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ts_pt2 = this->_internal_ts_pt2();
+  ::uint32_t raw_ts_pt2;
+  memcpy(&raw_ts_pt2, &tmp_ts_pt2, sizeof(tmp_ts_pt2));
+  if (raw_ts_pt2 != 0) {
+    total_size += 5;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ZoomRangeFeedback::_class_data_ = {
+    ZoomRangeFeedback::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* ZoomRangeFeedback::GetClassData() const {
+  return &_class_data_;
+}
+
+void ZoomRangeFeedback::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ZoomRangeFeedback*>(&to_msg);
+  auto& from = static_cast<const ZoomRangeFeedback&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.camera_server.ZoomRangeFeedback)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_factor = from._internal_factor();
+  ::uint32_t raw_factor;
+  memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
+  if (raw_factor != 0) {
+    _this->_internal_set_factor(from._internal_factor());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_center_x = from._internal_center_x();
+  ::uint32_t raw_center_x;
+  memcpy(&raw_center_x, &tmp_center_x, sizeof(tmp_center_x));
+  if (raw_center_x != 0) {
+    _this->_internal_set_center_x(from._internal_center_x());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_center_y = from._internal_center_y();
+  ::uint32_t raw_center_y;
+  memcpy(&raw_center_y, &tmp_center_y, sizeof(tmp_center_y));
+  if (raw_center_y != 0) {
+    _this->_internal_set_center_y(from._internal_center_y());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ts_pt1 = from._internal_ts_pt1();
+  ::uint32_t raw_ts_pt1;
+  memcpy(&raw_ts_pt1, &tmp_ts_pt1, sizeof(tmp_ts_pt1));
+  if (raw_ts_pt1 != 0) {
+    _this->_internal_set_ts_pt1(from._internal_ts_pt1());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ts_pt2 = from._internal_ts_pt2();
+  ::uint32_t raw_ts_pt2;
+  memcpy(&raw_ts_pt2, &tmp_ts_pt2, sizeof(tmp_ts_pt2));
+  if (raw_ts_pt2 != 0) {
+    _this->_internal_set_ts_pt2(from._internal_ts_pt2());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ZoomRangeFeedback::CopyFrom(const ZoomRangeFeedback& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.camera_server.ZoomRangeFeedback)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ZoomRangeFeedback::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* ZoomRangeFeedback::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ZoomRangeFeedback::InternalSwap(ZoomRangeFeedback* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.ts_pt2_)
+      + sizeof(ZoomRangeFeedback::_impl_.ts_pt2_)
+      - PROTOBUF_FIELD_OFFSET(ZoomRangeFeedback, _impl_.factor_)>(
+          reinterpret_cast<char*>(&_impl_.factor_),
+          reinterpret_cast<char*>(&other->_impl_.factor_));
+}
+
+::google::protobuf::Metadata ZoomRangeFeedback::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[59]);
+}
+// ===================================================================
+
+class ZoomRangeResponse::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ZoomRangeResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ZoomRangeResponse, _impl_._has_bits_);
+  static const ::mavsdk::rpc::camera_server::ZoomRangeFeedback& zoom_range_result(const ZoomRangeResponse* msg);
+  static void set_has_zoom_range_result(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::mavsdk::rpc::camera_server::ZoomRangeFeedback& ZoomRangeResponse::_Internal::zoom_range_result(const ZoomRangeResponse* msg) {
+  return *msg->_impl_.zoom_range_result_;
+}
+ZoomRangeResponse::ZoomRangeResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.camera_server.ZoomRangeResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ZoomRangeResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+ZoomRangeResponse::ZoomRangeResponse(
+    ::google::protobuf::Arena* arena,
+    const ZoomRangeResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ZoomRangeResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.zoom_range_result_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::mavsdk::rpc::camera_server::ZoomRangeFeedback>(arena, *from._impl_.zoom_range_result_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.camera_server.ZoomRangeResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ZoomRangeResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void ZoomRangeResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.zoom_range_result_ = {};
+}
+ZoomRangeResponse::~ZoomRangeResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.camera_server.ZoomRangeResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ZoomRangeResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.zoom_range_result_;
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void ZoomRangeResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.camera_server.ZoomRangeResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.zoom_range_result_ != nullptr);
+    _impl_.zoom_range_result_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ZoomRangeResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ZoomRangeResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ZoomRangeResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ZoomRangeResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .mavsdk.rpc.camera_server.ZoomRangeFeedback zoom_range_result = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ZoomRangeResponse, _impl_.zoom_range_result_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.camera_server.ZoomRangeFeedback zoom_range_result = 1;
+    {PROTOBUF_FIELD_OFFSET(ZoomRangeResponse, _impl_.zoom_range_result_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::camera_server::ZoomRangeFeedback>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* ZoomRangeResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.camera_server.ZoomRangeResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .mavsdk.rpc.camera_server.ZoomRangeFeedback zoom_range_result = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::zoom_range_result(this),
+        _Internal::zoom_range_result(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -12395,14 +12810,11 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ZoomRangeResponse::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // float factor = 1;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_factor = this->_internal_factor();
-  ::uint32_t raw_factor;
-  memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
-  if (raw_factor != 0) {
-    total_size += 5;
+  // .mavsdk.rpc.camera_server.ZoomRangeFeedback zoom_range_result = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.zoom_range_result_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -12424,13 +12836,9 @@ void ZoomRangeResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::g
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_factor = from._internal_factor();
-  ::uint32_t raw_factor;
-  memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
-  if (raw_factor != 0) {
-    _this->_internal_set_factor(from._internal_factor());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_zoom_range_result()->::mavsdk::rpc::camera_server::ZoomRangeFeedback::MergeFrom(
+        from._internal_zoom_range_result());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -12452,13 +12860,14 @@ PROTOBUF_NOINLINE bool ZoomRangeResponse::IsInitialized() const {
 void ZoomRangeResponse::InternalSwap(ZoomRangeResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.factor_, other->_impl_.factor_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.zoom_range_result_, other->_impl_.zoom_range_result_);
 }
 
 ::google::protobuf::Metadata ZoomRangeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[59]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[60]);
 }
 // ===================================================================
 
@@ -12628,7 +13037,7 @@ void RespondZoomRangeRequest::InternalSwap(RespondZoomRangeRequest* PROTOBUF_RES
 ::google::protobuf::Metadata RespondZoomRangeRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[60]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[61]);
 }
 // ===================================================================
 
@@ -12835,7 +13244,7 @@ void RespondZoomRangeResponse::InternalSwap(RespondZoomRangeResponse* PROTOBUF_R
 ::google::protobuf::Metadata RespondZoomRangeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[61]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[62]);
 }
 // ===================================================================
 
@@ -13375,7 +13784,7 @@ void Information::InternalSwap(Information* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata Information::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[62]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[63]);
 }
 // ===================================================================
 
@@ -13590,7 +13999,7 @@ void VideoStreaming::InternalSwap(VideoStreaming* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata VideoStreaming::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[63]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[64]);
 }
 // ===================================================================
 
@@ -13894,7 +14303,7 @@ void Position::InternalSwap(Position* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata Position::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[64]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[65]);
 }
 // ===================================================================
 
@@ -14198,7 +14607,7 @@ void Quaternion::InternalSwap(Quaternion* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata Quaternion::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[65]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[66]);
 }
 // ===================================================================
 
@@ -14571,7 +14980,7 @@ void CaptureInfo::InternalSwap(CaptureInfo* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata CaptureInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[66]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[67]);
 }
 // ===================================================================
 
@@ -14787,7 +15196,7 @@ void CameraServerResult::InternalSwap(CameraServerResult* PROTOBUF_RESTRICT othe
 ::google::protobuf::Metadata CameraServerResult::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[67]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[68]);
 }
 // ===================================================================
 
@@ -15193,7 +15602,7 @@ void StorageInformation::InternalSwap(StorageInformation* PROTOBUF_RESTRICT othe
 ::google::protobuf::Metadata StorageInformation::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[68]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[69]);
 }
 // ===================================================================
 
@@ -15529,7 +15938,7 @@ void CaptureStatus::InternalSwap(CaptureStatus* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata CaptureStatus::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[69]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[70]);
 }
 // ===================================================================
 
@@ -15736,7 +16145,7 @@ void SetTrackingPointStatusRequest::InternalSwap(SetTrackingPointStatusRequest* 
 ::google::protobuf::Metadata SetTrackingPointStatusRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[70]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[71]);
 }
 // ===================================================================
 
@@ -15771,7 +16180,7 @@ SetTrackingPointStatusResponse::SetTrackingPointStatusResponse(
 ::google::protobuf::Metadata SetTrackingPointStatusResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[71]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[72]);
 }
 // ===================================================================
 
@@ -15978,7 +16387,7 @@ void SetTrackingRectangleStatusRequest::InternalSwap(SetTrackingRectangleStatusR
 ::google::protobuf::Metadata SetTrackingRectangleStatusRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[72]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[73]);
 }
 // ===================================================================
 
@@ -16013,7 +16422,7 @@ SetTrackingRectangleStatusResponse::SetTrackingRectangleStatusResponse(
 ::google::protobuf::Metadata SetTrackingRectangleStatusResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[73]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[74]);
 }
 // ===================================================================
 
@@ -16048,7 +16457,7 @@ SetTrackingOffStatusRequest::SetTrackingOffStatusRequest(
 ::google::protobuf::Metadata SetTrackingOffStatusRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[74]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[75]);
 }
 // ===================================================================
 
@@ -16083,7 +16492,7 @@ SetTrackingOffStatusResponse::SetTrackingOffStatusResponse(
 ::google::protobuf::Metadata SetTrackingOffStatusResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[75]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[76]);
 }
 // ===================================================================
 
@@ -16118,7 +16527,7 @@ SubscribeTrackingPointCommandRequest::SubscribeTrackingPointCommandRequest(
 ::google::protobuf::Metadata SubscribeTrackingPointCommandRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[76]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[77]);
 }
 // ===================================================================
 
@@ -16325,7 +16734,7 @@ void TrackingPointCommandResponse::InternalSwap(TrackingPointCommandResponse* PR
 ::google::protobuf::Metadata TrackingPointCommandResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[77]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[78]);
 }
 // ===================================================================
 
@@ -16360,7 +16769,7 @@ SubscribeTrackingRectangleCommandRequest::SubscribeTrackingRectangleCommandReque
 ::google::protobuf::Metadata SubscribeTrackingRectangleCommandRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[78]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[79]);
 }
 // ===================================================================
 
@@ -16567,7 +16976,7 @@ void TrackingRectangleCommandResponse::InternalSwap(TrackingRectangleCommandResp
 ::google::protobuf::Metadata TrackingRectangleCommandResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[79]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[80]);
 }
 // ===================================================================
 
@@ -16602,7 +17011,7 @@ SubscribeTrackingOffCommandRequest::SubscribeTrackingOffCommandRequest(
 ::google::protobuf::Metadata SubscribeTrackingOffCommandRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[80]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[81]);
 }
 // ===================================================================
 
@@ -16772,7 +17181,7 @@ void TrackingOffCommandResponse::InternalSwap(TrackingOffCommandResponse* PROTOB
 ::google::protobuf::Metadata TrackingOffCommandResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[81]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[82]);
 }
 // ===================================================================
 
@@ -16942,7 +17351,7 @@ void RespondTrackingPointCommandRequest::InternalSwap(RespondTrackingPointComman
 ::google::protobuf::Metadata RespondTrackingPointCommandRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[82]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[83]);
 }
 // ===================================================================
 
@@ -17149,7 +17558,7 @@ void RespondTrackingPointCommandResponse::InternalSwap(RespondTrackingPointComma
 ::google::protobuf::Metadata RespondTrackingPointCommandResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[83]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[84]);
 }
 // ===================================================================
 
@@ -17319,7 +17728,7 @@ void RespondTrackingRectangleCommandRequest::InternalSwap(RespondTrackingRectang
 ::google::protobuf::Metadata RespondTrackingRectangleCommandRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[84]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[85]);
 }
 // ===================================================================
 
@@ -17526,7 +17935,7 @@ void RespondTrackingRectangleCommandResponse::InternalSwap(RespondTrackingRectan
 ::google::protobuf::Metadata RespondTrackingRectangleCommandResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[85]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[86]);
 }
 // ===================================================================
 
@@ -17696,7 +18105,7 @@ void RespondTrackingOffCommandRequest::InternalSwap(RespondTrackingOffCommandReq
 ::google::protobuf::Metadata RespondTrackingOffCommandRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[86]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[87]);
 }
 // ===================================================================
 
@@ -17903,7 +18312,7 @@ void RespondTrackingOffCommandResponse::InternalSwap(RespondTrackingOffCommandRe
 ::google::protobuf::Metadata RespondTrackingOffCommandResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[87]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[88]);
 }
 // ===================================================================
 
@@ -18172,7 +18581,7 @@ void TrackPoint::InternalSwap(TrackPoint* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata TrackPoint::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[88]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[89]);
 }
 // ===================================================================
 
@@ -18501,7 +18910,7 @@ void TrackRectangle::InternalSwap(TrackRectangle* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata TrackRectangle::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_getter, &descriptor_table_camera_5fserver_2fcamera_5fserver_2eproto_once,
-      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[89]);
+      file_level_metadata_camera_5fserver_2fcamera_5fserver_2eproto[90]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace camera_server

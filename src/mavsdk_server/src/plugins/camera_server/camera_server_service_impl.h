@@ -113,6 +113,42 @@ public:
         }
     }
 
+    static std::unique_ptr<rpc::camera_server::ZoomRangeFeedback> translateToRpcZoomRangeFeedback(
+        const mavsdk::CameraServer::ZoomRangeFeedback& zoom_range_feedback)
+    {
+        auto rpc_obj = std::make_unique<rpc::camera_server::ZoomRangeFeedback>();
+
+        rpc_obj->set_factor(zoom_range_feedback.factor);
+
+        rpc_obj->set_center_x(zoom_range_feedback.center_x);
+
+        rpc_obj->set_center_y(zoom_range_feedback.center_y);
+
+        rpc_obj->set_ts_pt1(zoom_range_feedback.ts_pt1);
+
+        rpc_obj->set_ts_pt2(zoom_range_feedback.ts_pt2);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::CameraServer::ZoomRangeFeedback translateFromRpcZoomRangeFeedback(
+        const rpc::camera_server::ZoomRangeFeedback& zoom_range_feedback)
+    {
+        mavsdk::CameraServer::ZoomRangeFeedback obj;
+
+        obj.factor = zoom_range_feedback.factor();
+
+        obj.center_x = zoom_range_feedback.center_x();
+
+        obj.center_y = zoom_range_feedback.center_y();
+
+        obj.ts_pt1 = zoom_range_feedback.ts_pt1();
+
+        obj.ts_pt2 = zoom_range_feedback.ts_pt2();
+
+        return obj;
+    }
+
     static std::unique_ptr<rpc::camera_server::Information>
     translateToRpcInformation(const mavsdk::CameraServer::Information& information)
     {
@@ -1722,10 +1758,11 @@ public:
         const mavsdk::CameraServer::ZoomRangeHandle handle =
             _lazy_plugin.maybe_plugin()->subscribe_zoom_range(
                 [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
-                    const float zoom_range) {
+                    const mavsdk::CameraServer::ZoomRangeFeedback zoom_range) {
                     rpc::camera_server::ZoomRangeResponse rpc_response;
 
-                    rpc_response.set_factor(zoom_range);
+                    rpc_response.set_allocated_zoom_range_result(
+                        translateToRpcZoomRangeFeedback(zoom_range).release());
 
                     std::unique_lock<std::mutex> lock(*subscribe_mutex);
                     if (!*is_finished && !writer->Write(rpc_response)) {

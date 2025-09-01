@@ -80,6 +80,33 @@ public:
     friend std::ostream& operator<<(std::ostream& str, CameraServer::Mode const& mode);
 
     /**
+     * @brief
+     */
+    struct ZoomRangeFeedback {
+        float factor{}; /**< @brief */
+        float center_x{}; /**< @brief */
+        float center_y{}; /**< @brief */
+        float ts_pt1{}; /**< @brief */
+        float ts_pt2{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `CameraServer::ZoomRangeFeedback` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(
+        const CameraServer::ZoomRangeFeedback& lhs, const CameraServer::ZoomRangeFeedback& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `CameraServer::ZoomRangeFeedback`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, CameraServer::ZoomRangeFeedback const& zoom_range_feedback);
+
+    /**
      * @brief Type to represent a camera information.
      */
     struct Information {
@@ -919,12 +946,12 @@ public:
     /**
      * @brief Callback type for subscribe_zoom_range.
      */
-    using ZoomRangeCallback = std::function<void(float)>;
+    using ZoomRangeCallback = std::function<void(ZoomRangeFeedback)>;
 
     /**
      * @brief Handle type for subscribe_zoom_range.
      */
-    using ZoomRangeHandle = Handle<float>;
+    using ZoomRangeHandle = Handle<ZoomRangeFeedback>;
 
     /**
      * @brief Subscribe to zoom range command
