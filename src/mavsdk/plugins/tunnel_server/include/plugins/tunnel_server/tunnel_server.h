@@ -13,13 +13,11 @@
 #include <utility>
 #include <vector>
 
-
 #include "server_plugin_base.h"
 
 #include "handle.h"
 
 namespace mavsdk {
-
 
 class ServerComponent;
 class TunnelServerImpl;
@@ -27,13 +25,12 @@ class TunnelServerImpl;
 /**
  * @brief *
  * Allow sending and receiving TUNNEL mavlink messages.
- * 
+ *
  * The TUNNEL message allows for arbitrary data to be tunneled through the MAVLink protocol,
  * enabling custom communication between systems.
  */
 class TunnelServer : public ServerPluginBase {
 public:
-
     /**
      * @brief Constructor. Creates the plugin for a ServerComponent instance.
      *
@@ -47,26 +44,23 @@ public:
      */
     explicit TunnelServer(std::shared_ptr<ServerComponent> server_component);
 
-
     /**
      * @brief Destructor (internal use only).
      */
     ~TunnelServer() override;
 
-
-
-
-
     /**
      * @brief TUNNEL message data
      */
     struct TunnelMessage {
-        
         uint32_t target_system{}; /**< @brief Target system ID (uint8 in mavlink) */
         uint32_t target_component{}; /**< @brief Target component ID (uint8 in mavlink) */
-        uint32_t payload_type{}; /**< @brief A code that identifies the content of the tunnel payload (uint16 in mavlink) */
-        uint32_t payload_length{}; /**< @brief Length of valid data in payload (uint8 in mavlink, max 128) */
-        std::vector<std::byte> payload{}; /**< @brief Fixed 128-byte payload data (32 uint32 values) */
+        uint32_t payload_type{}; /**< @brief A code that identifies the content of the tunnel
+                                    payload (uint16 in mavlink) */
+        uint32_t payload_length{}; /**< @brief Length of valid data in payload (uint8 in mavlink,
+                                      max 128) */
+        std::vector<std::byte>
+            payload{}; /**< @brief Fixed 128-byte payload data (32 uint32 values) */
     };
 
     /**
@@ -74,18 +68,16 @@ public:
      *
      * @return `true` if items are equal.
      */
-    friend bool operator==(const TunnelServer::TunnelMessage& lhs, const TunnelServer::TunnelMessage& rhs);
+    friend bool
+    operator==(const TunnelServer::TunnelMessage& lhs, const TunnelServer::TunnelMessage& rhs);
 
     /**
      * @brief Stream operator to print information about a `TunnelServer::TunnelMessage`.
      *
      * @return A reference to the stream.
      */
-    friend std::ostream& operator<<(std::ostream& str, TunnelServer::TunnelMessage const& tunnel_message);
-
-
-
-
+    friend std::ostream&
+    operator<<(std::ostream& str, TunnelServer::TunnelMessage const& tunnel_message);
 
     /**
      * @brief Possible results returned for tunnel requests.
@@ -109,17 +101,10 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& str, TunnelServer::Result const& result);
 
-
-
     /**
      * @brief Callback type for asynchronous TunnelServer calls.
      */
     using ResultCallback = std::function<void(Result)>;
-
-
-
-
-
 
     /**
      * @brief Send a TUNNEL message with custom payload data.
@@ -128,12 +113,12 @@ public:
      *
      * @return Result of request.
      */
-    Result send_tunnel_message(uint32_t target_system, uint32_t target_component, uint32_t payload_type, uint32_t payload_length, std::vector<std::byte> payload) const;
-
-
-
-
-        
+    Result send_tunnel_message(
+        uint32_t target_system,
+        uint32_t target_component,
+        uint32_t payload_type,
+        uint32_t payload_length,
+        std::vector<std::byte> payload) const;
 
     /**
      * @brief Callback type for subscribe_tunnel_message.
@@ -147,7 +132,7 @@ public:
 
     /**
      * @brief Subscribe to incoming TUNNEL messages.
-     * 
+     *
      * This allows registering a callback to receive TUNNEL messages from the vehicle.
      */
     TunnelMessageHandle subscribe_tunnel_message(const TunnelMessageCallback& callback);
@@ -156,13 +141,6 @@ public:
      * @brief Unsubscribe from subscribe_tunnel_message
      */
     void unsubscribe_tunnel_message(TunnelMessageHandle handle);
-
-        
-
-
-
-
-
 
     /**
      * @brief Copy constructor.
