@@ -377,7 +377,14 @@ std::ostream& operator<<(std::ostream& str, CameraServer::Information const& inf
 
 bool operator==(const CameraServer::VideoStreaming& lhs, const CameraServer::VideoStreaming& rhs)
 {
-    return (rhs.has_rtsp_server == lhs.has_rtsp_server) && (rhs.rtsp_uri == lhs.rtsp_uri);
+    return (rhs.has_rtsp_server == lhs.has_rtsp_server) && (rhs.rtsp_uri == lhs.rtsp_uri) &&
+           ((std::isnan(rhs.framerate_hz) && std::isnan(lhs.framerate_hz)) ||
+            rhs.framerate_hz == lhs.framerate_hz) &&
+           (rhs.resolution_h == lhs.resolution_h) && (rhs.resolution_v == lhs.resolution_v) &&
+           (rhs.bitrate_b_s == lhs.bitrate_b_s) && (rhs.rotation_deg == lhs.rotation_deg) &&
+           (rhs.hfov_deg == lhs.hfov_deg) && (rhs.name == lhs.name) &&
+           (rhs.stream_id == lhs.stream_id) && (rhs.count == lhs.count) && (rhs.type == lhs.type) &&
+           (rhs.flags == lhs.flags);
 }
 
 std::ostream& operator<<(std::ostream& str, CameraServer::VideoStreaming const& video_streaming)
@@ -386,6 +393,17 @@ std::ostream& operator<<(std::ostream& str, CameraServer::VideoStreaming const& 
     str << "video_streaming:" << '\n' << "{\n";
     str << "    has_rtsp_server: " << video_streaming.has_rtsp_server << '\n';
     str << "    rtsp_uri: " << video_streaming.rtsp_uri << '\n';
+    str << "    framerate_hz: " << video_streaming.framerate_hz << '\n';
+    str << "    resolution_h: " << video_streaming.resolution_h << '\n';
+    str << "    resolution_v: " << video_streaming.resolution_v << '\n';
+    str << "    bitrate_b_s: " << video_streaming.bitrate_b_s << '\n';
+    str << "    rotation_deg: " << video_streaming.rotation_deg << '\n';
+    str << "    hfov_deg: " << video_streaming.hfov_deg << '\n';
+    str << "    name: " << video_streaming.name << '\n';
+    str << "    stream_id: " << video_streaming.stream_id << '\n';
+    str << "    count: " << video_streaming.count << '\n';
+    str << "    type: " << video_streaming.type << '\n';
+    str << "    flags: " << video_streaming.flags << '\n';
     str << '}';
     return str;
 }
@@ -662,6 +680,39 @@ std::ostream& operator<<(std::ostream& str, CameraServer::CameraFeedback const& 
             return str << "Busy";
         case CameraServer::CameraFeedback::Failed:
             return str << "Failed";
+        default:
+            return str << "Unknown";
+    }
+}
+
+std::ostream& operator<<(std::ostream& str, CameraServer::VideoStreamType const& video_stream_type)
+{
+    switch (video_stream_type) {
+        case CameraServer::VideoStreamType::Rtsp:
+            return str << "Rtsp";
+        case CameraServer::VideoStreamType::RtpUdp:
+            return str << "Rtp Udp";
+        case CameraServer::VideoStreamType::TcpMpeg:
+            return str << "Tcp Mpeg";
+        case CameraServer::VideoStreamType::MpegTs:
+            return str << "Mpeg Ts";
+        default:
+            return str << "Unknown";
+    }
+}
+
+std::ostream&
+operator<<(std::ostream& str, CameraServer::VideoStreamStatusFlags const& video_stream_status_flags)
+{
+    switch (video_stream_status_flags) {
+        case CameraServer::VideoStreamStatusFlags::None:
+            return str << "None";
+        case CameraServer::VideoStreamStatusFlags::Running:
+            return str << "Running";
+        case CameraServer::VideoStreamStatusFlags::Thermal:
+            return str << "Thermal";
+        case CameraServer::VideoStreamStatusFlags::ThermalRangeEnabled:
+            return str << "Thermal Range Enabled";
         default:
             return str << "Unknown";
     }
