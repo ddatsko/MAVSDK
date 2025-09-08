@@ -55,7 +55,8 @@ void MavlinkCommandReceiver::receive_command_int(const mavlink_message_t& messag
     std::lock_guard<std::mutex> lock(_mavlink_command_handler_table_mutex);
 
     for (auto& handler : _mavlink_command_int_handler_table) {
-        if (handler.cmd_id == cmd.command) {
+        // If handler is either for this specific command of for any command (id == 0)
+        if (handler.cmd_id == cmd.command || handler.cmd_id == 0) {
             if (_debugging) {
                 LogDebug() << "Handling command int " << (int)cmd.command;
             }
@@ -104,7 +105,8 @@ void MavlinkCommandReceiver::receive_command_long(const mavlink_message_t& messa
     std::lock_guard<std::mutex> lock(_mavlink_command_handler_table_mutex);
 
     for (auto& handler : _mavlink_command_long_handler_table) {
-        if (handler.cmd_id == cmd.command) {
+        // If handler is either for this specific command of for any command (id == 0)
+        if (handler.cmd_id == cmd.command || handler.cmd_id == 0) {
             if (_debugging) {
                 LogDebug() << "Handling command long " << (int)cmd.command;
             }
