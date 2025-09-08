@@ -46,6 +46,10 @@ int GrpcServer::run()
     builder.RegisterService(&_camera_server_service);
 #endif
 
+#ifdef COMMAND_SERVER_ENABLED
+    builder.RegisterService(&_command_server_service);
+#endif
+
 #ifdef COMPONENT_METADATA_ENABLED
     builder.RegisterService(&_component_metadata_service);
 #endif
@@ -215,6 +219,10 @@ void GrpcServer::stop()
 
 #ifdef CAMERA_SERVER_ENABLED
         _camera_server_service.stop();
+#endif
+
+#ifdef COMMAND_SERVER_ENABLED
+        _command_server_service.stop();
 #endif
 
 #ifdef COMPONENT_METADATA_ENABLED

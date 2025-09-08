@@ -44,6 +44,11 @@
 #include "camera_server/camera_server_service_impl.h"
 #endif
 
+#ifdef COMMAND_SERVER_ENABLED
+#include "plugins/command_server/command_server.h"
+#include "command_server/command_server_service_impl.h"
+#endif
+
 #ifdef COMPONENT_METADATA_ENABLED
 #include "plugins/component_metadata/component_metadata.h"
 #include "component_metadata/component_metadata_service_impl.h"
@@ -225,6 +230,11 @@ public:
 #ifdef CAMERA_SERVER_ENABLED
         _camera_server_lazy_plugin(mavsdk),
         _camera_server_service(_camera_server_lazy_plugin),
+#endif
+
+#ifdef COMMAND_SERVER_ENABLED
+        _command_server_lazy_plugin(mavsdk),
+        _command_server_service(_command_server_lazy_plugin),
 #endif
 
 #ifdef COMPONENT_METADATA_ENABLED
@@ -424,6 +434,13 @@ private:
     LazyServerPlugin<CameraServer> _camera_server_lazy_plugin;
 
     CameraServerServiceImpl<> _camera_server_service;
+#endif
+
+#ifdef COMMAND_SERVER_ENABLED
+
+    LazyServerPlugin<CommandServer> _command_server_lazy_plugin;
+
+    CommandServerServiceImpl<> _command_server_service;
 #endif
 
 #ifdef COMPONENT_METADATA_ENABLED
